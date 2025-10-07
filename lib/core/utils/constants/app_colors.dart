@@ -19,4 +19,5 @@ class AppColors {
   static const Color secondaryText = Color(0xFF717171) /* Secondary-Text */;
   static const Color secondaryButton = Color(0xFF147FC7) /* Secondary-Button */;
   static const Color buttomNavBarColor = Color(0xFF0E4065);
+  static const Color borderColor = Color(0xFFC8C8C8);
 }

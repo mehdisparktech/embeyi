@@ -42,6 +42,7 @@ class AppString {
   static const String alreadyHaveAccount = "Already have an account";
   static const String fullName = "Full Name";
   static const String createYourAccount = "Create Your Account";
+  static const String registration = "Registration";
   static const String otpVerify = "OTP Verify";
   static const String inbox = "Inbox";
   static const String searchDoctor = "search a doctor";

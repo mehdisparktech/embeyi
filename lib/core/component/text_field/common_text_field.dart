@@ -24,13 +24,13 @@ class CommonTextField extends StatelessWidget {
     this.prefixText,
     this.paddingHorizontal = 16,
     this.paddingVertical = 14,
-    this.borderRadius = 10,
+    this.borderRadius = 4,
     this.inputFormatters,
     this.fillColor = AppColors.white,
     this.hintTextColor = AppColors.textFiledColor,
     this.labelTextColor = AppColors.textFiledColor,
-    this.textColor = AppColors.black,
-    this.borderColor = AppColors.background,
+    this.textColor = AppColors.primaryText,
+    this.borderColor = AppColors.borderColor,
     this.onSubmitted,
     this.onTap,
     this.suffixIcon,
@@ -68,10 +68,10 @@ class CommonTextField extends StatelessWidget {
     // Automatically set keyboardType to multiline when using newline action with multiline fields
     final effectiveKeyboardType =
         (textInputAction == TextInputAction.newline &&
-                maxLines != null &&
-                maxLines! > 1)
-            ? TextInputType.multiline
-            : keyboardType;
+            maxLines != null &&
+            maxLines! > 1)
+        ? TextInputType.multiline
+        : keyboardType;
 
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUnfocus,
