@@ -24,9 +24,9 @@ class CommonButton extends StatefulWidget {
     required this.titleText,
     this.titleColor = AppColors.white,
     this.buttonColor = AppColors.primaryColor,
-    this.titleSize = 16,
+    this.titleSize = 14,
     this.buttonRadius = 4,
-    this.titleWeight = FontWeight.w700,
+    this.titleWeight = FontWeight.w600,
     this.buttonHeight = 48,
     this.borderWidth = 1,
     this.isLoading = false,
@@ -81,8 +81,8 @@ class _CommonButtonState extends State<CommonButton>
             color: widget.buttonColor,
             gradient: widget.isGradient
                 ? LinearGradient(
-                    begin: Alignment(0.97, 1.00),
-                    end: Alignment(0.08, 0.04),
+                    begin: Alignment(0.00, 0.50),
+                    end: Alignment(1.00, 0.50),
                     colors: [AppColors.gradientColor, AppColors.gradientColor2],
                   )
                 : null,

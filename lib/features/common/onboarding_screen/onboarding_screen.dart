@@ -1,11 +1,12 @@
+import 'package:embeyi/core/component/button/common_button.dart';
+import 'package:embeyi/core/component/text/common_text.dart';
+import 'package:embeyi/core/config/route/app_routes.dart';
 import 'package:flutter/material.dart';
-import '../../../core/config/route/app_routes.dart';
+import 'package:get/get.dart';
 import '../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import '../../../core/utils/constants/app_images.dart';
 import '../../../core/utils/constants/app_string.dart';
-import '../../../core/component/button/common_button.dart';
 import '../../../core/component/image/common_image.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -20,18 +21,30 @@ class OnboardingScreen extends StatelessWidget {
           children: [
             180.height,
             const Center(
-              child: CommonImage(imageSrc: AppImages.noImage, size: 70),
+              child: CommonImage(imageSrc: AppImages.onboarding, size: 70),
             ),
             120.height,
-            CommonButton(
-              titleText: AppString.signIn,
-              onTap: () => Get.toNamed(AppRoutes.signIn),
+            CommonText(
+              text: AppString.onboardingHeadingText,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w700,
             ),
-            24.height,
-            CommonButton(
-              titleText: AppString.signUp,
-              onTap: () => Get.toNamed(AppRoutes.signUp),
+            20.height,
+            CommonText(
+              text: AppString.onboardingSubText,
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              textAlign: TextAlign.center,
+              maxLines: 2,
             ),
+            Spacer(),
+            CommonButton(
+              titleText: 'Get Started',
+              onTap: () {
+                Get.toNamed(AppRoutes.selectedRole);
+              },
+            ),
+            20.height,
           ],
         ),
       ),

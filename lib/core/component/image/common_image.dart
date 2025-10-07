@@ -23,7 +23,7 @@ class CommonImage extends StatelessWidget {
     this.width,
     this.size,
     this.fill = BoxFit.contain,
-    this.defaultImage = AppImages.profile,
+    this.defaultImage = AppImages.noImage,
     super.key,
   });
 
@@ -50,16 +50,14 @@ class CommonImage extends StatelessWidget {
       width: size ?? width,
       imageUrl: imageSrc,
       fit: fill,
-      imageBuilder:
-          (context, imageProvider) => Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadius),
-              image: DecorationImage(image: imageProvider, fit: fill),
-            ),
-          ),
-      progressIndicatorBuilder:
-          (context, url, downloadProgress) =>
-              CircularProgressIndicator(value: downloadProgress.progress),
+      imageBuilder: (context, imageProvider) => Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius),
+          image: DecorationImage(image: imageProvider, fit: fill),
+        ),
+      ),
+      progressIndicatorBuilder: (context, url, downloadProgress) =>
+          CircularProgressIndicator(value: downloadProgress.progress),
       errorWidget: (context, url, error) {
         errorLog(error, source: "Common Image");
 

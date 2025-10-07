@@ -1,3 +1,4 @@
+import 'package:embeyi/features/common/onboarding_screen/select_roule_screen.dart';
 import 'package:get/get.dart';
 
 // Common imports
@@ -27,6 +28,7 @@ class AppRoutes {
   static const String verifyEmail = "/verify_screen.dart";
   static const String createPassword = "/create_password.dart";
   static const String changePassword = "/change_password_screen.dart";
+  static const String selectedRole = "/selected_role_screen.dart";
 
   // Common Routes List
   static List<GetPage> routes = [
@@ -40,6 +42,7 @@ class AppRoutes {
     GetPage(name: verifyEmail, page: () => const VerifyScreen()),
     GetPage(name: createPassword, page: () => CreatePassword()),
     GetPage(name: changePassword, page: () => ChangePasswordScreen()),
+    GetPage(name: selectedRole, page: () => const SelectRouleScreen()),
 
     // Role-specific routes
     ...JobSeekerRoutes.routes,

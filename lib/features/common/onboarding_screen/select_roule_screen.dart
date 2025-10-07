@@ -24,15 +24,30 @@ class SelectRouleScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CommonText(
-                  text: "Are You",
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 24,
+                CommonImage(
+                  imageSrc: AppImages.logo,
+                  width: 216.w,
+                  height: 157.h,
                 ),
-                20.height,
+                100.height,
+                CommonText(
+                  text: "Are You a Job Seeker or a Recruiter?",
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 24,
+                  maxLines: 2,
+                  bottom: 8,
+                ),
+                CommonText(
+                  text: "Are You a Job Seeker or a Recruiter?",
+                  color: AppColors.primaryText,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+                44.height,
                 selectRoleCard(
-                  text: "A Job Seeker",
+                  title: "Job Seeker",
+                  subtitle: 'Finding a job here never been easier than before',
                   imageSrc: AppImages.noImage,
                   onTap: () async {
                     await LocalStorage.setUserRole(UserRole.jobSeeker);
@@ -42,7 +57,8 @@ class SelectRouleScreen extends StatelessWidget {
                 ),
                 20.height,
                 selectRoleCard(
-                  text: "An Employer",
+                  title: "Recruiter",
+                  subtitle: 'Let’s recruit your great candidate faster here ',
                   imageSrc: AppImages.noImage,
                   onTap: () async {
                     await LocalStorage.setUserRole(UserRole.employer);
@@ -59,7 +75,8 @@ class SelectRouleScreen extends StatelessWidget {
   }
 
   Widget selectRoleCard({
-    required String text,
+    required String title,
+    required String subtitle,
     required String imageSrc,
     required VoidCallback onTap,
     required bool isSeleted,
@@ -67,41 +84,60 @@ class SelectRouleScreen extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 140,
-        width: 240,
-        decoration: BoxDecoration(
-          color: isSeleted ? null : Colors.white,
-          gradient: isSeleted
-              ? LinearGradient(
-                  begin: Alignment(-0.9, 0),
-                  end: Alignment(1.0, 0),
-                  colors: [
-                    Color(0xFF083E4B), // #083E4B
-                    Color(0xFF074E5E), // #074E5E
-                    Color(0xFF0288A6), // #0288A6
-                  ],
-                  stops: [0.0, 0.4, 1.0],
-                )
-              : null,
-          borderRadius: BorderRadius.circular(8.0),
-          boxShadow: [
+        width: 370.w,
+        height: 117.h,
+        padding: EdgeInsets.all(20.w),
+        decoration: ShapeDecoration(
+          color: isSeleted ? const Color(0xFFFEF3E6) : AppColors.white,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              width: 1.w,
+              color: isSeleted
+                  ? const Color(0xFFFF8F27)
+                  : AppColors.primaryColor,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          shadows: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.15),
+              color: Color(0x19000000),
+              blurRadius: 4,
+              offset: Offset(0, 2),
               spreadRadius: 0,
-              blurRadius: 10,
-              offset: Offset(0, 8), // changes position of shadow
             ),
           ],
         ),
-        child: Column(
+        child: Row(
           children: [
-            20.height,
-            CommonImage(imageSrc: imageSrc, height: 64, width: 64),
-            20.height,
-            CommonText(
-              text: text,
-              color: isSeleted ? AppColors.white : AppColors.black,
-              fontSize: 16,
+            Expanded(
+              flex: 1,
+              child: CommonImage(imageSrc: imageSrc, width: 76.w, height: 69.h),
+            ),
+            20.width,
+            Expanded(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CommonText(
+                    text: title,
+                    color: isSeleted
+                        ? AppColors.secondaryPrimary
+                        : AppColors.primaryColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  5.height,
+                  CommonText(
+                    text: subtitle,
+                    color: AppColors.primaryText,
+                    fontSize: 14,
+                    maxLines: 2,
+                    textAlign: TextAlign.start,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ],
+              ),
             ),
           ],
         ),

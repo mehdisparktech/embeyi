@@ -71,4 +71,9 @@ class AppString {
   static const String thePasswordDoesNotMatch = "The password does not match";
   static const String startServer = "Please, start the Server";
   static const String unknownError = "Unknown Error";
+
+  static const String noDataFound = "No Data Found";
+  static const String onboardingHeadingText = "Find Your Dream Jobs";
+  static const String onboardingSubText =
+      "Smart job matching to connect you with the right career";
 }

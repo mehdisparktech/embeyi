@@ -15,7 +15,7 @@ class AppColors {
   static const Color gradientColor = Color(0xFF123499);
   static const Color gradientColor2 = Color(0xFF2956DD);
   static const Color success = Color(0xFF008F37); /* Success */
-  static const Color primaryText = Colors.black /* Primary-Text */;
+  static const Color primaryText = Color(0xFF2F2F2F) /* Primary-Text */;
   static const Color secondaryText = Color(0xFF717171) /* Secondary-Text */;
   static const Color secondaryButton = Color(0xFF147FC7) /* Secondary-Button */;
   static const Color buttomNavBarColor = Color(0xFF0E4065);

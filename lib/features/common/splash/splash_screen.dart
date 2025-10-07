@@ -30,8 +30,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CommonImage(imageSrc: AppImages.noImage, size: 70).center,
-    );
+    return Scaffold(body: CommonImage(imageSrc: AppImages.logo).center);
   }
 }
