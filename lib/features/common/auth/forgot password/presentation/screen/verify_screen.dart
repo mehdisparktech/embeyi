@@ -1,3 +1,7 @@
+import 'package:embeyi/core/component/appbar/common_appbar.dart';
+import 'package:embeyi/core/component/image/common_image.dart';
+import 'package:embeyi/core/utils/constants/app_images.dart';
+import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -28,102 +32,128 @@ class _VerifyScreenState extends State<VerifyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primaryColor,
+
       /// App Bar Section
-      appBar: AppBar(
-        title: const CommonText(
-          text: AppString.forgotPassword,
-          fontWeight: FontWeight.w700,
-          fontSize: 24,
-        ),
-      ),
+      appBar: CommonAppbar(),
 
       /// Body Section
-      body: GetBuilder<ForgetPasswordController>(
-        builder: (controller) => SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
-          child: Form(
-            key: formKey,
-            child: Column(
+      body: Column(
+        children: [
+          GetBuilder<ForgetPasswordController>(
+            builder: (controller) => Column(
               children: [
-                /// instruction how to get OTP
-                Center(
-                  child: CommonText(
-                    text:
-                        "${AppString.codeHasBeenSendTo} ${controller.emailController.text}",
-                    fontSize: 18,
-                    top: 100,
-                    bottom: 60,
-                  ),
+                const CommonText(
+                  text: AppString.forgotPassword,
+                  fontSize: 30,
+                  bottom: 20,
+                  color: AppColors.white,
                 ),
-
-                /// OTP Filed here
-                Flexible(
-                  flex: 0,
-                  child: PinCodeTextField(
-                    controller: controller.otpController,
-                    validator: (value) {
-                      if (value != null && value.length == 6) {
-                        return null;
-                      } else {
-                        return AppString.otpIsInValid;
-                      }
-                    },
-                    autoDisposeControllers: false,
-                    cursorColor: AppColors.black,
-                    appContext: (context),
-                    autoFocus: true,
-                    pinTheme: PinTheme(
-                      shape: PinCodeFieldShape.box,
-                      borderRadius: BorderRadius.circular(8),
-                      fieldHeight: 60.h,
-                      fieldWidth: 60.w,
-                      activeFillColor: AppColors.transparent,
-                      selectedFillColor: AppColors.transparent,
-                      inactiveFillColor: AppColors.transparent,
-                      borderWidth: 0.5.w,
-                      selectedColor: AppColors.primaryColor,
-                      activeColor: AppColors.primaryColor,
-                      inactiveColor: AppColors.black,
+                Container(
+                  height: MediaQuery.of(context).size.height - 190.h,
+                  padding: EdgeInsets.all(20.w),
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30.r),
+                      topRight: Radius.circular(30.r),
                     ),
-                    length: 6,
-                    keyboardType: TextInputType.number,
-                    autovalidateMode: AutovalidateMode.disabled,
-                    enableActiveFill: true,
                   ),
-                ),
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          40.height,
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: CommonImage(imageSrc: AppImages.onboarding),
+                          ),
 
-                /// Resent OTP or show Timer
-                GestureDetector(
-                  onTap: controller.time == '00:00'
-                      ? () {
-                          controller.startTimer();
-                          controller.forgotPasswordRepo();
-                        }
-                      : () {},
-                  child: CommonText(
-                    text: controller.time == '00:00'
-                        ? AppString.resendCode
-                        : "${AppString.resendCodeIn} ${controller.time} ${AppString.minute}",
-                    top: 60,
-                    bottom: 100,
-                    fontSize: 18,
+                          /// instruction how to get OTP
+                          Center(
+                            child: CommonText(
+                              text:
+                                  "${AppString.codeHasBeenSendTo} ${controller.emailController.text}",
+                              fontSize: 18,
+                              top: 10,
+                              bottom: 60,
+                            ),
+                          ),
+
+                          /// OTP Filed here
+                          Flexible(
+                            flex: 0,
+                            child: PinCodeTextField(
+                              controller: controller.otpController,
+                              validator: (value) {
+                                if (value != null && value.length == 6) {
+                                  return null;
+                                } else {
+                                  return AppString.otpIsInValid;
+                                }
+                              },
+                              autoDisposeControllers: false,
+                              cursorColor: AppColors.black,
+                              appContext: (context),
+                              autoFocus: true,
+                              pinTheme: PinTheme(
+                                shape: PinCodeFieldShape.box,
+                                borderRadius: BorderRadius.circular(8),
+                                fieldHeight: 60.h,
+                                fieldWidth: 60.w,
+                                activeFillColor: AppColors.transparent,
+                                selectedFillColor: AppColors.transparent,
+                                inactiveFillColor: AppColors.transparent,
+                                borderWidth: 0.5.w,
+                                selectedColor: AppColors.primaryColor,
+                                activeColor: AppColors.primaryColor,
+                                inactiveColor: AppColors.black,
+                              ),
+                              length: 6,
+                              keyboardType: TextInputType.number,
+                              autovalidateMode: AutovalidateMode.disabled,
+                              enableActiveFill: true,
+                            ),
+                          ),
+
+                          /// Resent OTP or show Timer
+                          GestureDetector(
+                            onTap: controller.time == '00:00'
+                                ? () {
+                                    controller.startTimer();
+                                    controller.forgotPasswordRepo();
+                                  }
+                                : () {},
+                            child: CommonText(
+                              text: controller.time == '00:00'
+                                  ? AppString.resendCode
+                                  : "${AppString.resendCodeIn} ${controller.time} ${AppString.minute}",
+                              top: 0,
+                              bottom: 20,
+                              fontSize: 18,
+                            ),
+                          ),
+
+                          ///  Submit Button here
+                          CommonButton(
+                            titleText: AppString.verify,
+                            isLoading: controller.isLoadingVerify,
+                            onTap: () {
+                              if (formKey.currentState!.validate()) {
+                                controller.verifyOtpRepo();
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-
-                ///  Submit Button here
-                CommonButton(
-                  titleText: AppString.verify,
-                  isLoading: controller.isLoadingVerify,
-                  onTap: () {
-                    if (formKey.currentState!.validate()) {
-                      controller.verifyOtpRepo();
-                    }
-                  },
                 ),
               ],
             ),
           ),
-        ),
+        ],
       ),
     );
   }

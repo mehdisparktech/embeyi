@@ -1,14 +1,12 @@
 import 'package:embeyi/core/config/route/app_routes.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/config/route/job_seeker_routes.dart';
-import '../../../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../core/component/bottom_nav_bar/common_bottom_bar.dart';
 import '../../../../../core/component/pop_up/common_pop_menu.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../controller/setting_controller.dart';
-import '../../../../../core/utils/constants/app_colors.dart';
 import '../../../../../core/utils/constants/app_string.dart';
 import '../widgets/setting_item.dart';
 
@@ -32,11 +30,9 @@ class JobSeekerSettingScreen extends StatelessWidget {
       body: GetBuilder<SettingController>(
         builder: (controller) {
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
             child: Column(
               children: [
-                70.height,
-
                 /// Change password Item here
                 InkWell(
                   onTap: () => Get.toNamed(AppRoutes.changePassword),
@@ -71,26 +67,9 @@ class JobSeekerSettingScreen extends StatelessWidget {
                     onTap: controller.deleteAccountRepo,
                     isLoading: controller.isLoading,
                   ),
-                  child: Container(
-                    height: 52.h,
-                    padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    decoration: BoxDecoration(
-                      color: AppColors.blueLight,
-                      borderRadius: BorderRadius.circular(4.r),
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.delete_outline_rounded,
-                          color: AppColors.secondaryButton,
-                        ),
-                        CommonText(
-                          text: AppString.deleteAccount,
-                          color: AppColors.secondaryButton,
-                          left: 12.w,
-                        ),
-                      ],
-                    ),
+                  child: const SettingItem(
+                    title: AppString.deleteAccount,
+                    iconDate: Icons.delete_outline_rounded,
                   ),
                 ),
               ],
@@ -100,7 +79,10 @@ class JobSeekerSettingScreen extends StatelessWidget {
       ),
 
       /// Bottom Navigation Bar Section starts here
-      bottomNavigationBar: const CommonBottomNavBar(currentIndex: 0, isJobSeeker: true),
+      bottomNavigationBar: const CommonBottomNavBar(
+        currentIndex: 0,
+        isJobSeeker: true,
+      ),
     );
   }
 }

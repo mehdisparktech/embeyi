@@ -26,6 +26,7 @@ class AppString {
   static const String createNewPassword = "Create New Password";
   static const String createYourNewPassword = "Create Your New Password";
   static const String password = "Password";
+  static const String setNewPassword = "Set New Password";
   static const String continues = "Continue";
   static const String email = "Email";
   static const String codeHasBeenSendTo = "Code has been send to";
@@ -37,9 +38,10 @@ class AppString {
   static const String logIntoYourAccount = "Login to Your Account";
   static const String forgotThePassword = "Forgot the password";
   static const String signIn = "Sign in";
+  static const String login = "Log In";
   static const String doNotHaveAccount = "Don’t have an account";
   static const String signUp = "Sign up";
-  static const String alreadyHaveAccount = "Already have an account";
+  static const String alreadyHaveAccount = "Already have an account? ";
   static const String fullName = "Full Name";
   static const String createYourAccount = "Create Your Account";
   static const String registration = "Registration";

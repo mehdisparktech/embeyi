@@ -15,21 +15,28 @@ class SettingItem extends StatelessWidget {
       height: 52.h,
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       margin: EdgeInsets.only(bottom: 15.h),
-      decoration: BoxDecoration(
-        color: AppColors.blueLight,
-        borderRadius: BorderRadius.circular(4.r),
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
+        color: AppColors.white,
+        shadows: [
+          BoxShadow(
+            color: Color(0x19000000),
+            blurRadius: 4,
+            offset: Offset(0, 1),
+          ),
+        ],
       ),
       child: Row(
         children: [
           /// show icon here
-          Icon(iconDate, color: AppColors.secondaryButton),
+          Icon(iconDate, color: AppColors.black),
 
           /// show Title here
-          CommonText(text: title, color: AppColors.secondaryButton, left: 12),
+          CommonText(text: title, color: AppColors.black, left: 12),
           const Spacer(),
 
           /// show Icon here
-          const Icon(Icons.arrow_forward_ios, color: AppColors.secondaryButton),
+          const Icon(Icons.arrow_forward_ios, color: AppColors.black),
         ],
       ),
     );

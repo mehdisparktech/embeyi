@@ -20,9 +20,7 @@ class OnboardingScreen extends StatelessWidget {
         child: Column(
           children: [
             180.height,
-            const Center(
-              child: CommonImage(imageSrc: AppImages.onboarding, size: 70),
-            ),
+            const Center(child: CommonImage(imageSrc: AppImages.onboarding)),
             120.height,
             CommonText(
               text: AppString.onboardingHeadingText,

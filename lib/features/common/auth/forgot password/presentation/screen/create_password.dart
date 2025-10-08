@@ -1,3 +1,5 @@
+import 'package:embeyi/core/component/appbar/common_appbar.dart';
+import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -18,89 +20,123 @@ class CreatePassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      /// App Bar Section starts here
-      appBar: AppBar(
-        title: const CommonText(
-          text: AppString.createNewPassword,
-          fontWeight: FontWeight.w700,
-          fontSize: 24,
-        ),
-      ),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.primaryColor,
 
-      /// Body Section starts here
-      body: GetBuilder<ForgetPasswordController>(
-        builder: (controller) {
-          return SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-            child: Form(
-              key: formKey,
+        /// App Bar Section starts here
+        appBar: CommonAppbar(),
+
+        /// Body Section starts here
+        body: GetBuilder<ForgetPasswordController>(
+          builder: (controller) {
+            return SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  64.height,
-
-                  /// Reset password image here
-                  const Center(
-                    child: CommonImage(
-                      imageSrc: AppImages.noImage,
-                      height: 297,
-                      width: 297,
-                    ),
-                  ),
-
-                  /// Instruction of Creating New Password
                   const CommonText(
-                    text: AppString.createYourNewPassword,
-                    fontSize: 18,
-                    textAlign: TextAlign.start,
-                    top: 64,
-                    bottom: 24,
+                    text: AppString.setNewPassword,
+                    fontSize: 30,
+                    bottom: 20,
+                    color: AppColors.white,
                   ),
-
-                  /// New Password here
-                  const CommonText(text: AppString.password, bottom: 8),
-                  CommonTextField(
-                    controller: controller.passwordController,
-                    prefixIcon: const Icon(Icons.lock),
-                    hintText: AppString.password,
-                    isPassword: true,
-                    validator: OtherHelper.passwordValidator,
-                  ),
-
-                  /// Confirm Password here
-                  const CommonText(
-                    text: AppString.password,
-                    bottom: 8,
-                    top: 12,
-                  ),
-                  CommonTextField(
-                    controller: controller.confirmPasswordController,
-                    prefixIcon: const Icon(Icons.lock),
-                    hintText: AppString.confirmPassword,
-                    validator: (value) => OtherHelper.confirmPasswordValidator(
-                      value,
-                      controller.passwordController,
+                  Container(
+                    height: MediaQuery.of(context).size.height - 230.h,
+                    padding: EdgeInsets.all(20.w),
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30.r),
+                        topRight: Radius.circular(30.r),
+                      ),
                     ),
-                    isPassword: true,
-                  ),
-                  64.height,
+                    child: SingleChildScrollView(
+                      child: Form(
+                        key: formKey,
+                        child: Column(
+                          children: [
+                            64.height,
 
-                  /// Submit Button here
-                  CommonButton(
-                    titleText: AppString.continues,
-                    isLoading: controller.isLoadingReset,
-                    onTap: () {
-                      if (formKey.currentState!.validate()) {
-                        controller.resetPasswordRepo();
-                      }
-                    },
+                            /// Reset password image here
+                            const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(20.0),
+                                child: CommonImage(
+                                  imageSrc: AppImages.onboarding,
+                                  height: 297,
+                                  width: 297,
+                                ),
+                              ),
+                            ),
+
+                            /// Instruction of Creating New Password
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: const CommonText(
+                                text:
+                                    'Create a strong new password to secure your account',
+
+                                fontSize: 18,
+                                bottom: 14,
+                                maxLines: 2,
+                              ).center,
+                            ),
+
+                            /// New Password here
+                            const CommonText(
+                              text: AppString.password,
+                              bottom: 8,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                            ).start,
+                            CommonTextField(
+                              controller: controller.passwordController,
+
+                              hintText: AppString.password,
+                              isPassword: true,
+                              validator: OtherHelper.passwordValidator,
+                            ),
+
+                            /// Confirm Password here
+                            const CommonText(
+                              text: AppString.confirmPassword,
+                              bottom: 8,
+                              top: 16,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                            ).start,
+                            CommonTextField(
+                              controller: controller.confirmPasswordController,
+
+                              hintText: AppString.confirmPassword,
+                              validator: (value) =>
+                                  OtherHelper.confirmPasswordValidator(
+                                    value,
+                                    controller.passwordController,
+                                  ),
+                              isPassword: true,
+                            ).start,
+                            20.height,
+
+                            /// Submit Button here
+                            CommonButton(
+                              titleText: AppString.continues,
+                              isLoading: controller.isLoadingReset,
+                              onTap: () {
+                                if (formKey.currentState!.validate()) {
+                                  controller.resetPasswordRepo();
+                                }
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

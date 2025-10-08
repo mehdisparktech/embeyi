@@ -1,3 +1,5 @@
+import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -26,6 +28,7 @@ class JobSeekerProfileScreen extends StatelessWidget {
           fontWeight: FontWeight.w600,
           fontSize: 24,
         ),
+        leading: const SizedBox(),
       ),
 
       /// Body Section Starts here
@@ -38,12 +41,12 @@ class JobSeekerProfileScreen extends StatelessWidget {
                 /// User Profile Image here
                 Center(
                   child: CircleAvatar(
-                    radius: 85.sp,
+                    radius: 50.sp,
                     backgroundColor: Colors.transparent,
                     child: const ClipOval(
                       child: CommonImage(
                         imageSrc: AppImages.profile,
-                        size: 170,
+                        size: 100,
                         defaultImage: AppImages.profile,
                       ),
                     ),
@@ -53,11 +56,33 @@ class JobSeekerProfileScreen extends StatelessWidget {
                 /// User Name here
                 const CommonText(
                   text: LocalStorageKeys.myName,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  top: 20,
-                  bottom: 24,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  top: 16,
+                  bottom: 4,
                 ),
+                CommonText(
+                  text: "UI/UX Designer",
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.secondaryText,
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+
+                  children: [
+                    Icon(Icons.star, color: AppColors.secondaryPrimary),
+                    8.width,
+                    CommonText(
+                      text: 'Premium Plan',
+                      textAlign: TextAlign.center,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.secondaryPrimary,
+                    ),
+                  ],
+                ),
+                16.height,
 
                 /// Edit Profile item here
                 Item(
@@ -73,33 +98,6 @@ class JobSeekerProfileScreen extends StatelessWidget {
                   onTap: () => Get.toNamed(JobSeekerRoutes.setting),
                 ),
 
-                /// Language item here
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.language),
-                          CommonText(
-                            text: controller.selectedLanguage,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18,
-                            left: 16,
-                          ),
-                          const Spacer(),
-                          PopUpMenu(
-                            items: controller.languages,
-                            selectedItem: [controller.selectedLanguage],
-                            onTap: controller.selectLanguage,
-                          ),
-                        ],
-                      ),
-                      const Divider(),
-                    ],
-                  ),
-                ),
-
                 /// Log Out item here
                 Item(
                   icon: Icons.logout,
@@ -113,7 +111,10 @@ class JobSeekerProfileScreen extends StatelessWidget {
       ),
 
       /// Bottom Navigation Bar Section Starts here
-      bottomNavigationBar: const CommonBottomNavBar(currentIndex: 3, isJobSeeker: true),
+      bottomNavigationBar: const CommonBottomNavBar(
+        currentIndex: 3,
+        isJobSeeker: true,
+      ),
     );
   }
 }

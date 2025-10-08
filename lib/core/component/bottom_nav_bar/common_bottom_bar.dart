@@ -13,9 +13,9 @@ class CommonBottomNavBar extends StatefulWidget {
   final bool isJobSeeker;
 
   const CommonBottomNavBar({
-    required this.currentIndex, 
+    required this.currentIndex,
     this.isJobSeeker = true,
-    super.key
+    super.key,
   });
 
   @override
@@ -52,13 +52,7 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
         width: MediaQuery.of(context).size.width,
         alignment: Alignment.center,
         padding: EdgeInsets.all(12.sp),
-        decoration: BoxDecoration(
-          color: AppColors.buttomNavBarColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.r),
-            topRight: Radius.circular(20.r),
-          ),
-        ),
+        decoration: BoxDecoration(color: AppColors.buttomNavBarColor),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(unselectedIcons.length, (index) {
@@ -88,15 +82,15 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
       // Job Seeker Navigation
       if (index == 0) {
         if (!(widget.currentIndex == 0)) {
-          Get.toNamed(JobSeekerRoutes.setting);
+          Get.toNamed(JobSeekerRoutes.home);
         }
       } else if (index == 1) {
         if (!(widget.currentIndex == 1)) {
-          Get.toNamed(JobSeekerRoutes.notifications);
+          Get.toNamed(JobSeekerRoutes.jobs);
         }
       } else if (index == 2) {
         if (!(widget.currentIndex == 2)) {
-          Get.toNamed(JobSeekerRoutes.chat);
+          Get.toNamed(JobSeekerRoutes.history);
         }
       } else if (index == 3) {
         if (!(widget.currentIndex == 3)) {

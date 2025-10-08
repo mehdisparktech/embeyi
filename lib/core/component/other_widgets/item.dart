@@ -32,10 +32,22 @@ class Item extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: horizontal.w,
-          vertical: vertical.h,
+      child: Container(
+        padding: EdgeInsets.all(16.sp),
+        margin: EdgeInsets.only(bottom: 15.h),
+        decoration: ShapeDecoration(
+          color: AppColors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4.r),
+          ),
+          shadows: [
+            BoxShadow(
+              color: Color(0x19000000),
+              blurRadius: 4,
+              offset: Offset(0, 1),
+              spreadRadius: 0,
+            ),
+          ],
         ),
         child: Column(
           children: [
@@ -57,7 +69,6 @@ class Item extends StatelessWidget {
                     : Icon(Icons.arrow_forward_ios_outlined, size: 20.sp),
               ],
             ),
-            disableDivider ? const SizedBox() : const Divider(),
           ],
         ),
       ),
