@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class JobCard extends StatefulWidget {
   final String companyName;
@@ -52,20 +51,16 @@ class JobCardState extends State<JobCard> {
       onTap: widget.onTap,
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [Color(0xFF083E4B), Color(0xFF074E5E), Color(0xFF0288A6)],
-            stops: [0.0, 0.5, 1.0],
-          ),
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
+        padding: EdgeInsets.all(16.r),
+        decoration: ShapeDecoration(
+          color: Colors.white,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          shadows: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 10,
-              offset: Offset(0, 4),
+              color: Color(0x19000000),
+              blurRadius: 4,
+              offset: Offset(0, 2),
+              spreadRadius: 0,
             ),
           ],
         ),
@@ -94,7 +89,7 @@ class JobCardState extends State<JobCard> {
                       Text(
                         widget.companyName,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                         ),
@@ -104,7 +99,7 @@ class JobCardState extends State<JobCard> {
                       Text(
                         widget.location,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                         ),
@@ -120,40 +115,10 @@ class JobCardState extends State<JobCard> {
                         isFavorited = !isFavorited;
                       });
                     },
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [Color(0x30FFFFFF), Color(0x10FFFFFF)],
-                            ),
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(
-                              color: Colors.white.withOpacity(0.25),
-                              width: 1,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
-                                blurRadius: 15,
-                                offset: Offset(0, 5),
-                              ),
-                            ],
-                          ),
-                          child: Icon(
-                            isFavorited
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            color: isFavorited ? Colors.white : Colors.white,
-                            size: 20,
-                          ),
-                        ),
-                      ),
+                    child: Icon(
+                      isFavorited ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorited ? Colors.black : Colors.black,
+                      size: 24,
                     ),
                   ),
               ],
@@ -166,7 +131,7 @@ class JobCardState extends State<JobCard> {
                 Text(
                   widget.jobTitle,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
                   ),
@@ -176,7 +141,7 @@ class JobCardState extends State<JobCard> {
                   Text(
                     'Full Time',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                     ),
@@ -185,7 +150,7 @@ class JobCardState extends State<JobCard> {
                   Text(
                     'Part Time',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                     ),
@@ -200,7 +165,7 @@ class JobCardState extends State<JobCard> {
                 Text(
                   widget.salaryRange,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
@@ -211,7 +176,7 @@ class JobCardState extends State<JobCard> {
                   widget.isApplied
                       ? widget.totalapply ?? ''
                       : widget.timePosted ?? '',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(color: Colors.black, fontSize: 18),
                 ),
               ],
             ),
