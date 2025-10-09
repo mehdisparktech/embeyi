@@ -168,11 +168,14 @@ class JobSeekerHomeScreen extends StatelessWidget {
                               salaryRange: '\$7k - \$15k/month',
                               timePosted: '01 Dec 25',
                               isFullTime: true,
-                              companyLogo: AppImages.logo,
-                              isFavorite: true,
+                              companyLogo: AppImages.jobPost,
+                              showFavoriteButton: true,
                               isSaved: false,
                               onTap: () {
                                 // Handle job card tap
+                              },
+                              onFavoriteTap: () {
+                                // Handle favorite tap
                               },
                             ),
                           );

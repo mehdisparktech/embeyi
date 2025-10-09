@@ -51,7 +51,7 @@ class HomeHeader extends StatelessWidget {
                 text: userName,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: AppColors.primaryText,
+                color: AppColors.primaryColor,
                 textAlign: TextAlign.start,
               ),
               2.height,
@@ -102,54 +102,63 @@ class HomeSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(8.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: TextField(
-        controller: controller,
-        onChanged: onChanged,
-        decoration: InputDecoration(
-          hintText: 'Search',
-          hintStyle: TextStyle(
-            color: AppColors.textFiledColor,
-            fontSize: 14.sp,
-          ),
-          prefixIcon: Icon(
-            Icons.search,
-            color: AppColors.textFiledColor,
-            size: 24.sp,
-          ),
-          suffixIcon: GestureDetector(
-            onTap: onFilterTap,
-            child: Container(
-              margin: EdgeInsets.all(8.sp),
-              decoration: BoxDecoration(
-                color: AppColors.blueLight,
-                borderRadius: BorderRadius.circular(6.r),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Expanded(
+          flex: 6,
+          child: Container(
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                side: BorderSide(width: 1, color: const Color(0xFFD9E7F1)),
+                borderRadius: BorderRadius.circular(8),
               ),
-              child: Icon(
-                Icons.tune,
-                color: AppColors.primaryColor,
-                size: 20.sp,
+            ),
+            child: TextField(
+              controller: controller,
+              onChanged: onChanged,
+              decoration: InputDecoration(
+                hintText: 'Search',
+                hintStyle: TextStyle(
+                  color: AppColors.textFiledColor,
+                  fontSize: 14.sp,
+                ),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: AppColors.textFiledColor,
+                  size: 24.sp,
+                ),
+
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 10.w,
+                  vertical: 10.h,
+                ),
               ),
             ),
           ),
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: 16.w,
-            vertical: 12.h,
+        ),
+        16.width,
+        Expanded(
+          flex: 1,
+          child: GestureDetector(
+            onTap: onFilterTap,
+            child: Container(
+              padding: EdgeInsets.all(8.w),
+              decoration: ShapeDecoration(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(width: 1, color: const Color(0xFFD9E7F1)),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: Icon(Icons.tune, color: AppColors.black, size: 32.sp),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
@@ -259,7 +268,7 @@ class SectionHeader extends StatelessWidget {
           text: title,
           fontSize: 18,
           fontWeight: FontWeight.w600,
-          color: AppColors.primaryText,
+          color: AppColors.primaryColor,
           textAlign: TextAlign.start,
         ),
         if (onSeeAllTap != null)
@@ -271,13 +280,13 @@ class SectionHeader extends StatelessWidget {
                   text: 'See All',
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: AppColors.primaryColor,
+                  color: AppColors.black,
                 ),
                 4.width,
                 Icon(
                   Icons.arrow_forward_ios,
                   size: 12.sp,
-                  color: AppColors.primaryColor,
+                  color: AppColors.black,
                 ),
               ],
             ),

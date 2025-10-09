@@ -1,9 +1,11 @@
+import 'package:embeyi/core/component/text/common_text.dart';
+import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class JobCard extends StatefulWidget {
+class JobCard extends StatelessWidget {
   final String companyName;
   final String location;
   final String jobTitle;
@@ -14,175 +16,225 @@ class JobCard extends StatefulWidget {
   final String? totalapply;
   final bool isApplied;
   final bool isSaved;
-  final bool isFavorite;
+  final bool showFavoriteButton;
+  final bool isRemote;
   final VoidCallback onTap;
+  final VoidCallback? onFavoriteTap;
+
   const JobCard({
     super.key,
     required this.companyName,
     required this.location,
     required this.jobTitle,
     required this.salaryRange,
-    this.timePosted = '',
+    this.timePosted,
     required this.isFullTime,
     required this.companyLogo,
-    this.totalapply = '',
+    this.totalapply,
     this.isApplied = false,
     this.isSaved = false,
-    this.isFavorite = true,
+    this.showFavoriteButton = true,
+    this.isRemote = false,
     required this.onTap,
+    this.onFavoriteTap,
   });
-
-  @override
-  State<JobCard> createState() => JobCardState();
-}
-
-class JobCardState extends State<JobCard> {
-  bool isFavorited =
-      false; // Changed from false to widget.isSaved, but accessed using widget.isSaved
-  @override
-  void initState() {
-    super.initState();
-    isFavorited = widget.isSaved;
-  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: onTap,
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.all(16.r),
-        decoration: ShapeDecoration(
-          color: Colors.white,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          shadows: [
-            BoxShadow(
-              color: Color(0x19000000),
-              blurRadius: 4,
-              offset: Offset(0, 2),
-              spreadRadius: 0,
-            ),
-          ],
-        ),
+        padding: EdgeInsets.all(12.r),
+        decoration: _buildCardDecoration(),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top Row - Company info and favorite button
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Company Logo
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: CommonImage(imageSrc: widget.companyLogo),
-                ),
-                10.width,
-                // Company Name and Location
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.companyName,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-
-                      4.height,
-                      Text(
-                        widget.location,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // Favorite Button
-                if (widget.isFavorite)
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isFavorited = !isFavorited;
-                      });
-                    },
-                    child: Icon(
-                      isFavorited ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorited ? Colors.black : Colors.black,
-                      size: 24,
-                    ),
-                  ),
+                _buildCompanyLogo(),
+                12.width,
+                Expanded(child: _buildJobDetails()),
               ],
             ),
-            6.height,
-            // Job Title
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  widget.jobTitle,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const Spacer(),
-                if (widget.isFullTime)
-                  Text(
-                    'Full Time',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                if (!widget.isFullTime)
-                  Text(
-                    'Part Time',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-              ],
-            ),
-            6.height,
-            // Bottom Row - Salary, Full Time, and Time Posted
-            Row(
-              children: [
-                // Salary
-                Text(
-                  widget.salaryRange,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const Spacer(),
-                // Time Posted
-                Text(
-                  widget.isApplied
-                      ? widget.totalapply ?? ''
-                      : widget.timePosted ?? '',
-                  style: TextStyle(color: Colors.black, fontSize: 18),
-                ),
-              ],
-            ),
+            _buildBottomSection(),
           ],
         ),
       ),
+    );
+  }
+
+  ShapeDecoration _buildCardDecoration() {
+    return ShapeDecoration(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+      color: Colors.white,
+      shadows: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.1),
+          blurRadius: 4,
+          offset: Offset(0, 2),
+          spreadRadius: 0,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCompanyLogo() {
+    return Container(
+      width: 100.w,
+      height: 70.h,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6.r),
+        color: AppColors.white,
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: CommonImage(imageSrc: companyLogo, fill: BoxFit.cover),
+    );
+  }
+
+  Widget _buildJobDetails() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildJobTitleRow(),
+        6.height,
+        _buildCompanyName(),
+        8.height,
+        _buildJobTypeTags(),
+        10.height,
+      ],
+    );
+  }
+
+  Widget _buildJobTitleRow() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(child: _buildJobTitle()),
+        if (showFavoriteButton) ...[8.width, _buildFavoriteButton()],
+      ],
+    );
+  }
+
+  Widget _buildJobTitle() {
+    return Text(
+      jobTitle,
+      style: TextStyle(
+        color: AppColors.black,
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w600,
+      ),
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  Widget _buildFavoriteButton() {
+    return GestureDetector(
+      onTap: onFavoriteTap,
+      child: Icon(
+        isSaved ? Icons.favorite : Icons.favorite_border,
+        color: isSaved ? Colors.red : AppColors.black,
+        size: 20.sp,
+      ),
+    );
+  }
+
+  Widget _buildCompanyName() {
+    return Text(
+      companyName,
+      style: TextStyle(
+        color: AppColors.secondaryButton,
+        fontSize: 13.sp,
+        fontWeight: FontWeight.w500,
+      ),
+    );
+  }
+
+  Widget _buildJobTypeTags() {
+    return Row(
+      children: [
+        _buildJobTypeTag(label: isFullTime ? 'Full Time' : 'Part Time'),
+        8.width,
+        _buildJobTypeTag(label: 'Hybrid'),
+        if (isRemote) ...[8.width, _buildJobTypeTag(label: 'Remote')],
+      ],
+    );
+  }
+
+  Widget _buildJobTypeTag({required String label}) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 8.w,
+          height: 8.h,
+          decoration: const BoxDecoration(
+            color: AppColors.secondaryButton,
+            shape: BoxShape.circle,
+          ),
+        ),
+        4.width,
+        CommonText(
+          text: label,
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w400,
+          color: AppColors.secondaryText,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBottomSection() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(child: _buildLocationInfo()),
+        8.width,
+        _buildDateInfo(),
+      ],
+    );
+  }
+
+  Widget _buildLocationInfo() {
+    return Row(
+      children: [
+        Icon(Icons.location_on_outlined, size: 14.sp, color: AppColors.black),
+        4.width,
+        Expanded(
+          child: Text(
+            location,
+            style: TextStyle(
+              color: AppColors.black,
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w400,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDateInfo() {
+    return Row(
+      children: [
+        Icon(
+          Icons.calendar_today_outlined,
+          size: 12.sp,
+          color: AppColors.secondaryPrimary,
+        ),
+        4.width,
+        Text(
+          timePosted ?? '01 Dec 25',
+          style: TextStyle(
+            color: AppColors.secondaryPrimary,
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
     );
   }
 }
