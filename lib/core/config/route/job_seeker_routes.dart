@@ -1,4 +1,5 @@
 import 'package:embeyi/features/job_seeker/history/presentation/screen/history_screen.dart';
+import 'package:embeyi/features/job_seeker/history/presentation/screen/applied_details.dart';
 import 'package:embeyi/features/job_seeker/home/presentation/screen/job_seeker_home_screen.dart';
 import 'package:embeyi/features/job_seeker/jobs/presentation/screen/jobs_screen.dart';
 import 'package:embeyi/features/job_seeker/jobs/presentation/screen/job_details_screen.dart';
@@ -31,6 +32,7 @@ class JobSeekerRoutes {
   static const String jobDetails = "/job_details_screen.dart";
   static const String companyOverview = "/company_overview_screen.dart";
   static const String history = "/job_seeker_history_screen.dart";
+  static const String appliedDetails = "/applied_details_screen.dart";
   // Job Seeker Routes List
   static List<GetPage> routes = [
     GetPage(name: home, page: () => JobSeekerHomeScreen()),
@@ -55,6 +57,7 @@ class JobSeekerRoutes {
     GetPage(name: jobDetails, page: () => const JobDetailsScreen()),
     GetPage(name: companyOverview, page: () => const CompanyOverviewScreen()),
     GetPage(name: history, page: () => HistoryScreen()),
+    GetPage(name: appliedDetails, page: () => const AppliedDetails()),
   ];
 
   // Job Seeker Navigation Helper Methods
@@ -69,4 +72,5 @@ class JobSeekerRoutes {
   static void goToJobDetails() => Get.toNamed(jobDetails);
   static void goToCompanyOverview() => Get.toNamed(companyOverview);
   static void goToHistory() => Get.toNamed(history);
+  static void goToAppliedDetails() => Get.toNamed(appliedDetails);
 }
