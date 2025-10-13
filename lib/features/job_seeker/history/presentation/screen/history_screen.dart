@@ -11,9 +11,8 @@ class HistoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(child: Text('Job Seeker History')),
-      bottomNavigationBar: const CommonBottomNavBar(
-        currentIndex: 2,
-        isJobSeeker: true,
+      bottomNavigationBar: SafeArea(
+        child: const CommonBottomNavBar(currentIndex: 2, isJobSeeker: true),
       ),
     );
   }

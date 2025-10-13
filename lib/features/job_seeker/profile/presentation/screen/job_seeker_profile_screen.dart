@@ -108,9 +108,8 @@ class JobSeekerProfileScreen extends StatelessWidget {
       ),
 
       /// Bottom Navigation Bar Section Starts here
-      bottomNavigationBar: const CommonBottomNavBar(
-        currentIndex: 3,
-        isJobSeeker: true,
+      bottomNavigationBar: SafeArea(
+        child: const CommonBottomNavBar(currentIndex: 3, isJobSeeker: true),
       ),
     );
   }

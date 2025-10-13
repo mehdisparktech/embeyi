@@ -25,17 +25,17 @@ class CommonBottomNavBar extends StatefulWidget {
 class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
   var bottomNavIndex = 0;
   List<Widget> unselectedIcons = [
-    const CommonImage(imageSrc: AppIcons.home),
-    const CommonImage(imageSrc: AppIcons.work),
-    const CommonImage(imageSrc: AppIcons.history),
-    const CommonImage(imageSrc: AppIcons.person),
+    CommonImage(imageSrc: AppIcons.home, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.work, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.history, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.person, size: 30.sp),
   ];
 
   List<Widget> selectedIcons = [
-    const CommonImage(imageSrc: AppIcons.home2),
-    const CommonImage(imageSrc: AppIcons.work2),
-    const CommonImage(imageSrc: AppIcons.history2),
-    const CommonImage(imageSrc: AppIcons.person2),
+    CommonImage(imageSrc: AppIcons.home2, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.work2, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.history2, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.person2, size: 30.sp),
   ];
 
   @override
