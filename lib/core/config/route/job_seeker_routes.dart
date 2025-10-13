@@ -1,6 +1,8 @@
 import 'package:embeyi/features/job_seeker/history/presentation/screen/history_screen.dart';
 import 'package:embeyi/features/job_seeker/home/presentation/screen/job_seeker_home_screen.dart';
 import 'package:embeyi/features/job_seeker/jobs/presentation/screen/jobs_screen.dart';
+import 'package:embeyi/features/job_seeker/jobs/presentation/screen/job_details_screen.dart';
+import 'package:embeyi/features/job_seeker/jobs/presentation/screen/company_overview_screen.dart';
 import 'package:get/get.dart';
 
 // Job Seeker imports
@@ -26,6 +28,8 @@ class JobSeekerRoutes {
       "/job_seeker_terms_of_services_screen.dart";
   static const String setting = "/job_seeker_setting_screen.dart";
   static const String jobs = "/job_seeker_jobs_screen.dart";
+  static const String jobDetails = "/job_details_screen.dart";
+  static const String companyOverview = "/company_overview_screen.dart";
   static const String history = "/job_seeker_history_screen.dart";
   // Job Seeker Routes List
   static List<GetPage> routes = [
@@ -48,6 +52,8 @@ class JobSeekerRoutes {
     ),
     GetPage(name: setting, page: () => const JobSeekerSettingScreen()),
     GetPage(name: jobs, page: () => JobsScreen()),
+    GetPage(name: jobDetails, page: () => const JobDetailsScreen()),
+    GetPage(name: companyOverview, page: () => const CompanyOverviewScreen()),
     GetPage(name: history, page: () => HistoryScreen()),
   ];
 
@@ -60,5 +66,7 @@ class JobSeekerRoutes {
   static void goToPrivacyPolicy() => Get.toNamed(privacyPolicy);
   static void goToTermsOfServices() => Get.toNamed(termsOfServices);
   static void goToJobs() => Get.toNamed(jobs);
+  static void goToJobDetails() => Get.toNamed(jobDetails);
+  static void goToCompanyOverview() => Get.toNamed(companyOverview);
   static void goToHistory() => Get.toNamed(history);
 }

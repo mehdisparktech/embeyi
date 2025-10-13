@@ -1,5 +1,6 @@
 import 'package:embeyi/core/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:embeyi/core/component/card/job_card.dart';
+import 'package:embeyi/core/config/route/job_seeker_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
@@ -172,7 +173,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
                               showFavoriteButton: true,
                               isSaved: false,
                               onTap: () {
-                                // Handle job card tap
+                                JobSeekerRoutes.goToJobDetails();
                               },
                               onFavoriteTap: () {
                                 // Handle favorite tap
