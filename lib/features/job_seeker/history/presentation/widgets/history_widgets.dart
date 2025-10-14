@@ -43,6 +43,8 @@ class ApplicationHistoryCard extends StatelessWidget {
           ],
         ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             _buildCompanyLogo(),
             12.width,
@@ -57,7 +59,7 @@ class ApplicationHistoryCard extends StatelessWidget {
 
   Widget _buildCompanyLogo() {
     return Container(
-      width: 60.w,
+      width: 85.w,
       height: 60.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
@@ -74,7 +76,7 @@ class ApplicationHistoryCard extends StatelessWidget {
       children: [
         CommonText(
           text: jobTitle,
-          fontSize: 14,
+          fontSize: 14.sp,
           fontWeight: FontWeight.w600,
           color: AppColors.primaryText,
           textAlign: TextAlign.start,
@@ -83,8 +85,8 @@ class ApplicationHistoryCard extends StatelessWidget {
         4.height,
         CommonText(
           text: companyName,
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w400,
           color: AppColors.secondaryButton,
           textAlign: TextAlign.start,
         ),
@@ -100,9 +102,9 @@ class ApplicationHistoryCard extends StatelessWidget {
             Expanded(
               child: CommonText(
                 text: location,
-                fontSize: 12,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColors.secondaryText,
+                color: AppColors.primaryText,
                 textAlign: TextAlign.start,
                 maxLines: 1,
               ),
@@ -133,27 +135,11 @@ class StatusBadge extends StatelessWidget {
     }
   }
 
-  Color _getStatusBackgroundColor() {
-    switch (status.toLowerCase()) {
-      case 'applied':
-        return AppColors.secondaryButton.withOpacity(0.1);
-      case 'interview':
-        return AppColors.success.withOpacity(0.1);
-      case 'rejected':
-        return AppColors.red.withOpacity(0.1);
-      default:
-        return AppColors.secondaryText.withOpacity(0.1);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-      decoration: BoxDecoration(
-        color: _getStatusBackgroundColor(),
-        borderRadius: BorderRadius.circular(20.r),
-      ),
+
       child: CommonText(
         text: status,
         fontSize: 12,
@@ -178,10 +164,10 @@ class CustomTabButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
       decoration: BoxDecoration(
         color: isSelected ? AppColors.secondaryPrimary : AppColors.white,
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(4.r),
         border: Border.all(
           color: isSelected
               ? AppColors.secondaryPrimary
@@ -264,7 +250,8 @@ class ApplicationDetailsHeaderCard extends StatelessWidget {
         ],
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           _buildCompanyLogo(),
           12.width,
@@ -366,7 +353,7 @@ class TimelineItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildTimelineIndicator(),
+        //  _buildTimelineIndicator(),
         16.width,
         Expanded(
           child: Padding(
@@ -378,6 +365,7 @@ class TimelineItem extends StatelessWidget {
     );
   }
 
+  // ignore: unused_element
   Widget _buildTimelineIndicator() {
     return Column(
       children: [
@@ -412,15 +400,15 @@ class TimelineItem extends StatelessWidget {
       children: [
         CommonText(
           text: title,
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          color: AppColors.primaryText,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+          color: AppColors.black,
           textAlign: TextAlign.start,
         ),
         4.height,
         CommonText(
           text: subtitle,
-          fontSize: 12,
+          fontSize: 12.sp,
           fontWeight: FontWeight.w400,
           color: AppColors.secondaryText,
           textAlign: TextAlign.start,
@@ -575,7 +563,7 @@ class InterviewJobCard extends StatelessWidget {
 
   Widget _buildCompanyLogo() {
     return Container(
-      width: 60.w,
+      width: 85.w,
       height: 60.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
@@ -592,7 +580,7 @@ class InterviewJobCard extends StatelessWidget {
       children: [
         CommonText(
           text: jobTitle,
-          fontSize: 14,
+          fontSize: 14.sp,
           fontWeight: FontWeight.w600,
           color: AppColors.primaryText,
           textAlign: TextAlign.start,
@@ -601,7 +589,7 @@ class InterviewJobCard extends StatelessWidget {
         4.height,
         CommonText(
           text: companyName,
-          fontSize: 13,
+          fontSize: 12.sp,
           fontWeight: FontWeight.w500,
           color: AppColors.secondaryButton,
           textAlign: TextAlign.start,
@@ -618,7 +606,7 @@ class InterviewJobCard extends StatelessWidget {
             Expanded(
               child: CommonText(
                 text: location,
-                fontSize: 12,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.secondaryText,
                 textAlign: TextAlign.start,
@@ -643,7 +631,7 @@ class InterviewJobCard extends StatelessWidget {
 
     return CommonText(
       text: interviewDate,
-      fontSize: 12,
+      fontSize: 12.sp,
       fontWeight: FontWeight.w600,
       color: dateColor,
     );
@@ -664,7 +652,7 @@ class InterviewFilterButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Row(
         children: [
           Expanded(child: _buildFilterButton('Upcoming', 0)),
@@ -681,21 +669,27 @@ class InterviewFilterButtons extends StatelessWidget {
       onTap: () => onFilterChanged(index),
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 12.h),
-        decoration: BoxDecoration(
-          color: isSelected ? AppColors.secondaryButton : AppColors.white,
-          borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(
-            color: isSelected
-                ? AppColors.secondaryButton
-                : AppColors.borderColor,
-            width: 1,
+        decoration: ShapeDecoration(
+          gradient: isSelected
+              ? LinearGradient(
+                  begin: Alignment(0.00, 0.50),
+                  end: Alignment(1.00, 0.50),
+                  colors: [const Color(0xFF123499), const Color(0xFF2956DD)],
+                )
+              : null,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              width: 1,
+              color: const Color(0xFFC8C8C8) /* Disable */,
+            ),
+            borderRadius: BorderRadius.circular(100),
           ),
         ),
         child: Center(
           child: CommonText(
             text: title,
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w400,
             color: isSelected ? AppColors.white : AppColors.primaryText,
           ),
         ),

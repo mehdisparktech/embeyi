@@ -54,6 +54,7 @@ class HistoryScreen extends StatelessWidget {
 
   Widget _buildTabBar() {
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Obx(
         () => TabBar(
@@ -119,7 +120,7 @@ class HistoryScreen extends StatelessWidget {
     }
 
     return ListView.builder(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
       itemCount: applications.length,
       itemBuilder: (context, index) {
         final application = applications[index];
@@ -132,7 +133,10 @@ class HistoryScreen extends StatelessWidget {
             companyLogo: application['companyLogo'] ?? '',
             interviewDate: application['interviewDate'] ?? '',
             onTap: () {
-              Get.toNamed(JobSeekerRoutes.appliedDetails);
+              Get.toNamed(
+                JobSeekerRoutes.appliedDetails,
+                arguments: application['status'] == 'Rejected',
+              );
             },
           );
         }
@@ -144,7 +148,10 @@ class HistoryScreen extends StatelessWidget {
           companyLogo: application['companyLogo'] ?? '',
           status: application['status'] ?? '',
           onTap: () {
-            Get.toNamed(JobSeekerRoutes.appliedDetails);
+            Get.toNamed(
+              JobSeekerRoutes.appliedDetails,
+              arguments: application['status'] == 'Rejected',
+            );
           },
         );
       },

@@ -57,7 +57,10 @@ class JobSeekerRoutes {
     GetPage(name: jobDetails, page: () => const JobDetailsScreen()),
     GetPage(name: companyOverview, page: () => const CompanyOverviewScreen()),
     GetPage(name: history, page: () => HistoryScreen()),
-    GetPage(name: appliedDetails, page: () => const AppliedDetails()),
+    GetPage(
+      name: appliedDetails,
+      page: () => AppliedDetails(isRejected: Get.arguments ?? false),
+    ),
   ];
 
   // Job Seeker Navigation Helper Methods
