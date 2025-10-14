@@ -11,6 +11,14 @@ import '../../../../../core/component/text/common_text.dart';
 import '../controller/profile_controller.dart';
 import '../../../../../core/utils/constants/app_images.dart';
 import '../../../../../core/utils/constants/app_string.dart';
+import 'my_profile_screen.dart';
+import 'resume_screen.dart';
+import 'favorite_list_screen.dart';
+import 'subscription_pack_screen.dart';
+import 'my_subscription_screen.dart';
+import 'payment_history_screen.dart';
+import 'platform_review_screen.dart';
+import 'settings_screen.dart';
 
 class JobSeekerProfileScreen extends StatelessWidget {
   const JobSeekerProfileScreen({super.key});
@@ -120,37 +128,110 @@ final List<ProfileItemData> profileItems = [
   ProfileItemData(
     icon: Icons.person_outline,
     title: 'My Profile',
-    onTap: () {},
+    onTap: () {
+      Get.to(() => const MyProfileScreen());
+    },
   ),
   ProfileItemData(
     icon: Icons.description_outlined,
     title: 'Resume',
-    onTap: () {},
+    onTap: () {
+      Get.to(() => const ResumeScreen());
+    },
   ),
   ProfileItemData(
     icon: Icons.favorite_border,
     title: 'Favorite List',
-    onTap: () {},
+    onTap: () {
+      Get.to(() => const FavoriteListScreen());
+    },
   ),
   ProfileItemData(
     icon: Icons.subscriptions,
     title: 'Subscription Pack',
-    onTap: () {},
+    onTap: () {
+      Get.to(() => const SubscriptionPackScreen());
+    },
   ),
   ProfileItemData(
     icon: Icons.credit_card,
     title: 'My Subscription',
-    onTap: () {},
+    onTap: () {
+      Get.to(() => const MySubscriptionScreen());
+    },
   ),
-  ProfileItemData(icon: Icons.payment, title: 'Payment History', onTap: () {}),
+  ProfileItemData(
+    icon: Icons.payment,
+    title: 'Payment History',
+    onTap: () {
+      Get.to(() => const PaymentHistoryScreen());
+    },
+  ),
   ProfileItemData(
     icon: Icons.star_border,
     title: 'Platform Review',
-    onTap: () {},
+    onTap: () {
+      Get.to(() => const PlatformReviewScreen());
+    },
   ),
-  ProfileItemData(icon: Icons.settings, title: 'Settings', onTap: () {}),
-  ProfileItemData(icon: Icons.logout, title: 'Log Out', onTap: () {}),
+  ProfileItemData(
+    icon: Icons.settings,
+    title: 'Settings',
+    onTap: () {
+      Get.to(() => const SettingsScreen());
+    },
+  ),
+  ProfileItemData(
+    icon: Icons.logout,
+    title: 'Log Out',
+    onTap: () {
+      _showLogoutDialog();
+    },
+  ),
 ];
+
+// Logout Dialog
+void _showLogoutDialog() {
+  Get.dialog(
+    AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+      title: const CommonText(
+        text: 'Log Out',
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+      ),
+      content: CommonText(
+        text: 'Are you sure you want to log out?',
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: AppColors.secondaryText,
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Get.back(),
+          child: const CommonText(
+            text: 'Cancel',
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            // Implement logout logic here
+            Get.back();
+            // Navigate to login screen
+          },
+          child: CommonText(
+            text: 'Log Out',
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: AppColors.error,
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
 // Profile Item Model
 class ProfileItemData {

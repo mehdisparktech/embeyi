@@ -20,4 +20,9 @@ class AppColors {
   static const Color secondaryButton = Color(0xFF147FC7) /* Secondary-Button */;
   static const Color buttomNavBarColor = Color(0xFF0E4065);
   static const Color borderColor = Color(0xFFC8C8C8);
+  static const Color cardBackground = Color(0xFFF5F5F5);
+  static const Color border = Color(0xFFC8C8C8);
+  static const Color error = Color(0xFFD9534F);
+  static const Color warning = Color(0xFFFFC107);
+  static const Color primary = Color(0xFF123499);
 }

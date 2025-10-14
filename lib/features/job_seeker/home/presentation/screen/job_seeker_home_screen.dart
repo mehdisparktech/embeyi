@@ -31,12 +31,15 @@ class JobSeekerHomeScreen extends StatelessWidget {
                 userRole: 'UI/UX Designer',
                 onNotificationTap: () {
                   // Handle notification tap
+                  JobSeekerRoutes.goToNotifications();
                 },
                 onMessageTap: () {
                   // Handle message tap
+                  JobSeekerRoutes.goToChat();
                 },
                 onProfileTap: () {
                   // Handle profile tap
+                  JobSeekerRoutes.goToProfile();
                 },
               ),
             ),
