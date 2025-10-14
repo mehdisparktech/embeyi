@@ -20,6 +20,7 @@ class CompanyHeroHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 180.h,
+      margin: EdgeInsets.symmetric(horizontal: 20.w),
       width: double.infinity,
       decoration: BoxDecoration(color: AppColors.blueLight),
       child: Stack(
@@ -37,26 +38,19 @@ class CompanyHeroHeader extends StatelessWidget {
               child: Container(
                 width: 80.w,
                 height: 80.h,
-                decoration: BoxDecoration(
-                  color: AppColors.white,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: AppColors.white, width: 4.w),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
+                decoration: ShapeDecoration(
+                  shape: OvalBorder(
+                    side: BorderSide(
+                      width: 2.50,
+                      color: const Color(0xFFEDEDED),
                     ),
-                  ],
+                  ),
                 ),
-                child: ClipOval(
-                  child: companyLogo != null
-                      ? CommonImage(imageSrc: companyLogo!, fill: BoxFit.cover)
-                      : Icon(
-                          Icons.business,
-                          size: 40.sp,
-                          color: AppColors.primaryColor,
-                        ),
+                child: CommonImage(
+                  imageSrc: companyLogo!,
+                  fill: BoxFit.cover,
+                  height: 80.h,
+                  width: 80.w,
                 ),
               ),
             ),
@@ -85,9 +79,9 @@ class CompanyNameSection extends StatelessWidget {
         40.height, // Space for the logo overlap
         CommonText(
           text: companyName,
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-          color: AppColors.primaryText,
+          fontSize: 20.sp,
+          fontWeight: FontWeight.w600,
+          color: AppColors.primary,
           textAlign: TextAlign.center,
         ),
         8.height,
@@ -95,9 +89,9 @@ class CompanyNameSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: CommonText(
             text: tagline,
-            fontSize: 13,
+            fontSize: 12.sp,
             fontWeight: FontWeight.w400,
-            color: AppColors.secondaryText,
+            color: AppColors.primaryText,
             textAlign: TextAlign.center,
             maxLines: 3,
           ),
@@ -125,10 +119,7 @@ class CompanyTabNavigation extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20.w),
       padding: EdgeInsets.all(4.r),
-      decoration: BoxDecoration(
-        color: AppColors.filledColor.withOpacity(0.5),
-        borderRadius: BorderRadius.circular(8.r),
-      ),
+
       child: Row(
         children: List.generate(tabs.length, (index) {
           final isSelected = selectedIndex == index;
@@ -136,18 +127,25 @@ class CompanyTabNavigation extends StatelessWidget {
             child: GestureDetector(
               onTap: () => onTabSelected(index),
               child: Container(
+                margin: EdgeInsets.only(right: 8.w),
                 padding: EdgeInsets.symmetric(vertical: 10.h),
-                decoration: BoxDecoration(
+                decoration: ShapeDecoration(
                   color: isSelected
                       ? AppColors.secondaryPrimary
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(6.r),
+                      : AppColors.white,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      width: 1,
+                      color: const Color(0xFFC8C8C8) /* Disable */,
+                    ),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
                 ),
                 child: Center(
                   child: CommonText(
                     text: tabs[index],
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
                     color: isSelected
                         ? AppColors.white
                         : AppColors.secondaryText,
@@ -195,9 +193,9 @@ class CompanyOverviewContent extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: CommonText(
         text: description,
-        fontSize: 13,
+        fontSize: 12.sp,
         fontWeight: FontWeight.w400,
-        color: AppColors.secondaryText,
+        color: AppColors.primaryText,
         textAlign: TextAlign.justify,
         maxLines: 100,
       ),
@@ -255,6 +253,8 @@ class GalleryImageCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        height: 80.h,
+        width: 80.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
           color: AppColors.blueLight,

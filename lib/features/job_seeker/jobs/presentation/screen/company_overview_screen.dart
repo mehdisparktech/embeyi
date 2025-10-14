@@ -64,13 +64,8 @@ class _CompanyOverviewScreenState extends State<CompanyOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: CommonAppbar(
-        title: 'Company Overview',
-        backgroundColor: AppColors.primaryColor,
-        textColor: AppColors.white,
-        centerTitle: false,
-      ),
+      backgroundColor: AppColors.surfaceBackground,
+      appBar: CommonAppbar(title: 'Company Overview'),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

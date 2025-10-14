@@ -143,33 +143,33 @@ class JobTitleSection extends StatelessWidget {
       children: [
         CommonText(
           text: jobTitle,
-          fontSize: 18,
-          fontWeight: FontWeight.w700,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w600,
           color: AppColors.primaryText,
         ),
         8.height,
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               Icons.location_on_outlined,
               size: 16.sp,
               color: AppColors.primaryText,
             ),
-            Expanded(
-              child: CommonText(
-                text: location,
-                fontSize: 13,
-                fontWeight: FontWeight.w400,
-                color: AppColors.primaryText,
-              ),
+            4.width,
+            CommonText(
+              text: location,
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w400,
+              color: AppColors.primaryText,
             ),
           ],
         ),
         8.height,
         CommonText(
           text: salary,
-          fontSize: 16,
+          fontSize: 12.sp,
           fontWeight: FontWeight.w500,
           color: AppColors.primaryText,
         ),
@@ -200,6 +200,7 @@ class JobInfoTags extends StatelessWidget {
       runSpacing: 8.h,
       children: [
         _buildInfoTag(isFullTime ? 'Full Time' : 'Part Time'),
+        _buildInfoTag('Onsite'),
         _buildInfoTag(experience),
       ],
     );
@@ -207,7 +208,7 @@ class JobInfoTags extends StatelessWidget {
 
   Widget _buildInfoTag(String label) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(6.r),
@@ -215,7 +216,7 @@ class JobInfoTags extends StatelessWidget {
       ),
       child: CommonText(
         text: label,
-        fontSize: 12,
+        fontSize: 12.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.primaryText,
       ),
@@ -251,14 +252,14 @@ class JobDatesWidget extends StatelessWidget {
       children: [
         CommonText(
           text: label,
-          fontSize: 12,
+          fontSize: 12.sp,
           fontWeight: FontWeight.w400,
           color: AppColors.secondaryText,
         ),
         4.height,
         CommonText(
           text: date,
-          fontSize: 13,
+          fontSize: 13.sp,
           fontWeight: FontWeight.w600,
           color: AppColors.primaryText,
         ),
@@ -285,46 +286,39 @@ class CompanyInfoCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(16.r),
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(12.r),
-          border: Border.all(color: const Color(0xFFE8E8E8)),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+        decoration: ShapeDecoration(
+          color: const Color(0xFFEDF9FF),
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1, color: const Color(0xFFB0B3D8)),
+            borderRadius: BorderRadius.circular(8),
+          ),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 50.w,
-              height: 50.h,
+              width: 60.w,
+              height: 35.h,
               decoration: BoxDecoration(
-                color: AppColors.blueLight,
                 borderRadius: BorderRadius.circular(8.r),
               ),
               child: companyLogo != null
                   ? CommonImage(imageSrc: companyLogo!, fill: BoxFit.contain)
                   : Icon(
                       Icons.business,
-                      size: 30.sp,
+                      size: 35.sp,
                       color: AppColors.primaryColor,
                     ),
             ),
-            12.width,
-            Expanded(
-              child: CommonText(
-                text: companyName,
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: AppColors.primaryText,
-              ),
+
+            CommonText(
+              text: companyName,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w600,
+              color: AppColors.primary,
             ),
-            if (onTap != null) ...[
-              Icon(
-                Icons.arrow_forward_ios,
-                size: 16.sp,
-                color: AppColors.secondaryText,
-              ),
-            ],
           ],
         ),
       ),
@@ -335,16 +329,21 @@ class CompanyInfoCard extends StatelessWidget {
 // Section Header Widget
 class JobDetailsSectionHeader extends StatelessWidget {
   final String title;
+  final Color color;
 
-  const JobDetailsSectionHeader({super.key, required this.title});
+  const JobDetailsSectionHeader({
+    super.key,
+    required this.title,
+    this.color = AppColors.success,
+  });
 
   @override
   Widget build(BuildContext context) {
     return CommonText(
       text: title,
-      fontSize: 16,
-      fontWeight: FontWeight.w700,
-      color: AppColors.primaryText,
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w500,
+      color: color,
     );
   }
 }
@@ -361,7 +360,7 @@ class DescriptionText extends StatelessWidget {
       text: text,
       fontSize: 13,
       fontWeight: FontWeight.w400,
-      color: AppColors.secondaryText,
+      color: AppColors.primaryText,
       textAlign: TextAlign.justify,
       maxLines: 100,
     );

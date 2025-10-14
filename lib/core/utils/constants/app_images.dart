@@ -22,4 +22,5 @@ class AppImages {
   static const String success = "$baseurl/sucess.png";
   static const String iphone = "$baseurl/iphone.png";
   static const String jobPost = "$baseurl/job_post.png";
+  static const String jobDetails = "$baseurl/job_details.png";
 }

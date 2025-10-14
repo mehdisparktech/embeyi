@@ -1,5 +1,6 @@
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -24,10 +25,10 @@ class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
   CommonAppbar({
     super.key,
     this.title,
-    this.leading = const BackButton(color: AppColors.white),
+    this.leading = const BackButton(color: AppColors.black),
     this.actions = const <Widget>[],
-    this.backgroundColor = AppColors.primaryColor,
-    this.textColor = Colors.white,
+    this.backgroundColor = AppColors.white,
+    this.textColor = AppColors.black,
     this.centerTitle = true,
     this.showBackButton = true,
     this.showLeading = true,
@@ -59,7 +60,11 @@ class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
       elevation: showElevation ? elevation : 0,
       automaticallyImplyLeading: showBackButton,
       iconTheme: IconThemeData(color: textColor),
-      titleTextStyle: TextStyle(color: textColor),
+      titleTextStyle: TextStyle(
+        color: textColor,
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w600,
+      ),
     );
   }
 }
