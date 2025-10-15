@@ -166,20 +166,6 @@ class _PlatformReviewScreenState extends State<PlatformReviewScreen> {
                       : AppColors.secondaryText,
                 ),
                 24.height,
-
-                /// Previous Reviews Section
-                const CommonText(
-                  text: 'Your Previous Reviews',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-                16.height,
-                _buildPreviousReviewCard(
-                  rating: 5,
-                  date: 'December 15, 2024',
-                  review:
-                      'Excellent platform! Found my dream job within 2 weeks. Highly recommended!',
-                ),
               ],
             ),
           ),
@@ -203,56 +189,6 @@ class _PlatformReviewScreenState extends State<PlatformReviewScreen> {
       default:
         return '';
     }
-  }
-
-  Widget _buildPreviousReviewCard({
-    required int rating,
-    required String date,
-    required String review,
-  }) {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: AppColors.border),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Row(
-                children: List.generate(
-                  5,
-                  (index) => Icon(
-                    index < rating ? Icons.star : Icons.star_border,
-                    size: 18.sp,
-                    color: index < rating
-                        ? AppColors.warning
-                        : AppColors.secondaryText,
-                  ),
-                ),
-              ),
-              const Spacer(),
-              CommonText(
-                text: date,
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                color: AppColors.secondaryText,
-              ),
-            ],
-          ),
-          12.height,
-          CommonText(
-            text: review,
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            maxLines: 5,
-          ),
-        ],
-      ),
-    );
   }
 
   void _showThankYouDialog(BuildContext context) {

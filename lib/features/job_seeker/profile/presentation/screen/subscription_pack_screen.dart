@@ -11,27 +11,13 @@ class SubscriptionPackScreen extends StatefulWidget {
 }
 
 class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
-  int _selectedTabIndex = 1; // Default to Standard
+  int _selectedTabIndex = 0; // Default to Standard
   final PageController _pageController = PageController(
-    initialPage: 1,
-    viewportFraction: 0.85,
+    initialPage: 0,
+    viewportFraction: 0.88,
   );
 
   final List<Map<String, dynamic>> _subscriptionPlans = [
-    {
-      'title': 'Freelance',
-      'price': '\$0',
-      'subtitle': 'From Plan (Starter)',
-      'features': [
-        'Browse Job listings',
-        'Limited Apply (5-10)',
-        'Basic Resume Templates',
-        'Email Job Alerts',
-        'No Ads Remove',
-      ],
-      'buttonText': 'Enable',
-      'isPrimary': false,
-    },
     {
       'title': 'Standard',
       'price': '\$19.99',
@@ -45,6 +31,20 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
       ],
       'buttonText': 'Buy Now',
       'isPrimary': true,
+    },
+    {
+      'title': 'Freelance',
+      'price': '\$0/',
+      'subtitle': 'From Plan (Starter)',
+      'features': [
+        'Browse Job listings',
+        'Limited Apply (5-10)',
+        'Basic Resume Templates',
+        'Email Job Alerts',
+        'No Ads Remove',
+      ],
+      'buttonText': 'Enable',
+      'isPrimary': false,
     },
     {
       'title': 'Premium',
@@ -194,7 +194,7 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
 
   Widget _buildSubscriptionCard(Map<String, dynamic> plan, bool isActive) {
     final isPrimary = plan['isPrimary'] as bool;
-    final isFree = plan['price'] == '\$0';
+    final isFree = plan['price'].toString().startsWith('\$0');
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.w),
@@ -213,21 +213,22 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
           border: Border.all(
             color: isPrimary && isActive
                 ? Colors.transparent
-                : Colors.grey.shade200,
+                : const Color(0xFFE5E7EB),
             width: 1.5,
           ),
           boxShadow: [
             BoxShadow(
               color: isPrimary && isActive
-                  ? const Color(0xFF4A5FFF).withOpacity(0.3)
-                  : Colors.black.withOpacity(0.08),
-              blurRadius: isPrimary && isActive ? 20 : 10,
-              offset: Offset(0, isPrimary && isActive ? 10 : 4),
+                  ? const Color(0xFF4A5FFF).withOpacity(0.25)
+                  : Colors.black.withOpacity(0.06),
+              blurRadius: isPrimary && isActive ? 24 : 12,
+              offset: Offset(0, isPrimary && isActive ? 12 : 4),
+              spreadRadius: 0,
             ),
           ],
         ),
         child: Padding(
-          padding: EdgeInsets.all(24.w),
+          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 28.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -239,13 +240,14 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
                 isFree,
               ),
 
-              24.height,
+              28.height,
 
               // Features List
               Expanded(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: List.generate(
                       (plan['features'] as List<String>).length,
                       (index) => _buildFeatureItem(
@@ -257,7 +259,7 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
                 ),
               ),
 
-              24.height,
+              28.height,
 
               // Action Button
               _buildActionButton(
@@ -284,36 +286,45 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: price,
-                style: TextStyle(
-                  fontSize: isFree ? 32.sp : 40.sp,
-                  fontWeight: FontWeight.w700,
-                  color: textColor,
-                  height: 1.2,
-                ),
-              ),
-              TextSpan(
-                text: subtitle,
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w400,
-                  color: subtitleColor,
-                ),
-              ),
-            ],
-          ),
-        ),
         if (isFree) ...[
+          // For free plan, show price and subtitle separately
+          CommonText(
+            text: price,
+            fontSize: 36.sp,
+            fontWeight: FontWeight.w700,
+            color: textColor,
+          ),
           4.height,
           CommonText(
-            text: '(Starter)',
+            text: subtitle,
             fontSize: 14,
             fontWeight: FontWeight.w400,
             color: subtitleColor,
+          ),
+        ] else ...[
+          // For paid plans, show price and /month inline
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: price,
+                  style: TextStyle(
+                    fontSize: 40.sp,
+                    fontWeight: FontWeight.w700,
+                    color: textColor,
+                    height: 1.2,
+                  ),
+                ),
+                TextSpan(
+                  text: subtitle,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: subtitleColor,
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ],
@@ -321,23 +332,23 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
   }
 
   Widget _buildFeatureItem(String feature, bool isActive) {
-    final textColor = isActive ? Colors.white : Colors.black87;
+    final textColor = isActive ? Colors.white : const Color(0xFF374151);
     final iconColor = isActive ? Colors.white : const Color(0xFF4A5FFF);
 
     return Padding(
-      padding: EdgeInsets.only(bottom: 14.h),
+      padding: EdgeInsets.only(bottom: 16.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.check, color: iconColor, size: 20.sp),
+          Icon(Icons.check_circle, color: iconColor, size: 20.sp),
           12.width,
           Expanded(
             child: CommonText(
               text: feature,
-              fontSize: 13,
+              fontSize: 14,
               fontWeight: FontWeight.w400,
               color: textColor,
-              maxLines: 2,
+              maxLines: 3,
             ),
           ),
         ],
@@ -348,7 +359,7 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
   Widget _buildActionButton(String text, bool isActive, bool isFree) {
     return SizedBox(
       width: double.infinity,
-      height: 48.h,
+      height: 50.h,
       child: ElevatedButton(
         onPressed: () {
           // Handle button action
@@ -361,10 +372,11 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
               ? const Color(0xFF4A5FFF)
               : (isFree ? const Color(0xFF4A5FFF) : Colors.white),
           elevation: 0,
+          shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.r),
-            side: isFree && !isActive
-                ? BorderSide(color: const Color(0xFF4A5FFF), width: 1.5)
+            borderRadius: BorderRadius.circular(10.r),
+            side: (isFree && !isActive) || (isActive && !isFree)
+                ? const BorderSide(color: Color(0xFF4A5FFF), width: 1.5)
                 : BorderSide.none,
           ),
         ),
