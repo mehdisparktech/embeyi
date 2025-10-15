@@ -11,7 +11,15 @@ import '../../../features/job_seeker/message/presentation/screen/job_seeker_chat
 import '../../../features/job_seeker/message/presentation/screen/message_screen.dart';
 import '../../../features/job_seeker/notifications/presentation/screen/job_seeker_notifications_screen.dart';
 import '../../../features/job_seeker/profile/presentation/screen/job_seeker_profile_screen.dart';
-import '../../../features/job_seeker/profile/presentation/screen/edit_profile.dart';
+import '../../../features/job_seeker/profile/presentation/screen/profile/edit_profile.dart';
+import '../../../features/job_seeker/profile/presentation/screen/profile/personal_info_screen.dart';
+import '../../../features/job_seeker/profile/presentation/screen/profile/education_screen.dart';
+import '../../../features/job_seeker/profile/presentation/screen/profile/work_experience_screen.dart';
+import '../../../features/job_seeker/profile/presentation/screen/profile/skills_screen.dart';
+import '../../../features/job_seeker/profile/presentation/screen/profile/edit_personal_info_screen.dart';
+import '../../../features/job_seeker/profile/presentation/screen/profile/edit_education_screen.dart';
+import '../../../features/job_seeker/profile/presentation/screen/profile/edit_work_experience_screen.dart';
+import '../../../features/job_seeker/profile/presentation/screen/profile/edit_skills_screen.dart';
 import '../../../features/job_seeker/setting/presentation/screen/job_seeker_privacy_policy_screen.dart';
 import '../../../features/job_seeker/setting/presentation/screen/job_seeker_help_support_screen.dart';
 import '../../../features/job_seeker/setting/presentation/screen/job_seeker_setting_screen.dart';
@@ -35,6 +43,16 @@ class JobSeekerRoutes {
   static const String history = "/job_seeker_history_screen.dart";
   static const String appliedDetails = "/applied_details_screen.dart";
   static const String helpAndSupport = "/job_seeker_help_support_screen.dart";
+  static const String myProfile = "/my_profile_screen.dart";
+  static const String personalInfo = "/personal_info_screen.dart";
+  static const String education = "/education_screen.dart";
+  static const String workExperience = "/work_experience_screen.dart";
+  static const String skills = "/skills_screen.dart";
+  static const String editPersonalInfo = "/edit_personal_info_screen.dart";
+  static const String editEducation = "/edit_education_screen.dart";
+  static const String editWorkExperience = "/edit_work_experience_screen.dart";
+  static const String editSkills = "/edit_skills_screen.dart";
+
   // Job Seeker Routes List
   static List<GetPage> routes = [
     GetPage(name: home, page: () => JobSeekerHomeScreen()),
@@ -67,6 +85,17 @@ class JobSeekerRoutes {
       name: appliedDetails,
       page: () => AppliedDetails(isRejected: Get.arguments ?? false),
     ),
+    GetPage(name: personalInfo, page: () => const PersonalInfoScreen()),
+    GetPage(name: education, page: () => const EducationScreen()),
+    GetPage(name: workExperience, page: () => const WorkExperienceScreen()),
+    GetPage(name: skills, page: () => const SkillsScreen()),
+    GetPage(name: editPersonalInfo, page: () => const EditPersonalInfoScreen()),
+    GetPage(name: editEducation, page: () => const EditEducationScreen()),
+    GetPage(
+      name: editWorkExperience,
+      page: () => const EditWorkExperienceScreen(),
+    ),
+    GetPage(name: editSkills, page: () => const EditSkillsScreen()),
   ];
 
   // Job Seeker Navigation Helper Methods
@@ -83,4 +112,12 @@ class JobSeekerRoutes {
   static void goToHistory() => Get.toNamed(history);
   static void goToAppliedDetails() => Get.toNamed(appliedDetails);
   static void goToHelpAndSupport() => Get.toNamed(helpAndSupport);
+  static void goToPersonalInfo() => Get.toNamed(personalInfo);
+  static void goToEducation() => Get.toNamed(education);
+  static void goToWorkExperience() => Get.toNamed(workExperience);
+  static void goToSkills() => Get.toNamed(skills);
+  static void goToEditPersonalInfo() => Get.toNamed(editPersonalInfo);
+  static void goToEditEducation() => Get.toNamed(editEducation);
+  static void goToEditWorkExperience() => Get.toNamed(editWorkExperience);
+  static void goToEditSkills() => Get.toNamed(editSkills);
 }

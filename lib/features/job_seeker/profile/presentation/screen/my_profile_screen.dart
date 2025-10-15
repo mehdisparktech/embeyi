@@ -1,8 +1,10 @@
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/utils/extensions/extension.dart';
+import '../../../../../core/config/route/job_seeker_routes.dart';
 
 class MyProfileScreen extends StatelessWidget {
   const MyProfileScreen({super.key});
@@ -44,7 +46,7 @@ class MyProfileScreen extends StatelessWidget {
                 title: 'Personal Info',
                 subtitle: 'Complete',
                 onTap: () {
-                  // Navigate to personal info screen
+                  Get.toNamed(JobSeekerRoutes.personalInfo);
                 },
               ),
 
@@ -53,7 +55,7 @@ class MyProfileScreen extends StatelessWidget {
                 title: 'Education',
                 subtitle: 'Complete',
                 onTap: () {
-                  // Navigate to education screen
+                  Get.toNamed(JobSeekerRoutes.education);
                 },
               ),
 
@@ -62,7 +64,7 @@ class MyProfileScreen extends StatelessWidget {
                 title: 'Work Experience',
                 subtitle: 'Complete',
                 onTap: () {
-                  // Navigate to work experience screen
+                  Get.toNamed(JobSeekerRoutes.workExperience);
                 },
               ),
 
@@ -71,7 +73,7 @@ class MyProfileScreen extends StatelessWidget {
                 title: 'Skills',
                 subtitle: 'Complete',
                 onTap: () {
-                  // Navigate to skills screen
+                  Get.toNamed(JobSeekerRoutes.skills);
                 },
                 isLast: true,
               ),
