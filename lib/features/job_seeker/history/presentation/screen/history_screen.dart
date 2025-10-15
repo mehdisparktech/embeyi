@@ -47,7 +47,7 @@ class HistoryScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: const SafeArea(
-        child: CommonBottomNavBar(currentIndex: 2, isJobSeeker: true),
+        child: CommonBottomNavBar(currentIndex: 2),
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../data/model/notification_model.dart';
 import '../../repository/notification_repository.dart';
 
-class NotificationsController extends GetxController {
+class RecruiterNotificationsController extends GetxController {
   /// Notification List
   List notifications = [];
 
@@ -63,8 +63,8 @@ class NotificationsController extends GetxController {
   }
 
   /// Notification Controller Instance create here
-  static NotificationsController get instance =>
-      Get.put(NotificationsController());
+  static RecruiterNotificationsController get instance =>
+      Get.put(RecruiterNotificationsController());
 
   /// Controller on Init
   @override

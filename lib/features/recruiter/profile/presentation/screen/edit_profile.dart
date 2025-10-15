@@ -16,7 +16,7 @@ class RecruiterEditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ProfileController>(
+    return GetBuilder<RecruiterProfileController>(
       builder: (controller) {
         return Scaffold(
           /// App Bar Sections Starts here

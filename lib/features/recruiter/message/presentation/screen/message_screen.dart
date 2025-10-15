@@ -26,15 +26,15 @@ class _RecruiterChatMessageScreenState
 
   @override
   void initState() {
-    MessageController.instance.name = name;
-    MessageController.instance.chatId = chatId;
-    MessageController.instance.getMessageRepo();
+    RecruiterMessageController.instance.name = name;
+    RecruiterMessageController.instance.chatId = chatId;
+    RecruiterMessageController.instance.getMessageRepo();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MessageController>(
+    return GetBuilder<RecruiterMessageController>(
       builder: (controller) {
         return Scaffold(
           /// App Bar Section starts here

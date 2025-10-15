@@ -199,7 +199,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: SafeArea(
-        child: const CommonBottomNavBar(currentIndex: 0, isJobSeeker: true),
+        child: const CommonBottomNavBar(currentIndex: 0),
       ),
     );
   }

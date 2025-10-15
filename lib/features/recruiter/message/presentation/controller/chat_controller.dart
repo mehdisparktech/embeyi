@@ -8,7 +8,7 @@ import '../../../../../core/services/storage/storage_services.dart';
 import '../../../../../core/utils/app_utils.dart';
 import '../../../../../core/utils/enum/enum.dart';
 
-class ChatController extends GetxController {
+class RecruiterChatController extends GetxController {
   /// Api status check here
   Status status = Status.completed;
 
@@ -25,7 +25,8 @@ class ChatController extends GetxController {
   ScrollController scrollController = ScrollController();
 
   /// Chat Controller Instance create here
-  static ChatController get instance => Get.put(ChatController());
+  static RecruiterChatController get instance =>
+      Get.put(RecruiterChatController());
 
   /// Chat More data Loading function
   Future<void> moreChats() async {

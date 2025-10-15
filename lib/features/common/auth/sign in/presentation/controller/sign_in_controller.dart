@@ -1,3 +1,5 @@
+import 'package:embeyi/core/config/route/recruiter_routes.dart';
+import 'package:embeyi/core/utils/enum/enum.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
@@ -24,7 +26,11 @@ class SignInController extends GetxController {
   /// Sign in Api call here
 
   Future<void> signInUser() async {
-    Get.toNamed(JobSeekerRoutes.profile);
+    if (LocalStorage.userRole == UserRole.jobSeeker) {
+      Get.toNamed(JobSeekerRoutes.home);
+    } else {
+      Get.toNamed(RecruiterRoutes.home);
+    }
     return;
 
     isLoading = true;

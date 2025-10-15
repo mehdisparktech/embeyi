@@ -29,7 +29,7 @@ class RecruiterProfileScreen extends StatelessWidget {
       ),
 
       /// Body Section Starts here
-      body: GetBuilder<ProfileController>(
+      body: GetBuilder<RecruiterProfileController>(
         builder: (controller) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
@@ -113,7 +113,7 @@ class RecruiterProfileScreen extends StatelessWidget {
       ),
 
       /// Bottom Navigation Bar Section Starts here
-      bottomNavigationBar: const CommonBottomNavBar(currentIndex: 3, isJobSeeker: false),
+      bottomNavigationBar: const CommonBottomNavBar(currentIndex: 3),
     );
   }
 }

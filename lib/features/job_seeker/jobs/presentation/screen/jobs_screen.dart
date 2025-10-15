@@ -40,7 +40,7 @@ class JobsScreen extends StatelessWidget {
         },
       ),
       bottomNavigationBar: SafeArea(
-        child: const CommonBottomNavBar(currentIndex: 1, isJobSeeker: true),
+        child: const CommonBottomNavBar(currentIndex: 1),
       ),
     );
   }

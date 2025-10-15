@@ -25,14 +25,15 @@ class RecruiterTermsOfServicesScreen extends StatelessWidget {
       ),
 
       /// Body Section starts here
-      body: GetBuilder<TermsOfServicesController>(
+      body: GetBuilder<RecruiterTermsOfServicesController>(
         builder: (controller) => switch (controller.status) {
           /// Loading bar here
           Status.loading => const CommonLoader(),
 
           /// Error Handle here
           Status.error => ErrorScreen(
-            onTap: TermsOfServicesController.instance.geTermsOfServicesRepo(),
+            onTap: RecruiterTermsOfServicesController.instance
+                .geTermsOfServicesRepo(),
           ),
 
           /// Show main data here

@@ -27,7 +27,7 @@ class RecruiterNotificationScreen extends StatelessWidget {
       ),
 
       /// Body Section starts here
-      body: GetBuilder<NotificationsController>(
+      body: GetBuilder<RecruiterNotificationsController>(
         builder: (controller) {
           return controller.isLoading
               /// Loading bar here

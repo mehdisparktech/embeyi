@@ -82,7 +82,7 @@ class JobSeekerChatListScreen extends StatelessWidget {
       ),
 
       /// Bottom Navigation Bar Section Starts here
-      bottomNavigationBar: const CommonBottomNavBar(currentIndex: 2, isJobSeeker: true),
+      bottomNavigationBar: const CommonBottomNavBar(currentIndex: 2),
     );
   }
 }

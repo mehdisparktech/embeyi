@@ -29,7 +29,7 @@ class RecruiterSettingScreen extends StatelessWidget {
       ),
 
       /// Body Section starts here
-      body: GetBuilder<SettingController>(
+      body: GetBuilder<RecruiterSettingController>(
         builder: (controller) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -101,7 +101,7 @@ class RecruiterSettingScreen extends StatelessWidget {
 
       /// Bottom Navigation Bar Section starts here
       bottomNavigationBar: SafeArea(
-        child: const CommonBottomNavBar(currentIndex: 0, isJobSeeker: false),
+        child: const CommonBottomNavBar(currentIndex: 0),
       ),
     );
   }

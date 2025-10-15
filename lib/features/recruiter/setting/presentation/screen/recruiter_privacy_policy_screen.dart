@@ -25,14 +25,15 @@ class RecruiterPrivacyPolicyScreen extends StatelessWidget {
       ),
 
       /// Body Section stats here
-      body: GetBuilder<PrivacyPolicyController>(
+      body: GetBuilder<RecruiterPrivacyPolicyController>(
         builder: (controller) => switch (controller.status) {
           /// Loading bar here
           Status.loading => const CommonLoader(),
 
           /// Error Handle here
           Status.error => ErrorScreen(
-            onTap: PrivacyPolicyController.instance.getPrivacyPolicyRepo(),
+            onTap: RecruiterPrivacyPolicyController.instance
+                .getPrivacyPolicyRepo(),
           ),
 
           /// Show main data here

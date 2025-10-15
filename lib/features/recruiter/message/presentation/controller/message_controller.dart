@@ -12,7 +12,7 @@ import '../../../../../core/services/storage/storage_services.dart';
 import '../../../../../core/utils/app_utils.dart';
 import '../../../../../core/utils/enum/enum.dart';
 
-class MessageController extends GetxController {
+class RecruiterMessageController extends GetxController {
   bool isLoading = false;
   bool isMoreLoading = false;
   String? video;
@@ -32,7 +32,8 @@ class MessageController extends GetxController {
   ScrollController scrollController = ScrollController();
   TextEditingController messageController = TextEditingController();
 
-  static MessageController get instance => Get.put(MessageController());
+  static RecruiterMessageController get instance =>
+      Get.put(RecruiterMessageController());
 
   MessageModel messageModel = MessageModel.fromJson({});
 

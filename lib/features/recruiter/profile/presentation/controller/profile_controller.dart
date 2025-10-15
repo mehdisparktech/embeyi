@@ -8,7 +8,7 @@ import '../../../../../core/config/route/recruiter_routes.dart';
 import '../../../../../core/services/api/api_service.dart';
 import '../../../../../core/utils/app_utils.dart';
 
-class ProfileController extends GetxController {
+class RecruiterProfileController extends GetxController {
   /// Language List here
   List languages = ["English", "French", "Arabic"];
 

@@ -5,7 +5,7 @@ import '../../../../../core/config/api/api_end_point.dart';
 import '../../../../../core/utils/app_utils.dart';
 import '../../../../../core/utils/enum/enum.dart';
 
-class TermsOfServicesController extends GetxController {
+class RecruiterTermsOfServicesController extends GetxController {
   /// Api status check here
   Status status = Status.completed;
 
@@ -13,8 +13,8 @@ class TermsOfServicesController extends GetxController {
   HtmlModel data = HtmlModel.fromJson({});
 
   /// Terms of services Controller instance create here
-  static TermsOfServicesController get instance =>
-      Get.put(TermsOfServicesController());
+  static RecruiterTermsOfServicesController get instance =>
+      Get.put(RecruiterTermsOfServicesController());
 
   ///  Terms of services Api call here
   geTermsOfServicesRepo() async {

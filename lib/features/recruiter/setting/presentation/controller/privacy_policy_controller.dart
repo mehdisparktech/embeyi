@@ -5,7 +5,7 @@ import '../../../../../core/config/api/api_end_point.dart';
 import '../../../../../core/utils/app_utils.dart';
 import '../../../../../core/utils/enum/enum.dart';
 
-class PrivacyPolicyController extends GetxController {
+class RecruiterPrivacyPolicyController extends GetxController {
   /// Api status check here
   Status status = Status.completed;
 
@@ -13,8 +13,8 @@ class PrivacyPolicyController extends GetxController {
   HtmlModel data = HtmlModel.fromJson({});
 
   /// Privacy Policy Controller instance create here
-  static PrivacyPolicyController get instance =>
-      Get.put(PrivacyPolicyController());
+  static RecruiterPrivacyPolicyController get instance =>
+      Get.put(RecruiterPrivacyPolicyController());
 
   /// Privacy Policy Api call here
   getPrivacyPolicyRepo() async {

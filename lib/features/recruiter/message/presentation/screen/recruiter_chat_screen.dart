@@ -30,14 +30,14 @@ class RecruiterChatListScreen extends StatelessWidget {
       ),
 
       /// Body Section Starts here
-      body: GetBuilder<ChatController>(
+      body: GetBuilder<RecruiterChatController>(
         builder: (controller) => switch (controller.status) {
           /// Loading bar here
           Status.loading => const CommonLoader(),
 
           /// Error Handle here
           Status.error => ErrorScreen(
-            onTap: ChatController.instance.getChatRepo,
+            onTap: RecruiterChatController.instance.getChatRepo,
           ),
 
           /// Show main data here
@@ -82,7 +82,7 @@ class RecruiterChatListScreen extends StatelessWidget {
       ),
 
       /// Bottom Navigation Bar Section Starts here
-      bottomNavigationBar: const CommonBottomNavBar(currentIndex: 2, isJobSeeker: false),
+      bottomNavigationBar: const CommonBottomNavBar(currentIndex: 2),
     );
   }
 }
