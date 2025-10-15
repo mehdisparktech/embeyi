@@ -4,6 +4,8 @@ import 'package:embeyi/features/job_seeker/home/presentation/screen/job_seeker_h
 import 'package:embeyi/features/job_seeker/jobs/presentation/screen/jobs_screen.dart';
 import 'package:embeyi/features/job_seeker/jobs/presentation/screen/job_details_screen.dart';
 import 'package:embeyi/features/job_seeker/jobs/presentation/screen/company_overview_screen.dart';
+import 'package:embeyi/features/job_seeker/profile/presentation/screen/profile/add_education_screen.dart';
+import 'package:embeyi/features/job_seeker/profile/presentation/screen/profile/add_work_experience_screen.dart';
 import 'package:get/get.dart';
 
 // Job Seeker imports
@@ -52,6 +54,8 @@ class JobSeekerRoutes {
   static const String editEducation = "/edit_education_screen.dart";
   static const String editWorkExperience = "/edit_work_experience_screen.dart";
   static const String editSkills = "/edit_skills_screen.dart";
+  static const String addEducation = "/add_education_screen.dart";
+  static const String addWorkExperience = "/add_work_experience_screen.dart";
 
   // Job Seeker Routes List
   static List<GetPage> routes = [
@@ -96,6 +100,11 @@ class JobSeekerRoutes {
       page: () => const EditWorkExperienceScreen(),
     ),
     GetPage(name: editSkills, page: () => const EditSkillsScreen()),
+    GetPage(name: addEducation, page: () => const AddEducationScreen()),
+    GetPage(
+      name: addWorkExperience,
+      page: () => const AddWorkExperienceScreen(),
+    ),
   ];
 
   // Job Seeker Navigation Helper Methods
@@ -120,4 +129,6 @@ class JobSeekerRoutes {
   static void goToEditEducation() => Get.toNamed(editEducation);
   static void goToEditWorkExperience() => Get.toNamed(editWorkExperience);
   static void goToEditSkills() => Get.toNamed(editSkills);
+  static void goToAddEducation() => Get.toNamed(addEducation);
+  static void goToAddWorkExperience() => Get.toNamed(addWorkExperience);
 }
