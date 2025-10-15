@@ -1,3 +1,4 @@
+import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -169,65 +170,110 @@ class PaymentDetailScreen extends StatelessWidget {
                       24.height,
 
                       // Price
-                      const CommonText(
-                        text: '\$19.99',
-                        fontSize: 28,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xFFFF9800),
-                      ),
+                      Container(
+                        padding: EdgeInsets.all(10.w),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12.r),
+                          border: Border.all(
+                            color: Colors.grey.shade200,
+                            width: 1,
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const CommonText(
+                              text: '\$19.99',
+                              fontSize: 28,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFFFF9800),
+                            ),
+                            // Service Information
+                            _buildSectionHeader(
+                              'Service Information',
+                              'Complete',
+                            ),
 
-                      24.height,
+                            8.height,
 
-                      // Service Information
-                      _buildSectionHeader('Service Information', 'Complete'),
-
-                      12.height,
-
-                      const CommonText(
-                        text: 'Premium Plan',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black87,
+                            const CommonText(
+                              text: 'Premium Plan',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black87,
+                            ),
+                          ],
+                        ),
                       ),
 
                       24.height,
 
                       // User Information
-                      _buildSectionHeader('User Information', null),
+                      Container(
+                        padding: EdgeInsets.all(10.w),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12.r),
+                          border: Border.all(
+                            color: Colors.grey.shade200,
+                            width: 1,
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            _buildSectionHeader('User Information', null),
 
-                      16.height,
+                            16.height,
 
-                      _buildInfoRow('Name', 'Shakir Ahmed'),
-                      12.height,
-                      _buildInfoRow(
-                        'Location',
-                        '2471 Derley Ave, Struthers Valley',
+                            _buildInfoRow('Name', 'Shakir Ahmed'),
+                            Divider(),
+                            12.height,
+                            _buildInfoRow(
+                              'Location',
+                              '2471 Derley Ave, Struthers Valley',
+                            ),
+                            Divider(),
+                            12.height,
+                            _buildInfoRow('E-Mail', 'User@Gmail.Com'),
+                          ],
+                        ),
                       ),
-                      12.height,
-                      _buildInfoRow('E-Mail', 'User@Gmail.Com'),
 
                       24.height,
 
                       // Payment Details
-                      const CommonText(
-                        text: 'Payment Details',
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                      ),
+                      Container(
+                        padding: EdgeInsets.all(10.w),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12.r),
+                          border: Border.all(
+                            color: Colors.grey.shade200,
+                            width: 1,
+                          ),
+                        ),
 
-                      16.height,
-
-                      _buildPaymentDetailRow('Service Fee', '\$19.99'),
-                      12.height,
-                      _buildPaymentDetailRow('Tax ID', '1234567890'),
-                      12.height,
-                      _buildPaymentDetailRow(
-                        'Date & Time',
-                        '01 Jan 25, 10:30 Am',
+                        child: Column(
+                          children: [
+                            _buildSectionHeader('Payment Details', null),
+                            16.height,
+                            _buildPaymentDetailRow('Service Fee', '\$19.99'),
+                            Divider(),
+                            12.height,
+                            _buildPaymentDetailRow('Tax ID', '1234567890'),
+                            Divider(),
+                            12.height,
+                            _buildPaymentDetailRow(
+                              'Date & Time',
+                              '01 Jan 25, 10:30 Am',
+                            ),
+                            Divider(),
+                            12.height,
+                            _buildPaymentDetailRow('Tax', '0.0¢'),
+                          ],
+                        ),
                       ),
-                      12.height,
-                      _buildPaymentDetailRow('Tax', '0.0¢'),
 
                       16.height,
 
@@ -243,7 +289,7 @@ class PaymentDetailScreen extends StatelessWidget {
                           ),
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             const CommonText(
                               text: 'Total:',
@@ -321,14 +367,14 @@ class PaymentDetailScreen extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
             decoration: BoxDecoration(
-              color: const Color(0xFFD1FAE5),
-              borderRadius: BorderRadius.circular(6.r),
+              color: AppColors.success.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(30.r),
             ),
             child: CommonText(
               text: badge,
               fontSize: 12,
               fontWeight: FontWeight.w600,
-              color: const Color(0xFF10B981),
+              color: AppColors.success,
             ),
           ),
       ],
@@ -338,6 +384,7 @@ class PaymentDetailScreen extends StatelessWidget {
   Widget _buildInfoRow(String label, String value) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
           width: 80.w,
@@ -346,15 +393,15 @@ class PaymentDetailScreen extends StatelessWidget {
             fontSize: 14,
             fontWeight: FontWeight.w500,
             color: Colors.grey.shade600,
+            textAlign: TextAlign.left,
           ),
         ),
-        Expanded(
-          child: CommonText(
-            text: value,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: Colors.black87,
-          ),
+        CommonText(
+          text: value,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: Colors.black87,
+          textAlign: TextAlign.right,
         ),
       ],
     );
@@ -363,6 +410,7 @@ class PaymentDetailScreen extends StatelessWidget {
   Widget _buildPaymentDetailRow(String label, String value) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CommonText(
           text: label,
@@ -389,8 +437,8 @@ class PaymentDetailScreen extends StatelessWidget {
           // Handle download action
         },
         style: OutlinedButton.styleFrom(
-          foregroundColor: const Color(0xFF4A5FFF),
-          side: const BorderSide(color: Color(0xFF4A5FFF), width: 1.5),
+          foregroundColor: AppColors.primary,
+          side: const BorderSide(color: AppColors.primary, width: 1.5),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.r),
           ),
@@ -399,7 +447,7 @@ class PaymentDetailScreen extends StatelessWidget {
           text: 'Download Payment History',
           fontSize: 15,
           fontWeight: FontWeight.w600,
-          color: Color(0xFF4A5FFF),
+          color: AppColors.primary,
         ),
       ),
     );
