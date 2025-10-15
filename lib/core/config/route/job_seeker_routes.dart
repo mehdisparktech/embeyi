@@ -1,5 +1,7 @@
 import 'package:embeyi/features/job_seeker/history/presentation/screen/history_screen.dart';
 import 'package:embeyi/features/job_seeker/history/presentation/screen/applied_details.dart';
+import 'package:embeyi/features/job_seeker/home/presentation/screen/all_job_category_screen.dart';
+import 'package:embeyi/features/job_seeker/home/presentation/screen/all_recommended_job_screen.dart';
 import 'package:embeyi/features/job_seeker/home/presentation/screen/job_seeker_home_screen.dart';
 import 'package:embeyi/features/job_seeker/jobs/presentation/screen/jobs_screen.dart';
 import 'package:embeyi/features/job_seeker/jobs/presentation/screen/job_details_screen.dart';
@@ -56,6 +58,8 @@ class JobSeekerRoutes {
   static const String editSkills = "/edit_skills_screen.dart";
   static const String addEducation = "/add_education_screen.dart";
   static const String addWorkExperience = "/add_work_experience_screen.dart";
+  static const String allRecommendedJob = "/all_recommended_job_screen.dart";
+  static const String allJobCategory = "/all_job_category_screen.dart";
 
   // Job Seeker Routes List
   static List<GetPage> routes = [
@@ -105,6 +109,11 @@ class JobSeekerRoutes {
       name: addWorkExperience,
       page: () => const AddWorkExperienceScreen(),
     ),
+    GetPage(
+      name: allRecommendedJob,
+      page: () => const AllRecommendedJobScreen(),
+    ),
+    GetPage(name: allJobCategory, page: () => const AllJobCategoryScreen()),
   ];
 
   // Job Seeker Navigation Helper Methods
@@ -131,4 +140,6 @@ class JobSeekerRoutes {
   static void goToEditSkills() => Get.toNamed(editSkills);
   static void goToAddEducation() => Get.toNamed(addEducation);
   static void goToAddWorkExperience() => Get.toNamed(addWorkExperience);
+  static void goToAllRecommendedJob() => Get.toNamed(allRecommendedJob);
+  static void goToAllJobCategory() => Get.toNamed(allJobCategory);
 }

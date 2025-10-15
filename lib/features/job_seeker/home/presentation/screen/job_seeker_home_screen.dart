@@ -88,6 +88,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
                         title: 'Job Category',
                         onSeeAllTap: () {
                           // Handle see all tap
+                          JobSeekerRoutes.goToAllJobCategory();
                         },
                       ),
                     ),
@@ -150,6 +151,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
                         title: 'Recommended Job',
                         onSeeAllTap: () {
                           // Handle see all tap
+                          JobSeekerRoutes.goToAllRecommendedJob();
                         },
                       ),
                     ),
