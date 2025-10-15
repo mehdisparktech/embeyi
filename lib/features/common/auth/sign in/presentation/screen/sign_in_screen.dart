@@ -26,7 +26,7 @@ class SignInScreen extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
 
       /// App Bar Sections Starts here
-      appBar: CommonAppbar(),
+      appBar: CommonAppbar(backgroundColor: AppColors.primaryColor),
 
       /// Body Sections Starts here
       body: GetBuilder<SignInController>(

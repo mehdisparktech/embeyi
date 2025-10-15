@@ -1,6 +1,7 @@
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:embeyi/features/job_seeker/resume/presentation/screen/resume_screen.dart';
+import 'package:embeyi/features/job_seeker/setting/presentation/screen/job_seeker_setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,6 @@ import 'subscription_pack_screen.dart';
 import 'my_subscription_screen.dart';
 import 'payment_history_screen.dart';
 import 'platform_review_screen.dart';
-import 'settings_screen.dart';
 
 class JobSeekerProfileScreen extends StatelessWidget {
   const JobSeekerProfileScreen({super.key});
@@ -178,7 +178,7 @@ final List<ProfileItemData> profileItems = [
     icon: Icons.settings,
     title: 'Settings',
     onTap: () {
-      Get.to(() => const SettingsScreen());
+      Get.to(() => const JobSeekerSettingScreen());
     },
   ),
   ProfileItemData(

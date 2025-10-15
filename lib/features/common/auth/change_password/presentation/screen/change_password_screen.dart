@@ -1,13 +1,12 @@
+import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../../core/config/route/app_routes.dart';
 import '../../../../../../core/utils/extensions/extension.dart';
 import '../../../../../../core/component/button/common_button.dart';
 import '../../../../../../core/component/text/common_text.dart';
 import '../../../../../../core/component/text_field/common_text_field.dart';
 import '../controller/change_password_controller.dart';
-import '../../../../../../core/utils/constants/app_colors.dart';
 import '../../../../../../core/utils/constants/app_string.dart';
 import '../../../../../../core/utils/helpers/other_helper.dart';
 
@@ -18,6 +17,7 @@ class ChangePasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
     return Scaffold(
+      backgroundColor: AppColors.surfaceBackground,
       appBar: AppBar(
         centerTitle: true,
         title: const CommonText(
@@ -77,22 +77,7 @@ class ChangePasswordScreen extends StatelessWidget {
                     isPassword: true,
                     prefixIcon: Icon(Icons.lock, size: 20.sp),
                   ),
-
-                  /// forget Password button
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: GestureDetector(
-                      onTap: () => Get.toNamed(AppRoutes.forgotPassword),
-                      child: CommonText(
-                        text: AppString.forgotPassword,
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18.sp,
-                        top: 16.h,
-                        bottom: 20.h,
-                      ),
-                    ),
-                  ),
+                  20.height,
 
                   /// submit Button
                   CommonButton(

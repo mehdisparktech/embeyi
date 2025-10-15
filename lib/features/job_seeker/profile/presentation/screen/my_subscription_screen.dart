@@ -1,8 +1,6 @@
-import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/component/text/common_text.dart';
-import '../../../../../core/component/button/common_button.dart';
 import '../../../../../core/utils/extensions/extension.dart';
 
 class MySubscriptionScreen extends StatelessWidget {
@@ -11,228 +9,227 @@ class MySubscriptionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const CommonText(
-          text: 'My Subscription',
-          fontWeight: FontWeight.w600,
-          fontSize: 24,
-        ),
-      ),
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /// Current Plan Card
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(20.w),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        AppColors.primary,
-                        AppColors.primary.withOpacity(0.7),
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(16.r),
-                  ),
+        child: Column(
+          children: [
+            // Header
+            _buildHeader(context),
+
+            Expanded(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Icon(Icons.star, color: AppColors.white, size: 24.sp),
-                          8.width,
-                          CommonText(
-                            text: 'Premium Plan',
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.white,
-                          ),
-                        ],
-                      ),
-                      16.height,
-                      CommonText(
-                        text: 'Active',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.white.withOpacity(0.9),
-                      ),
-                      4.height,
-                      CommonText(
-                        text: '\$19.99/month',
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.white,
-                      ),
-                      16.height,
-                      Divider(color: AppColors.white.withOpacity(0.3)),
-                      16.height,
-                      _buildInfoRow('Start Date:', 'January 1, 2025'),
-                      8.height,
-                      _buildInfoRow('Next Billing:', 'February 1, 2025'),
-                      8.height,
-                      _buildInfoRow('Auto Renewal:', 'Enabled'),
+                      32.height,
+
+                      // Profile Section
+                      _buildProfileSection(),
+
+                      40.height,
+
+                      // Subscription Details Table
+                      _buildSubscriptionTable(),
+
+                      40.height,
+
+                      // Renew Button
+                      _buildRenewButton(),
+
+                      40.height,
                     ],
                   ),
                 ),
-                24.height,
-
-                /// Usage Stats
-                const CommonText(
-                  text: 'Usage Statistics',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-                16.height,
-                Row(
-                  children: [
-                    Expanded(
-                      child: _buildStatCard(
-                        'Job Applications',
-                        '45',
-                        'Unlimited',
-                        Icons.work,
-                      ),
-                    ),
-                    12.width,
-                    Expanded(
-                      child: _buildStatCard(
-                        'Profile Views',
-                        '230',
-                        'This month',
-                        Icons.visibility,
-                      ),
-                    ),
-                  ],
-                ),
-                24.height,
-
-                /// Plan Benefits
-                const CommonText(
-                  text: 'Plan Benefits',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-                16.height,
-                Container(
-                  padding: EdgeInsets.all(16.w),
-                  decoration: BoxDecoration(
-                    color: AppColors.cardBackground,
-                    borderRadius: BorderRadius.circular(12.r),
-                    border: Border.all(color: AppColors.border),
-                  ),
-                  child: Column(
-                    children: [
-                      _buildBenefitItem('Unlimited job applications'),
-                      _buildBenefitItem('Top profile visibility'),
-                      _buildBenefitItem('Instant job alerts'),
-                      _buildBenefitItem('24/7 Premium support'),
-                      _buildBenefitItem('Advanced resume builder'),
-                      _buildBenefitItem('Interview preparation'),
-                      _buildBenefitItem('Career counseling', isLast: true),
-                    ],
-                  ),
-                ),
-                32.height,
-
-                /// Action Buttons
-                CommonButton(titleText: 'Upgrade Plan', onTap: () {}),
-                16.height,
-                CommonButton(
-                  titleText: 'Cancel Subscription',
-                  onTap: () {
-                    // Show confirmation dialog
-                  },
-                  buttonColor: AppColors.error,
-                ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildInfoRow(String label, String value) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget _buildHeader(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+      child: Row(
+        children: [
+          GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: Icon(
+              Icons.arrow_back_ios,
+              size: 20.sp,
+              color: Colors.black87,
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: CommonText(
+                text: 'My Subscription',
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
+              ),
+            ),
+          ),
+          SizedBox(width: 20.w),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProfileSection() {
+    return Column(
       children: [
+        // Profile Image
+        Container(
+          width: 100.w,
+          height: 100.w,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: const Color(0xFF1E3A5F),
+            border: Border.all(color: Colors.grey.shade200, width: 2),
+            image: const DecorationImage(
+              image: AssetImage('assets/images/profile.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+
+        16.height,
+
+        // Name
+        const CommonText(
+          text: 'Shakir Ahmed',
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: Colors.black87,
+        ),
+
+        6.height,
+
+        // Role
         CommonText(
-          text: label,
+          text: 'UX Designer',
           fontSize: 14,
           fontWeight: FontWeight.w400,
-          color: AppColors.white.withOpacity(0.9),
+          color: Colors.grey.shade600,
         ),
-        CommonText(
-          text: value,
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          color: AppColors.white,
+
+        12.height,
+
+        // Premium Badge
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+          decoration: BoxDecoration(
+            color: const Color(0xFFFFF4E6),
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.workspace_premium,
+                color: const Color(0xFFFF9800),
+                size: 18.sp,
+              ),
+              6.width,
+              const CommonText(
+                text: 'Premium Plan',
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFFFF9800),
+              ),
+            ],
+          ),
         ),
       ],
     );
   }
 
-  Widget _buildStatCard(
-    String title,
-    String value,
-    String subtitle,
-    IconData icon,
-  ) {
+  Widget _buildSubscriptionTable() {
     return Container(
-      padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: Colors.grey.shade200, width: 1),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: AppColors.primary, size: 28.sp),
-          12.height,
+          _buildTableRow('Pack Nam', 'Premium Plan', isFirst: true),
+          _buildDivider(),
+          _buildTableRow('Price', '\$19.99'),
+          _buildDivider(),
+          _buildTableRow('Start Date', '01 January 2025'),
+          _buildDivider(),
+          _buildTableRow('End Date', '31 January 2025'),
+          _buildDivider(),
+          _buildTableRow('Remaining Days', '25 Days', isLast: true),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTableRow(
+    String label,
+    String value, {
+    bool isFirst = false,
+    bool isLast = false,
+  }) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          CommonText(
+            text: label,
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+            color: Colors.black87,
+          ),
           CommonText(
             text: value,
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-            color: AppColors.primary,
-          ),
-          4.height,
-          CommonText(text: title, fontSize: 12, fontWeight: FontWeight.w500),
-          4.height,
-          CommonText(
-            text: subtitle,
-            fontSize: 10,
-            fontWeight: FontWeight.w400,
-            color: AppColors.secondaryText,
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildBenefitItem(String text, {bool isLast = false}) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: isLast ? 0 : 12.h),
-      child: Row(
-        children: [
-          Icon(Icons.check_circle, color: AppColors.success, size: 20.sp),
-          12.width,
-          Expanded(
-            child: CommonText(
-              text: text,
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-            ),
+  Widget _buildDivider() {
+    return Container(
+      height: 1,
+      margin: EdgeInsets.symmetric(horizontal: 20.w),
+      color: Colors.grey.shade200,
+    );
+  }
+
+  Widget _buildRenewButton() {
+    return SizedBox(
+      width: double.infinity,
+      height: 52.h,
+      child: ElevatedButton(
+        onPressed: () {
+          // Handle renew action
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFF3B4DE3),
+          foregroundColor: Colors.white,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.r),
           ),
-        ],
+          shadowColor: const Color(0xFF3B4DE3).withOpacity(0.3),
+        ),
+        child: const CommonText(
+          text: 'Renew Pack',
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
       ),
     );
   }

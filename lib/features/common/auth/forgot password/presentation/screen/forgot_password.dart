@@ -25,7 +25,7 @@ class ForgotPasswordScreen extends StatelessWidget {
         backgroundColor: AppColors.primaryColor,
 
         /// App Bar Section
-        appBar: CommonAppbar(),
+        appBar: CommonAppbar(backgroundColor: AppColors.primaryColor),
 
         /// body section
         body: Column(

@@ -20,15 +20,15 @@ class CreatePassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.primaryColor,
+    return Scaffold(
+      backgroundColor: AppColors.primaryColor,
 
-        /// App Bar Section starts here
-        appBar: CommonAppbar(),
+      /// App Bar Section starts here
+      appBar: CommonAppbar(backgroundColor: AppColors.primaryColor),
 
-        /// Body Section starts here
-        body: GetBuilder<ForgetPasswordController>(
+      /// Body Section starts here
+      body: SafeArea(
+        child: GetBuilder<ForgetPasswordController>(
           builder: (controller) {
             return SingleChildScrollView(
               child: Column(

@@ -13,6 +13,7 @@ import '../../../features/job_seeker/notifications/presentation/screen/job_seeke
 import '../../../features/job_seeker/profile/presentation/screen/job_seeker_profile_screen.dart';
 import '../../../features/job_seeker/profile/presentation/screen/edit_profile.dart';
 import '../../../features/job_seeker/setting/presentation/screen/job_seeker_privacy_policy_screen.dart';
+import '../../../features/job_seeker/setting/presentation/screen/job_seeker_help_support_screen.dart';
 import '../../../features/job_seeker/setting/presentation/screen/job_seeker_setting_screen.dart';
 import '../../../features/job_seeker/setting/presentation/screen/job_seeker_terms_of_services_screen.dart';
 
@@ -33,6 +34,7 @@ class JobSeekerRoutes {
   static const String companyOverview = "/company_overview_screen.dart";
   static const String history = "/job_seeker_history_screen.dart";
   static const String appliedDetails = "/applied_details_screen.dart";
+  static const String helpAndSupport = "/job_seeker_help_support_screen.dart";
   // Job Seeker Routes List
   static List<GetPage> routes = [
     GetPage(name: home, page: () => JobSeekerHomeScreen()),
@@ -51,6 +53,10 @@ class JobSeekerRoutes {
     GetPage(
       name: termsOfServices,
       page: () => const JobSeekerTermsOfServicesScreen(),
+    ),
+    GetPage(
+      name: helpAndSupport,
+      page: () => const JobSeekerHelpSupportScreen(),
     ),
     GetPage(name: setting, page: () => const JobSeekerSettingScreen()),
     GetPage(name: jobs, page: () => JobsScreen()),
@@ -76,4 +82,5 @@ class JobSeekerRoutes {
   static void goToCompanyOverview() => Get.toNamed(companyOverview);
   static void goToHistory() => Get.toNamed(history);
   static void goToAppliedDetails() => Get.toNamed(appliedDetails);
+  static void goToHelpAndSupport() => Get.toNamed(helpAndSupport);
 }

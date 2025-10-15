@@ -35,7 +35,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
       backgroundColor: AppColors.primaryColor,
 
       /// App Bar Section
-      appBar: CommonAppbar(),
+      appBar: CommonAppbar(backgroundColor: AppColors.primaryColor),
 
       /// Body Section
       body: Column(

@@ -64,6 +64,7 @@ class AppString {
   static const String privacyPolicy = "Privacy Policy";
   static const String deleteAccount = "Delete account";
   static const String termsOfServices = "Terms of Services";
+  static const String helpAndSupport = "Help and Support";
   static const String noInternetConnection = "No internet connection";
   static const String badResponseRequest = "Bad Response Request";
   static const String requestTimeOut = "Request Time Out";

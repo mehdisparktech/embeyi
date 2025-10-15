@@ -23,7 +23,7 @@ class SignUpScreen extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
 
       /// App Bar Section Starts Here
-      appBar: CommonAppbar(),
+      appBar: CommonAppbar(backgroundColor: AppColors.primaryColor),
 
       /// Body Section Starts Here
       body: GetBuilder<SignUpController>(
