@@ -49,6 +49,7 @@ class MyProfileScreen extends StatelessWidget {
                   Get.toNamed(JobSeekerRoutes.personalInfo);
                 },
               ),
+              16.height,
 
               _buildMenuItem(
                 icon: Icons.school_outlined,
@@ -58,7 +59,7 @@ class MyProfileScreen extends StatelessWidget {
                   Get.toNamed(JobSeekerRoutes.education);
                 },
               ),
-
+              16.height,
               _buildMenuItem(
                 icon: Icons.work_outline,
                 title: 'Work Experience',
@@ -67,7 +68,7 @@ class MyProfileScreen extends StatelessWidget {
                   Get.toNamed(JobSeekerRoutes.workExperience);
                 },
               ),
-
+              16.height,
               _buildMenuItem(
                 icon: Icons.star_outline,
                 title: 'Skills',
@@ -145,7 +146,25 @@ class MyProfileScreen extends StatelessWidget {
         GestureDetector(
           onTap: onTap,
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 16.h),
+            padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  width: 1,
+                  color: const Color(0xFFEDEDED) /* Cart-BG-8 */,
+                ),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              shadows: [
+                BoxShadow(
+                  color: Color(0x19000000),
+                  blurRadius: 4,
+                  offset: Offset(0, 2),
+                  spreadRadius: 0,
+                ),
+              ],
+            ),
             child: Row(
               children: [
                 /// Icon Container
