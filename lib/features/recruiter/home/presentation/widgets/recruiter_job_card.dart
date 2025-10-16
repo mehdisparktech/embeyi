@@ -43,137 +43,144 @@ class RecruiterJobCard extends StatelessWidget {
             ),
           ],
         ),
-        child: Row(
+        child: Column(
           children: [
-            // Thumbnail
-            Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.r),
-                image: DecorationImage(
-                  image: AssetImage(thumbnailImage),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            12.width,
-            // Job Details
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Job Title
-                  Text(
-                    jobTitle,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.black,
+            Row(
+              children: [
+                // Thumbnail
+                Container(
+                  width: 85.w,
+                  height: 60.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.r),
+                    image: DecorationImage(
+                      image: AssetImage(thumbnailImage),
+                      fit: BoxFit.cover,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                   ),
-                  6.height,
-                  // Location
-                  Row(
+                ),
+                12.width,
+                // Job Details
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.location_on,
-                        size: 14.sp,
-                        color: AppColors.secondaryButton,
-                      ),
-                      4.width,
-                      Expanded(
-                        child: Text(
-                          location,
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.secondaryText,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                      // Job Title
+                      Text(
+                        jobTitle,
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.black,
                         ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ],
-                  ),
-                  6.height,
-                  // Job Type Tags
-                  Row(
-                    children: [
-                      _buildJobTypeTag(isFullTime ? 'Full Time' : 'Part Time'),
-                      8.width,
-                      _buildJobTypeTag('Remote'),
-                    ],
-                  ),
-                  8.height,
-                  // Bottom Info
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Candidate Count
+                      6.height,
+                      // Location
                       Row(
                         children: [
-                          // Overlapping avatars
-                          SizedBox(
-                            width: 60.w,
-                            height: 24.h,
-                            child: Stack(
-                              children: List.generate(
-                                3,
-                                (index) => Positioned(
-                                  left: index * 16.w,
-                                  child: Container(
-                                    width: 24.w,
-                                    height: 24.h,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.grey[300],
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 2,
-                                      ),
-                                    ),
-                                  ),
+                          Icon(
+                            Icons.location_on,
+                            size: 14.sp,
+                            color: AppColors.black,
+                          ),
+                          4.width,
+                          Expanded(
+                            child: Text(
+                              location,
+                              style: TextStyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.primaryText,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                      6.height,
+                      // Job Type Tags
+                      Row(
+                        children: [
+                          _buildJobTypeTag(
+                            isFullTime ? 'Full Time' : 'Part Time',
+                          ),
+                          8.width,
+                          _buildJobTypeTag('Remote'),
+                        ],
+                      ),
+                      8.height,
+
+                      // Bottom Info
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Candidate Count
+                Row(
+                  children: [
+                    // Overlapping avatars
+                    SizedBox(
+                      width: 60.w,
+                      height: 24.h,
+                      child: Stack(
+                        children: List.generate(
+                          3,
+                          (index) => Positioned(
+                            left: index * 16.w,
+                            child: Container(
+                              width: 24.w,
+                              height: 24.h,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.grey[300],
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 2,
                                 ),
                               ),
                             ),
                           ),
-                          4.width,
-                          Text(
-                            '$candidateCount Candidate Applied',
-                            style: TextStyle(
-                              fontSize: 11.sp,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.secondaryText,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                      // Deadline
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.calendar_today,
-                            size: 12.sp,
-                            color: AppColors.secondaryPrimary,
-                          ),
-                          4.width,
-                          Text(
-                            deadline,
-                            style: TextStyle(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.secondaryPrimary,
-                            ),
-                          ),
-                        ],
+                    ),
+                    4.width,
+                    Text(
+                      '$candidateCount Candidate Applied',
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.primaryText,
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                // Deadline
+                Row(
+                  children: [
+                    Icon(
+                      Icons.calendar_today,
+                      size: 12.sp,
+                      color: AppColors.secondaryPrimary,
+                    ),
+                    4.width,
+                    Text(
+                      deadline,
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.secondaryPrimary,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:embeyi/core/component/bottom_nav_bar/common_bottom_bar.dart';
+import 'package:embeyi/core/config/route/app_routes.dart';
 import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
@@ -150,21 +151,33 @@ class RecruiterHomeScreen extends StatelessWidget {
           count: '05',
           label: 'Active Jobs',
           backgroundColor: AppColors.primaryColor,
+          onTap: () {
+            AppRoutes.goToActiveJobPost();
+          },
         ),
         StatCard(
           count: '20',
           label: 'Pending Request',
           backgroundColor: const Color(0xFF3AAFB9),
+          onTap: () {
+            AppRoutes.goToPendingJobRequest();
+          },
         ),
         StatCard(
           count: '20',
           label: 'Short Listed',
           backgroundColor: const Color(0xFF008F37),
+          onTap: () {
+            AppRoutes.goToShortJobListed();
+          },
         ),
         StatCard(
           count: '10',
           label: 'Interview',
           backgroundColor: AppColors.secondaryPrimary,
+          onTap: () {
+            AppRoutes.goToInterviewJob();
+          },
         ),
       ],
     );

@@ -1,4 +1,8 @@
 import 'package:embeyi/features/common/onboarding_screen/select_roule_screen.dart';
+import 'package:embeyi/features/recruiter/home/presentation/screen/active_job_post_screen.dart';
+import 'package:embeyi/features/recruiter/home/presentation/screen/interview_job_screen.dart';
+import 'package:embeyi/features/recruiter/home/presentation/screen/pending_job_request_screen.dart';
+import 'package:embeyi/features/recruiter/home/presentation/screen/short_job_listed_screen.dart';
 import 'package:get/get.dart';
 
 // Common imports
@@ -29,6 +33,10 @@ class AppRoutes {
   static const String createPassword = "/create_password.dart";
   static const String changePassword = "/change_password_screen.dart";
   static const String selectedRole = "/selected_role_screen.dart";
+  static const String activeJobPost = "/active_job_post_screen.dart";
+  static const String interviewJob = "/interview_job_screen.dart";
+  static const String pendingJobRequest = "/pending_job_request_screen.dart";
+  static const String shortJobListed = "/short_job_listed_screen.dart";
 
   // Common Routes List
   static List<GetPage> routes = [
@@ -43,7 +51,13 @@ class AppRoutes {
     GetPage(name: createPassword, page: () => CreatePassword()),
     GetPage(name: changePassword, page: () => ChangePasswordScreen()),
     GetPage(name: selectedRole, page: () => const SelectRouleScreen()),
-
+    GetPage(name: activeJobPost, page: () => const ActiveJobPostScreen()),
+    GetPage(name: interviewJob, page: () => const InterviewJobScreen()),
+    GetPage(
+      name: pendingJobRequest,
+      page: () => const PendingJobRequestScreen(),
+    ),
+    GetPage(name: shortJobListed, page: () => const ShortJobListedScreen()),
     // Role-specific routes
     ...JobSeekerRoutes.routes,
     ...RecruiterRoutes.routes,
@@ -56,4 +70,8 @@ class AppRoutes {
   static void goToSignUp() => Get.toNamed(signUp);
   static void goToForgotPassword() => Get.toNamed(forgotPassword);
   static void goToChangePassword() => Get.toNamed(changePassword);
+  static void goToActiveJobPost() => Get.toNamed(activeJobPost);
+  static void goToInterviewJob() => Get.toNamed(interviewJob);
+  static void goToPendingJobRequest() => Get.toNamed(pendingJobRequest);
+  static void goToShortJobListed() => Get.toNamed(shortJobListed);
 }
