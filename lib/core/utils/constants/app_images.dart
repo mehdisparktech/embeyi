@@ -24,4 +24,5 @@ class AppImages {
   static const String jobPost = "$baseurl/job_post.png";
   static const String jobDetails = "$baseurl/job_details.png";
   static const String ad = "$baseurl/ad.png";
+  static const String imageBackground = "$baseurl/image_bg.jpg";
 }

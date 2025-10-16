@@ -1,9 +1,12 @@
+import 'package:embeyi/features/recruiter/home/presentation/screen/active_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/home/presentation/screen/all_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/home/presentation/screen/job_card_details_screen.dart';
+import 'package:embeyi/features/recruiter/interview/presentation/screen/interview_job_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/create_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/edit_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/job_post_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/view_job_post_screen.dart';
+import 'package:embeyi/features/recruiter/pending_request/presentation/screen/pending_job_request_screen.dart';
 import 'package:embeyi/features/recruiter/post_insight/presentation/screen/post_insight_screen.dart';
 import 'package:embeyi/features/recruiter/profile/presentation/screen/career_spotlight_screen.dart';
 import 'package:embeyi/features/recruiter/profile/presentation/screen/company_profile_screen.dart';
@@ -12,6 +15,7 @@ import 'package:embeyi/features/recruiter/profile/presentation/screen/my_subscri
 import 'package:embeyi/features/recruiter/profile/presentation/screen/payment_history_screen.dart';
 import 'package:embeyi/features/recruiter/profile/presentation/screen/platform_review_screen.dart';
 import 'package:embeyi/features/recruiter/profile/presentation/screen/subscription_pack_screen.dart';
+import 'package:embeyi/features/recruiter/short_listed/presentation/screen/short_job_listed_screen.dart';
 import 'package:get/get.dart';
 
 // Recruiter imports
@@ -54,6 +58,10 @@ class RecruiterRoutes {
   static const String createJobPost = "/create_job_post_screen.dart";
   static const String jobCardDetails = "/job_card_details_screen.dart";
   static const String allJobPost = "/all_job_post_screen.dart";
+  static const String activeJobPost = "/active_job_post_screen.dart";
+  static const String pendingJobRequest = "/pending_job_request_screen.dart";
+  static const String shortJobListed = "/short_job_listed_screen.dart";
+  static const String interviewJob = "/interview_job_screen.dart";
   // Recruiter Routes List
   static List<GetPage> routes = [
     GetPage(name: home, page: () => RecruiterHomeScreen()),
@@ -87,6 +95,13 @@ class RecruiterRoutes {
     GetPage(name: platformReview, page: () => const PlatformReviewScreen()),
     GetPage(name: createJobPost, page: () => const CreateJobPostScreen()),
     GetPage(name: allJobPost, page: () => const AllJobPostScreen()),
+    GetPage(name: activeJobPost, page: () => const ActiveJobPostScreen()),
+    GetPage(
+      name: pendingJobRequest,
+      page: () => const PendingJobRequestScreen(),
+    ),
+    GetPage(name: shortJobListed, page: () => const ShortJobListedScreen()),
+    GetPage(name: interviewJob, page: () => const InterviewJobScreen()),
   ];
 
   // Recruiter Navigation Helper Methods
@@ -111,4 +126,8 @@ class RecruiterRoutes {
   static void goToCreateJobPost() => Get.toNamed(createJobPost);
   static void goToJobCardDetails() => Get.toNamed(jobCardDetails);
   static void goToAllJobPost() => Get.toNamed(allJobPost);
+  static void goToActiveJobPost() => Get.toNamed(activeJobPost);
+  static void goToPendingJobRequest() => Get.toNamed(pendingJobRequest);
+  static void goToShortJobListed() => Get.toNamed(shortJobListed);
+  static void goToInterviewJob() => Get.toNamed(interviewJob);
 }

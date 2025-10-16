@@ -1,7 +1,11 @@
 import 'package:embeyi/core/component/bottom_nav_bar/common_bottom_bar.dart';
+import 'package:embeyi/core/component/image/common_image.dart';
+import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/config/route/app_routes.dart';
 import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
+import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,18 +53,15 @@ class RecruiterHomeScreen extends StatelessWidget {
   Widget _buildHeader() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-      color: Colors.white,
       child: Row(
         children: [
           // Logo
-          Container(
-            width: 32.w,
-            height: 32.h,
-            decoration: BoxDecoration(
-              color: AppColors.secondaryPrimary,
-              borderRadius: BorderRadius.circular(8.r),
+          CircleAvatar(
+            radius: 32.r,
+            backgroundColor: AppColors.white,
+            child: ClipOval(
+              child: CommonImage(imageSrc: AppImages.logo, size: 64.sp),
             ),
-            child: Icon(Icons.work_outline, color: Colors.white, size: 20.sp),
           ),
           8.width,
           // Company Info
@@ -68,13 +69,11 @@ class RecruiterHomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Jobarman',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.black,
-                  ),
+                CommonText(
+                  text: 'Jobarman',
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.primary,
                 ),
                 2.height,
                 Row(
@@ -82,16 +81,14 @@ class RecruiterHomeScreen extends StatelessWidget {
                     Icon(
                       Icons.location_on,
                       size: 12.sp,
-                      color: AppColors.secondaryText,
+                      color: AppColors.primaryText,
                     ),
                     4.width,
-                    Text(
-                      '2118 Thornridge Cir. Syracuse',
-                      style: TextStyle(
-                        fontSize: 11.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.secondaryText,
-                      ),
+                    CommonText(
+                      text: '2118 Thornridge Cir. Syracuse',
+                      fontSize: 11.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.primaryText,
                     ),
                   ],
                 ),
@@ -99,42 +96,53 @@ class RecruiterHomeScreen extends StatelessWidget {
             ),
           ),
           // Action Icons
-          _buildActionIcon(Icons.chat_bubble_outline, hasNotification: false),
+          _buildActionIcon(
+            AppIcons.chat,
+            hasNotification: false,
+            onTap: () {
+              RecruiterRoutes.goToChat();
+            },
+          ),
           8.width,
-          _buildActionIcon(Icons.notifications_outlined, hasNotification: true),
+          _buildActionIcon(
+            AppIcons.notification,
+            hasNotification: true,
+            onTap: () {
+              RecruiterRoutes.goToNotifications();
+            },
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildActionIcon(IconData icon, {required bool hasNotification}) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Container(
-          width: 40.w,
-          height: 40.h,
-          decoration: BoxDecoration(
-            color: AppColors.primaryColor,
-            shape: BoxShape.circle,
-          ),
-          child: Icon(icon, color: Colors.white, size: 20.sp),
-        ),
-        if (hasNotification)
-          Positioned(
-            top: 0,
-            right: 0,
-            child: Container(
-              width: 10.w,
-              height: 10.h,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.white, width: 2),
+  Widget _buildActionIcon(
+    String imageSrc, {
+    required bool hasNotification,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          CommonImage(imageSrc: imageSrc, size: 24.sp),
+          if (hasNotification)
+            Positioned(
+              top: 0,
+              right: 0,
+              child: Container(
+                width: 10.w,
+                height: 10.h,
+                decoration: BoxDecoration(
+                  color: AppColors.secondaryPrimary,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white, width: 2),
+                ),
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 

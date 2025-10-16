@@ -12,4 +12,7 @@ class AppIcons {
   static const String history2 = "$baseurl/history2.svg";
   static const String postInsight = "$baseurl/insight.svg";
   static const String postInsight2 = "$baseurl/insight2.svg";
+  static const String companyLogo = "$baseurl/company_logo.svg";
+  static const String chat = "$baseurl/chat.svg";
+  static const String notification = "$baseurl/notification.svg";
 }
