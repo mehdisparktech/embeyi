@@ -21,23 +21,46 @@ class CommonBottomNavBar extends StatefulWidget {
 
 class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
   var bottomNavIndex = 0;
-  List<Widget> unselectedIcons = [
+  List<Widget> jobSeekerUnselectedIcons = [
     CommonImage(imageSrc: AppIcons.home, size: 30.sp),
     CommonImage(imageSrc: AppIcons.work, size: 30.sp),
     CommonImage(imageSrc: AppIcons.history, size: 30.sp),
     CommonImage(imageSrc: AppIcons.person, size: 30.sp),
   ];
 
-  List<Widget> selectedIcons = [
+  List<Widget> jobSeekerSelectedIcons = [
     CommonImage(imageSrc: AppIcons.home2, size: 30.sp),
     CommonImage(imageSrc: AppIcons.work2, size: 30.sp),
     CommonImage(imageSrc: AppIcons.history2, size: 30.sp),
     CommonImage(imageSrc: AppIcons.person2, size: 30.sp),
   ];
 
+  List<Widget> recruiterUnselectedIcons = [
+    CommonImage(imageSrc: AppIcons.home, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.postInsight, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.work, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.person, size: 30.sp),
+  ];
+
+  List<Widget> recruiterSelectedIcons = [
+    CommonImage(imageSrc: AppIcons.home2, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.postInsight2, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.work2, size: 30.sp),
+    CommonImage(imageSrc: AppIcons.person2, size: 30.sp),
+  ];
+  List<Widget> unselectedIcons = [];
+  List<Widget> selectedIcons = [];
+
   @override
   void initState() {
     bottomNavIndex = widget.currentIndex;
+    if (LocalStorage.userRole == UserRole.jobSeeker) {
+      unselectedIcons = jobSeekerUnselectedIcons;
+      selectedIcons = jobSeekerSelectedIcons;
+    } else {
+      unselectedIcons = recruiterUnselectedIcons;
+      selectedIcons = recruiterSelectedIcons;
+    }
     super.initState();
   }
 
@@ -105,11 +128,11 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
         }
       } else if (index == 1) {
         if (!(widget.currentIndex == 1)) {
-          Get.toNamed(RecruiterRoutes.chat);
+          Get.toNamed(RecruiterRoutes.postInsight);
         }
       } else if (index == 2) {
         if (!(widget.currentIndex == 2)) {
-          Get.toNamed(RecruiterRoutes.notifications);
+          Get.toNamed(RecruiterRoutes.jobPost);
         }
       } else if (index == 3) {
         if (!(widget.currentIndex == 3)) {

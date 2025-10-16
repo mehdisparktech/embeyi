@@ -1,4 +1,8 @@
 import 'package:embeyi/features/recruiter/home/presentation/screen/job_card_details_screen.dart';
+import 'package:embeyi/features/recruiter/job_post/presentation/screen/edit_job_post_screen.dart';
+import 'package:embeyi/features/recruiter/job_post/presentation/screen/job_post_screen.dart';
+import 'package:embeyi/features/recruiter/job_post/presentation/screen/view_job_post_screen.dart';
+import 'package:embeyi/features/recruiter/post_insight/presentation/screen/post_insight_screen.dart';
 import 'package:get/get.dart';
 
 // Recruiter imports
@@ -23,6 +27,10 @@ class RecruiterRoutes {
       "/recruiter_terms_of_services_screen.dart";
   static const String setting = "/recruiter_setting_screen.dart";
   static const String jobDetails = "/recruiter_job_details_screen.dart";
+  static const String viewJobPost = "/view_job_post_screen.dart";
+  static const String editJobPost = "/edit_job_post_screen.dart";
+  static const String jobPost = "/job_post_screen.dart";
+  static const String postInsight = "/post_insight_screen.dart";
 
   // Recruiter Routes List
   static List<GetPage> routes = [
@@ -44,6 +52,10 @@ class RecruiterRoutes {
     ),
     GetPage(name: setting, page: () => const RecruiterSettingScreen()),
     GetPage(name: jobDetails, page: () => const JobCardDetailsScreen()),
+    GetPage(name: viewJobPost, page: () => const ViewJobPostScreen()),
+    GetPage(name: editJobPost, page: () => const EditJobPostScreen()),
+    GetPage(name: jobPost, page: () => const JobPostScreen()),
+    GetPage(name: postInsight, page: () => const PostInsightScreen()),
   ];
 
   // Recruiter Navigation Helper Methods
@@ -55,4 +67,8 @@ class RecruiterRoutes {
   static void goToPrivacyPolicy() => Get.toNamed(privacyPolicy);
   static void goToTermsOfServices() => Get.toNamed(termsOfServices);
   static void goToJobDetails() => Get.toNamed(jobDetails);
+  static void goToViewJobPost() => Get.toNamed(viewJobPost);
+  static void goToEditJobPost() => Get.toNamed(editJobPost);
+  static void goToJobPost() => Get.toNamed(jobPost);
+  static void goToPostInsight() => Get.toNamed(postInsight);
 }

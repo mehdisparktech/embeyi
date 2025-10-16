@@ -10,4 +10,6 @@ class AppIcons {
   static const String person2 = "$baseurl/person2.svg";
   static const String home2 = "$baseurl/home2.svg";
   static const String history2 = "$baseurl/history2.svg";
+  static const String postInsight = "$baseurl/insight.svg";
+  static const String postInsight2 = "$baseurl/insight2.svg";
 }

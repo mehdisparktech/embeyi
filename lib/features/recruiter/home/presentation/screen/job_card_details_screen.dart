@@ -1,3 +1,4 @@
+import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
@@ -42,11 +43,7 @@ class JobCardDetailsScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       elevation: 0,
       leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back,
-          color: AppColors.black,
-          size: 24.sp,
-        ),
+        icon: Icon(Icons.arrow_back, color: AppColors.black, size: 24.sp),
         onPressed: () => Get.back(),
       ),
       title: Text(
@@ -72,7 +69,9 @@ class JobCardDetailsScreen extends StatelessWidget {
         thumbnailImage: AppImages.jobPost,
         isSaved: controller.isSaved.value,
         onSave: controller.toggleSave,
-        onViewPost: controller.viewPost,
+        onViewPost: () {
+          RecruiterRoutes.goToViewJobPost();
+        },
         onRePost: controller.rePost,
         onClosePost: controller.closePost,
       ),
