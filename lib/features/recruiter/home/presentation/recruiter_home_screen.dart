@@ -200,12 +200,17 @@ class RecruiterHomeScreen extends StatelessWidget {
             ),
             Row(
               children: [
-                Text(
-                  'See All',
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.primaryColor,
+                GestureDetector(
+                  onTap: () {
+                    RecruiterRoutes.goToAllJobPost();
+                  },
+                  child: Text(
+                    'See All',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.primaryColor,
+                    ),
                   ),
                 ),
                 4.width,
@@ -241,7 +246,7 @@ class RecruiterHomeScreen extends StatelessWidget {
             deadline: job['deadline']!,
             thumbnailImage: job['thumbnail']!,
             onTap: () {
-              RecruiterRoutes.goToJobDetails();
+              RecruiterRoutes.goToJobCardDetails();
             },
           );
         },

@@ -1,3 +1,4 @@
+import 'package:embeyi/features/recruiter/home/presentation/controller/all_job_post_controller.dart';
 import 'package:embeyi/features/recruiter/home/presentation/controller/home_controller.dart';
 import 'package:embeyi/features/recruiter/message/presentation/controller/chat_controller.dart';
 import 'package:embeyi/features/recruiter/message/presentation/controller/message_controller.dart';
@@ -20,5 +21,6 @@ class RecruiterDependencyInjection extends Bindings {
     Get.lazyPut(() => RecruiterSettingController(), fenix: true);
     Get.lazyPut(() => RecruiterPrivacyPolicyController(), fenix: true);
     Get.lazyPut(() => RecruiterTermsOfServicesController(), fenix: true);
+    Get.lazyPut(() => AllJobPostController(), fenix: true);
   }
 }

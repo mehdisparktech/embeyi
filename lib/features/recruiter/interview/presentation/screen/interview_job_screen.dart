@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../controller/interview_job_controller.dart';
-import '../widgets/date_selector.dart';
-import '../widgets/interview_candidate_card.dart';
+import '../../../home/presentation/widgets/date_selector.dart';
+import '../../../home/presentation/widgets/interview_candidate_card.dart';
 
 class InterviewJobScreen extends StatelessWidget {
   const InterviewJobScreen({super.key});

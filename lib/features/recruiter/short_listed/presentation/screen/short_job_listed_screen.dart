@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../controller/short_job_listed_controller.dart';
-import '../widgets/shortlisted_candidate_card.dart';
+import '../../../home/presentation/widgets/shortlisted_candidate_card.dart';
 
 class ShortJobListedScreen extends StatelessWidget {
   const ShortJobListedScreen({super.key});

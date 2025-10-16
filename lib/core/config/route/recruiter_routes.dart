@@ -1,3 +1,4 @@
+import 'package:embeyi/features/recruiter/home/presentation/screen/all_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/home/presentation/screen/job_card_details_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/create_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/edit_job_post_screen.dart';
@@ -34,7 +35,6 @@ class RecruiterRoutes {
   static const String termsOfServices =
       "/recruiter_terms_of_services_screen.dart";
   static const String setting = "/recruiter_setting_screen.dart";
-  static const String jobDetails = "/recruiter_job_details_screen.dart";
   static const String viewJobPost = "/view_job_post_screen.dart";
   static const String editJobPost = "/edit_job_post_screen.dart";
   static const String jobPost = "/job_post_screen.dart";
@@ -53,6 +53,7 @@ class RecruiterRoutes {
   static const String helpAndSupport = "/help_and_support_screen.dart";
   static const String createJobPost = "/create_job_post_screen.dart";
   static const String jobCardDetails = "/job_card_details_screen.dart";
+  static const String allJobPost = "/all_job_post_screen.dart";
   // Recruiter Routes List
   static List<GetPage> routes = [
     GetPage(name: home, page: () => RecruiterHomeScreen()),
@@ -85,6 +86,7 @@ class RecruiterRoutes {
     GetPage(name: paymentHistory, page: () => const PaymentHistoryScreen()),
     GetPage(name: platformReview, page: () => const PlatformReviewScreen()),
     GetPage(name: createJobPost, page: () => const CreateJobPostScreen()),
+    GetPage(name: allJobPost, page: () => const AllJobPostScreen()),
   ];
 
   // Recruiter Navigation Helper Methods
@@ -95,7 +97,6 @@ class RecruiterRoutes {
   static void goToSettings() => Get.toNamed(setting);
   static void goToPrivacyPolicy() => Get.toNamed(privacyPolicy);
   static void goToTermsOfServices() => Get.toNamed(termsOfServices);
-  static void goToJobDetails() => Get.toNamed(jobDetails);
   static void goToViewJobPost() => Get.toNamed(viewJobPost);
   static void goToEditJobPost() => Get.toNamed(editJobPost);
   static void goToJobPost() => Get.toNamed(jobPost);
@@ -109,4 +110,5 @@ class RecruiterRoutes {
   static void goToPlatformReview() => Get.toNamed(platformReview);
   static void goToCreateJobPost() => Get.toNamed(createJobPost);
   static void goToJobCardDetails() => Get.toNamed(jobCardDetails);
+  static void goToAllJobPost() => Get.toNamed(allJobPost);
 }
