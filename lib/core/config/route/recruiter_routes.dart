@@ -3,6 +3,13 @@ import 'package:embeyi/features/recruiter/job_post/presentation/screen/edit_job_
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/job_post_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/view_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/post_insight/presentation/screen/post_insight_screen.dart';
+import 'package:embeyi/features/recruiter/profile/presentation/screen/career_spotlight_screen.dart';
+import 'package:embeyi/features/recruiter/profile/presentation/screen/company_profile_screen.dart';
+import 'package:embeyi/features/recruiter/profile/presentation/screen/job_history_screen.dart';
+import 'package:embeyi/features/recruiter/profile/presentation/screen/my_subscription_screen.dart';
+import 'package:embeyi/features/recruiter/profile/presentation/screen/payment_history_screen.dart';
+import 'package:embeyi/features/recruiter/profile/presentation/screen/platform_review_screen.dart';
+import 'package:embeyi/features/recruiter/profile/presentation/screen/subscription_pack_screen.dart';
 import 'package:get/get.dart';
 
 // Recruiter imports
@@ -31,7 +38,18 @@ class RecruiterRoutes {
   static const String editJobPost = "/edit_job_post_screen.dart";
   static const String jobPost = "/job_post_screen.dart";
   static const String postInsight = "/post_insight_screen.dart";
-
+  static const String companyProfile = "/company_profile_screen.dart";
+  static const String subscriptionPack = "/subscription_pack_screen.dart";
+  static const String mySubscription = "/my_subscription_screen.dart";
+  static const String careerSpotlight = "/career_spotlight_screen.dart";
+  static const String jobHistory = "/job_history_screen.dart";
+  static const String paymentHistory = "/payment_history_screen.dart";
+  static const String platformReview = "/platform_review_screen.dart";
+  static const String settings = "/settings_screen.dart";
+  static const String logout = "/logout_screen.dart";
+  static const String deleteAccount = "/delete_account_screen.dart";
+  static const String changePassword = "/change_password_screen.dart";
+  static const String helpAndSupport = "/help_and_support_screen.dart";
   // Recruiter Routes List
   static List<GetPage> routes = [
     GetPage(name: home, page: () => RecruiterHomeScreen()),
@@ -56,6 +74,13 @@ class RecruiterRoutes {
     GetPage(name: editJobPost, page: () => const EditJobPostScreen()),
     GetPage(name: jobPost, page: () => const JobPostScreen()),
     GetPage(name: postInsight, page: () => const PostInsightScreen()),
+    GetPage(name: companyProfile, page: () => const CompanyProfileScreen()),
+    GetPage(name: subscriptionPack, page: () => const SubscriptionPackScreen()),
+    GetPage(name: mySubscription, page: () => const MySubscriptionScreen()),
+    GetPage(name: careerSpotlight, page: () => const CareerSpotlightScreen()),
+    GetPage(name: jobHistory, page: () => const JobHistoryScreen()),
+    GetPage(name: paymentHistory, page: () => const PaymentHistoryScreen()),
+    GetPage(name: platformReview, page: () => const PlatformReviewScreen()),
   ];
 
   // Recruiter Navigation Helper Methods
@@ -71,4 +96,11 @@ class RecruiterRoutes {
   static void goToEditJobPost() => Get.toNamed(editJobPost);
   static void goToJobPost() => Get.toNamed(jobPost);
   static void goToPostInsight() => Get.toNamed(postInsight);
+  static void goToCompanyProfile() => Get.toNamed(companyProfile);
+  static void goToSubscriptionPack() => Get.toNamed(subscriptionPack);
+  static void goToMySubscription() => Get.toNamed(mySubscription);
+  static void goToCareerSpotlight() => Get.toNamed(careerSpotlight);
+  static void goToJobHistory() => Get.toNamed(jobHistory);
+  static void goToPaymentHistory() => Get.toNamed(paymentHistory);
+  static void goToPlatformReview() => Get.toNamed(platformReview);
 }

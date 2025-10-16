@@ -1,14 +1,11 @@
 import 'package:embeyi/core/config/route/app_routes.dart';
+import 'package:embeyi/features/recruiter/setting/presentation/controller/setting_controller.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/config/route/recruiter_routes.dart';
-import '../../../../../core/utils/extensions/extension.dart';
+import '../../../../../core/config/route/job_seeker_routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../core/component/bottom_nav_bar/common_bottom_bar.dart';
 import '../../../../../core/component/pop_up/common_pop_menu.dart';
 import '../../../../../core/component/text/common_text.dart';
-import '../controller/setting_controller.dart';
-import '../../../../../core/utils/constants/app_colors.dart';
 import '../../../../../core/utils/constants/app_string.dart';
 import '../widgets/setting_item.dart';
 
@@ -32,76 +29,52 @@ class RecruiterSettingScreen extends StatelessWidget {
       body: GetBuilder<RecruiterSettingController>(
         builder: (controller) {
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
             child: Column(
+              spacing: 16.h,
               children: [
-                70.height,
-
                 /// Change password Item here
-                InkWell(
-                  onTap: () => Get.toNamed(AppRoutes.changePassword),
-                  child: const SettingItem(
-                    title: AppString.changePassword,
-                    iconDate: Icons.lock_outline,
-                  ),
-                ),
-
-                /// Terms of Service Item here
-                InkWell(
-                  onTap: () => Get.toNamed(RecruiterRoutes.termsOfServices),
-                  child: const SettingItem(
-                    title: AppString.termsOfServices,
-                    iconDate: Icons.gavel,
-                  ),
+                SettingItem(
+                  title: AppString.changePassword,
+                  iconDate: Icons.lock_outline,
+                  onTap: () => AppRoutes.goToChangePassword(),
                 ),
 
                 /// Privacy Policy Item here
-                InkWell(
-                  onTap: () => Get.toNamed(RecruiterRoutes.privacyPolicy),
-                  child: const SettingItem(
-                    title: AppString.privacyPolicy,
-                    iconDate: Icons.network_wifi_1_bar,
-                  ),
+                SettingItem(
+                  title: AppString.privacyPolicy,
+                  iconDate: Icons.network_wifi_1_bar,
+                  onTap: () => JobSeekerRoutes.goToPrivacyPolicy(),
+                ),
+
+                /// Terms of Service Item here
+                SettingItem(
+                  title: AppString.termsOfServices,
+                  iconDate: Icons.gavel,
+                  onTap: () => JobSeekerRoutes.goToTermsOfServices(),
+                ),
+
+                /// Privacy Policy Item here
+                SettingItem(
+                  title: AppString.helpAndSupport,
+                  iconDate: Icons.help_outline,
+                  onTap: () => JobSeekerRoutes.goToHelpAndSupport(),
                 ),
 
                 /// Delete Account Item here
-                InkWell(
+                SettingItem(
+                  title: AppString.deleteAccount,
+                  iconDate: Icons.delete_outline_rounded,
                   onTap: () => deletePopUp(
                     controller: controller.passwordController,
                     onTap: controller.deleteAccountRepo,
                     isLoading: controller.isLoading,
-                  ),
-                  child: Container(
-                    height: 52.h,
-                    padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    decoration: BoxDecoration(
-                      color: AppColors.blueLight,
-                      borderRadius: BorderRadius.circular(4.r),
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.delete_outline_rounded,
-                          color: AppColors.secondaryButton,
-                        ),
-                        CommonText(
-                          text: AppString.deleteAccount,
-                          color: AppColors.secondaryButton,
-                          left: 12.w,
-                        ),
-                      ],
-                    ),
                   ),
                 ),
               ],
             ),
           );
         },
-      ),
-
-      /// Bottom Navigation Bar Section starts here
-      bottomNavigationBar: SafeArea(
-        child: const CommonBottomNavBar(currentIndex: 0),
       ),
     );
   }
