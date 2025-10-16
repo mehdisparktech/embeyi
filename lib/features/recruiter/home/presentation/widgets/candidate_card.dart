@@ -1,3 +1,4 @@
+import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
@@ -49,12 +50,13 @@ class CandidateCard extends StatelessWidget {
               width: 56.w,
               height: 56.h,
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(profileImage),
-                  fit: BoxFit.cover,
-                ),
+                // shape: BoxShape.circle,
+                // image: DecorationImage(
+                //   image: AssetImage(profileImage),
+                //   fit: BoxFit.cover,
+                // ),
               ),
+              child: CommonImage(imageSrc: profileImage),
             ),
             12.width,
             // Candidate Details

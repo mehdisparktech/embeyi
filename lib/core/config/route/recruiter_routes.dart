@@ -1,9 +1,10 @@
+import 'package:embeyi/features/recruiter/job_post/presentation/screen/edit_job_post_screen.dart';
+import 'package:embeyi/features/recruiter/resume/presentation/screen/resume_screen.dart';
 import 'package:embeyi/features/recruiter/home/presentation/screen/active_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/home/presentation/screen/all_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/home/presentation/screen/job_card_details_screen.dart';
 import 'package:embeyi/features/recruiter/interview/presentation/screen/interview_job_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/create_job_post_screen.dart';
-import 'package:embeyi/features/recruiter/job_post/presentation/screen/edit_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/job_post_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/view_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/pending_request/presentation/screen/pending_job_request_screen.dart';
@@ -62,6 +63,7 @@ class RecruiterRoutes {
   static const String pendingJobRequest = "/pending_job_request_screen.dart";
   static const String shortJobListed = "/short_job_listed_screen.dart";
   static const String interviewJob = "/interview_job_screen.dart";
+  static const String resume = "/resume_screen.dart";
   // Recruiter Routes List
   static List<GetPage> routes = [
     GetPage(name: home, page: () => RecruiterHomeScreen()),
@@ -83,7 +85,6 @@ class RecruiterRoutes {
     GetPage(name: setting, page: () => const RecruiterSettingScreen()),
     GetPage(name: jobCardDetails, page: () => const JobCardDetailsScreen()),
     GetPage(name: viewJobPost, page: () => const ViewJobPostScreen()),
-    GetPage(name: editJobPost, page: () => const EditJobPostScreen()),
     GetPage(name: jobPost, page: () => const JobPostScreen()),
     GetPage(name: postInsight, page: () => const PostInsightScreen()),
     GetPage(name: companyProfile, page: () => const CompanyProfileScreen()),
@@ -93,7 +94,10 @@ class RecruiterRoutes {
     GetPage(name: jobHistory, page: () => const JobHistoryScreen()),
     GetPage(name: paymentHistory, page: () => const PaymentHistoryScreen()),
     GetPage(name: platformReview, page: () => const PlatformReviewScreen()),
-    GetPage(name: createJobPost, page: () => const CreateJobPostScreen()),
+    GetPage(
+      name: createJobPost,
+      page: () => const RecruiterCreateJobPostScreen(),
+    ),
     GetPage(name: allJobPost, page: () => const AllJobPostScreen()),
     GetPage(name: activeJobPost, page: () => const ActiveJobPostScreen()),
     GetPage(
@@ -102,6 +106,9 @@ class RecruiterRoutes {
     ),
     GetPage(name: shortJobListed, page: () => const ShortJobListedScreen()),
     GetPage(name: interviewJob, page: () => const InterviewJobScreen()),
+    GetPage(name: resume, page: () => const ResumeScreen()),
+    GetPage(name: editProfile, page: () => const RecruiterEditProfileScreen()),
+    GetPage(name: editJobPost, page: () => const RecruiterEditJobPostScreen()),
   ];
 
   // Recruiter Navigation Helper Methods
@@ -130,4 +137,5 @@ class RecruiterRoutes {
   static void goToPendingJobRequest() => Get.toNamed(pendingJobRequest);
   static void goToShortJobListed() => Get.toNamed(shortJobListed);
   static void goToInterviewJob() => Get.toNamed(interviewJob);
+  static void goToResume() => Get.toNamed(resume);
 }

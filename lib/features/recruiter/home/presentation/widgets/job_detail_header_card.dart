@@ -1,3 +1,5 @@
+import 'package:embeyi/core/component/image/common_image.dart';
+import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
@@ -52,8 +54,8 @@ class JobDetailHeaderCard extends StatelessWidget {
             children: [
               // Thumbnail
               Container(
-                width: 56.w,
-                height: 56.h,
+                width: 84.w,
+                height: 60.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.r),
                   image: DecorationImage(
@@ -159,24 +161,22 @@ class JobDetailHeaderCard extends StatelessWidget {
               Row(
                 children: [
                   SizedBox(
-                    width: 60.w,
+                    width: 70.w,
                     height: 24.h,
                     child: Stack(
                       children: List.generate(
-                        3,
+                        4,
                         (index) => Positioned(
-                          left: index * 16.w,
+                          left: index * 14.w,
                           child: Container(
                             width: 24.w,
                             height: 24.h,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.grey[300],
-                              border: Border.all(
-                                color: Colors.white,
-                                width: 2,
-                              ),
+                              border: Border.all(color: Colors.white, width: 2),
                             ),
+                            child: CommonImage(imageSrc: AppImages.profile),
                           ),
                         ),
                       ),
@@ -188,7 +188,7 @@ class JobDetailHeaderCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 11.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColors.secondaryText,
+                      color: AppColors.primaryText,
                     ),
                   ),
                 ],
@@ -219,7 +219,7 @@ class JobDetailHeaderCard extends StatelessWidget {
                 child: _buildActionButton(
                   label: 'View Post',
                   icon: Icons.remove_red_eye_outlined,
-                  color: AppColors.secondaryButton,
+                  color: AppColors.success,
                   onTap: onViewPost,
                 ),
               ),
@@ -260,26 +260,19 @@ class JobDetailHeaderCard extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 8.h),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(
-            color: color,
-            width: 1.5,
-          ),
+          borderRadius: BorderRadius.circular(4.r),
+          border: Border.all(color: color, width: 1),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: 16.sp,
-              color: color,
-            ),
+            Icon(icon, size: 16.sp, color: color),
             4.width,
             Text(
               label,
               style: TextStyle(
-                fontSize: 11.sp,
-                fontWeight: FontWeight.w600,
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
                 color: color,
               ),
             ),

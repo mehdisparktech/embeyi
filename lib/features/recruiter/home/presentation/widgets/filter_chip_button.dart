@@ -22,9 +22,11 @@ class FilterChipButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.secondaryPrimary : Colors.white,
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius: BorderRadius.circular(4.r),
           border: Border.all(
-            color: isSelected ? AppColors.secondaryPrimary : AppColors.borderColor,
+            color: isSelected
+                ? AppColors.secondaryPrimary
+                : AppColors.borderColor,
             width: 1,
           ),
         ),

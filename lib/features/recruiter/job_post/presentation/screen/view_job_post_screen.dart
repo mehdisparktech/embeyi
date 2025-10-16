@@ -2,6 +2,7 @@ import 'package:embeyi/core/component/appbar/common_appbar.dart';
 import 'package:embeyi/core/component/button/common_button.dart';
 import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/component/text/common_text.dart';
+import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
@@ -26,11 +27,16 @@ class ViewJobPostScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CommonImage(
-                      imageSrc: AppImages.jobDetails,
-                      fill: BoxFit.cover,
-                      height: 220.h,
+                    Container(
                       width: double.infinity,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: CommonImage(
+                        imageSrc: AppImages.jobDetails,
+                        fill: BoxFit.fill,
+                      ),
                     ),
 
                     // Hero Card - Green Hiring Banner
@@ -178,7 +184,7 @@ class ViewJobPostScreen extends StatelessWidget {
                 titleText: 'Edit Post',
                 buttonRadius: 8,
                 onTap: () {
-                  // Handle apply action
+                  RecruiterRoutes.goToEditJobPost();
                 },
               ),
             ),

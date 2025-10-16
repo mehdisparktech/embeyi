@@ -1,4 +1,6 @@
+import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
@@ -127,13 +129,13 @@ class RecruiterJobCard extends StatelessWidget {
                   children: [
                     // Overlapping avatars
                     SizedBox(
-                      width: 60.w,
+                      width: 70.w,
                       height: 24.h,
                       child: Stack(
                         children: List.generate(
-                          3,
+                          4,
                           (index) => Positioned(
-                            left: index * 16.w,
+                            left: index * 14.w,
                             child: Container(
                               width: 24.w,
                               height: 24.h,
@@ -144,6 +146,11 @@ class RecruiterJobCard extends StatelessWidget {
                                   color: Colors.white,
                                   width: 2,
                                 ),
+                              ),
+                              child: CommonImage(
+                                imageSrc: AppImages.profile,
+                                width: 24.w,
+                                height: 24.h,
                               ),
                             ),
                           ),

@@ -1,3 +1,4 @@
+import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:get/get.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 
@@ -6,7 +7,8 @@ class JobCardDetailsController extends GetxController {
   final RxString selectedFilter = 'Candidate (150)'.obs;
   final RxBool isSaved = false.obs;
   final RxList<Map<String, dynamic>> candidates = <Map<String, dynamic>>[].obs;
-  final RxList<Map<String, dynamic>> filteredCandidates = <Map<String, dynamic>>[].obs;
+  final RxList<Map<String, dynamic>> filteredCandidates =
+      <Map<String, dynamic>>[].obs;
 
   // Job details
   final jobTitle = 'Sr. UI/UX Designer'.obs;
@@ -125,5 +127,6 @@ class JobCardDetailsController extends GetxController {
   void viewCandidateProfile(String candidateName) {
     // Handle candidate profile view
     Get.snackbar('Candidate Profile', 'Opening $candidateName profile...');
+    Get.toNamed(RecruiterRoutes.resume);
   }
 }
