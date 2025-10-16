@@ -3,8 +3,8 @@ import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../controller/pending_job_request_controller.dart';
-import '../widgets/candidate_card.dart';
+import '../../../home/presentation/controller/pending_job_request_controller.dart';
+import '../../../home/presentation/widgets/candidate_card.dart';
 
 class PendingJobRequestScreen extends StatelessWidget {
   const PendingJobRequestScreen({super.key});

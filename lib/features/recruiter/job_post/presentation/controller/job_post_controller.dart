@@ -1,3 +1,4 @@
+import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:get/get.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 
@@ -84,10 +85,14 @@ class RecruiterJobPostController extends GetxController {
   }
 
   void createNewJobPost() {
-    Get.snackbar('Create Job', 'Opening job creation form...');
+    RecruiterRoutes.goToCreateJobPost();
   }
 
   void viewJobDetails(String jobTitle) {
-    Get.snackbar('Job Details', 'Opening $jobTitle details...');
+    RecruiterRoutes.goToJobCardDetails();
+  }
+
+  void editJobPost(String jobTitle) {
+    RecruiterRoutes.goToEditJobPost();
   }
 }

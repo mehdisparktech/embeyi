@@ -1,4 +1,5 @@
 import 'package:embeyi/core/component/button/common_button.dart';
+import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -68,7 +69,9 @@ class ActiveJobPostScreen extends StatelessWidget {
             candidateCount: job['candidateCount'] as int,
             deadline: job['deadline']!,
             thumbnailImage: job['thumbnail']!,
-            onTap: () => controller.viewJobDetails(job['title']!),
+            onTap: () {
+              RecruiterRoutes.goToJobCardDetails();
+            },
           );
         },
       ),

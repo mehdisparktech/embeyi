@@ -6,9 +6,9 @@ import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../controller/home_controller.dart';
-import '../widgets/stat_card.dart';
-import '../widgets/recruiter_job_card.dart';
+import 'controller/home_controller.dart';
+import 'widgets/stat_card.dart';
+import 'widgets/recruiter_job_card.dart';
 
 class RecruiterHomeScreen extends StatelessWidget {
   RecruiterHomeScreen({super.key});

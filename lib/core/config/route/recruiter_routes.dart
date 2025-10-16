@@ -1,6 +1,7 @@
 import 'package:embeyi/features/recruiter/home/presentation/screen/job_card_details_screen.dart';
+import 'package:embeyi/features/recruiter/job_post/presentation/screen/create_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/edit_job_post_screen.dart';
-import 'package:embeyi/features/recruiter/job_post/presentation/screen/job_post_screen.dart';
+import 'package:embeyi/features/recruiter/job_post/presentation/job_post_screen.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/view_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/post_insight/presentation/screen/post_insight_screen.dart';
 import 'package:embeyi/features/recruiter/profile/presentation/screen/career_spotlight_screen.dart';
@@ -13,7 +14,7 @@ import 'package:embeyi/features/recruiter/profile/presentation/screen/subscripti
 import 'package:get/get.dart';
 
 // Recruiter imports
-import '../../../features/recruiter/home/presentation/screen/recruiter_home_screen.dart';
+import '../../../features/recruiter/home/presentation/recruiter_home_screen.dart';
 import '../../../features/recruiter/message/presentation/screen/recruiter_chat_screen.dart';
 import '../../../features/recruiter/notifications/presentation/screen/recruiter_notifications_screen.dart';
 import '../../../features/recruiter/profile/presentation/screen/recruiter_profile_screen.dart';
@@ -50,6 +51,8 @@ class RecruiterRoutes {
   static const String deleteAccount = "/delete_account_screen.dart";
   static const String changePassword = "/change_password_screen.dart";
   static const String helpAndSupport = "/help_and_support_screen.dart";
+  static const String createJobPost = "/create_job_post_screen.dart";
+  static const String jobCardDetails = "/job_card_details_screen.dart";
   // Recruiter Routes List
   static List<GetPage> routes = [
     GetPage(name: home, page: () => RecruiterHomeScreen()),
@@ -69,7 +72,7 @@ class RecruiterRoutes {
       page: () => const RecruiterTermsOfServicesScreen(),
     ),
     GetPage(name: setting, page: () => const RecruiterSettingScreen()),
-    GetPage(name: jobDetails, page: () => const JobCardDetailsScreen()),
+    GetPage(name: jobCardDetails, page: () => const JobCardDetailsScreen()),
     GetPage(name: viewJobPost, page: () => const ViewJobPostScreen()),
     GetPage(name: editJobPost, page: () => const EditJobPostScreen()),
     GetPage(name: jobPost, page: () => const JobPostScreen()),
@@ -81,6 +84,7 @@ class RecruiterRoutes {
     GetPage(name: jobHistory, page: () => const JobHistoryScreen()),
     GetPage(name: paymentHistory, page: () => const PaymentHistoryScreen()),
     GetPage(name: platformReview, page: () => const PlatformReviewScreen()),
+    GetPage(name: createJobPost, page: () => const CreateJobPostScreen()),
   ];
 
   // Recruiter Navigation Helper Methods
@@ -103,4 +107,6 @@ class RecruiterRoutes {
   static void goToJobHistory() => Get.toNamed(jobHistory);
   static void goToPaymentHistory() => Get.toNamed(paymentHistory);
   static void goToPlatformReview() => Get.toNamed(platformReview);
+  static void goToCreateJobPost() => Get.toNamed(createJobPost);
+  static void goToJobCardDetails() => Get.toNamed(jobCardDetails);
 }

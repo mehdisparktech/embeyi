@@ -1,7 +1,7 @@
 import 'package:embeyi/features/common/onboarding_screen/select_roule_screen.dart';
 import 'package:embeyi/features/recruiter/home/presentation/screen/active_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/home/presentation/screen/interview_job_screen.dart';
-import 'package:embeyi/features/recruiter/home/presentation/screen/pending_job_request_screen.dart';
+import 'package:embeyi/features/recruiter/pending_request/presentation/screen/pending_job_request_screen.dart';
 import 'package:embeyi/features/recruiter/home/presentation/screen/short_job_listed_screen.dart';
 import 'package:get/get.dart';
 

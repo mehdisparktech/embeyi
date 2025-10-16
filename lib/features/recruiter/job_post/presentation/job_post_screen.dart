@@ -6,7 +6,7 @@ import 'package:embeyi/features/recruiter/home/presentation/widgets/recruiter_jo
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../controller/job_post_controller.dart';
+import 'controller/job_post_controller.dart';
 
 class JobPostScreen extends StatelessWidget {
   const JobPostScreen({super.key});
