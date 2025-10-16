@@ -1,0 +1,291 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/extensions/extension.dart';
+
+class JobDetailHeaderCard extends StatelessWidget {
+  final String jobTitle;
+  final String location;
+  final bool isRemote;
+  final int candidateCount;
+  final String deadline;
+  final String thumbnailImage;
+  final VoidCallback onViewPost;
+  final VoidCallback onRePost;
+  final VoidCallback onClosePost;
+  final VoidCallback onSave;
+  final bool isSaved;
+
+  const JobDetailHeaderCard({
+    super.key,
+    required this.jobTitle,
+    required this.location,
+    required this.isRemote,
+    required this.candidateCount,
+    required this.deadline,
+    required this.thumbnailImage,
+    required this.onViewPost,
+    required this.onRePost,
+    required this.onClosePost,
+    required this.onSave,
+    this.isSaved = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(12.r),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              // Thumbnail
+              Container(
+                width: 56.w,
+                height: 56.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.r),
+                  image: DecorationImage(
+                    image: AssetImage(thumbnailImage),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              12.width,
+              // Job Info
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Job Title
+                    Text(
+                      jobTitle,
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.black,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    4.height,
+                    // Location
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.location_on,
+                          size: 14.sp,
+                          color: AppColors.secondaryButton,
+                        ),
+                        4.width,
+                        Expanded(
+                          child: Text(
+                            location,
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.secondaryText,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    4.height,
+                    // Save and Remote
+                    Row(
+                      children: [
+                        Icon(
+                          isSaved ? Icons.star : Icons.star_border,
+                          size: 14.sp,
+                          color: AppColors.secondaryPrimary,
+                        ),
+                        4.width,
+                        GestureDetector(
+                          onTap: onSave,
+                          child: Text(
+                            'Save',
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.secondaryPrimary,
+                            ),
+                          ),
+                        ),
+                        16.width,
+                        if (isRemote)
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 8.w,
+                              vertical: 2.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.secondaryButton.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(4.r),
+                            ),
+                            child: Text(
+                              'Remote',
+                              style: TextStyle(
+                                fontSize: 11.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.secondaryButton,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          12.height,
+          // Bottom Info
+          Row(
+            children: [
+              // Candidate Count with Avatars
+              Row(
+                children: [
+                  SizedBox(
+                    width: 60.w,
+                    height: 24.h,
+                    child: Stack(
+                      children: List.generate(
+                        3,
+                        (index) => Positioned(
+                          left: index * 16.w,
+                          child: Container(
+                            width: 24.w,
+                            height: 24.h,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.grey[300],
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 2,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  4.width,
+                  Text(
+                    '$candidateCount Candidate Applied',
+                    style: TextStyle(
+                      fontSize: 11.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.secondaryText,
+                    ),
+                  ),
+                ],
+              ),
+              const Spacer(),
+              // Deadline
+              Icon(
+                Icons.calendar_today,
+                size: 12.sp,
+                color: AppColors.secondaryPrimary,
+              ),
+              4.width,
+              Text(
+                deadline,
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.secondaryPrimary,
+                ),
+              ),
+            ],
+          ),
+          12.height,
+          // Action Buttons
+          Row(
+            children: [
+              Expanded(
+                child: _buildActionButton(
+                  label: 'View Post',
+                  icon: Icons.remove_red_eye_outlined,
+                  color: AppColors.secondaryButton,
+                  onTap: onViewPost,
+                ),
+              ),
+              8.width,
+              Expanded(
+                child: _buildActionButton(
+                  label: 'Re-Post',
+                  icon: Icons.refresh,
+                  color: AppColors.secondaryPrimary,
+                  onTap: onRePost,
+                ),
+              ),
+              8.width,
+              Expanded(
+                child: _buildActionButton(
+                  label: 'Close Post',
+                  icon: Icons.close,
+                  color: AppColors.error,
+                  onTap: onClosePost,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActionButton({
+    required String label,
+    required IconData icon,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 8.h),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(
+            color: color,
+            width: 1.5,
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 16.sp,
+              color: color,
+            ),
+            4.width,
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 11.sp,
+                fontWeight: FontWeight.w600,
+                color: color,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

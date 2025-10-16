@@ -1,3 +1,4 @@
+import 'package:embeyi/features/recruiter/home/presentation/screen/job_card_details_screen.dart';
 import 'package:get/get.dart';
 
 // Recruiter imports
@@ -18,19 +19,31 @@ class RecruiterRoutes {
   static const String profile = "/recruiter_profile_screen.dart";
   static const String editProfile = "/recruiter_edit_profile_screen.dart";
   static const String privacyPolicy = "/recruiter_privacy_policy_screen.dart";
-  static const String termsOfServices = "/recruiter_terms_of_services_screen.dart";
+  static const String termsOfServices =
+      "/recruiter_terms_of_services_screen.dart";
   static const String setting = "/recruiter_setting_screen.dart";
+  static const String jobDetails = "/recruiter_job_details_screen.dart";
 
   // Recruiter Routes List
   static List<GetPage> routes = [
     GetPage(name: home, page: () => RecruiterHomeScreen()),
-    GetPage(name: notifications, page: () => const RecruiterNotificationScreen()),
+    GetPage(
+      name: notifications,
+      page: () => const RecruiterNotificationScreen(),
+    ),
     GetPage(name: chat, page: () => const RecruiterChatListScreen()),
     GetPage(name: profile, page: () => const RecruiterProfileScreen()),
     GetPage(name: editProfile, page: () => const RecruiterEditProfileScreen()),
-    GetPage(name: privacyPolicy, page: () => const RecruiterPrivacyPolicyScreen()),
-    GetPage(name: termsOfServices, page: () => const RecruiterTermsOfServicesScreen()),
+    GetPage(
+      name: privacyPolicy,
+      page: () => const RecruiterPrivacyPolicyScreen(),
+    ),
+    GetPage(
+      name: termsOfServices,
+      page: () => const RecruiterTermsOfServicesScreen(),
+    ),
     GetPage(name: setting, page: () => const RecruiterSettingScreen()),
+    GetPage(name: jobDetails, page: () => const JobCardDetailsScreen()),
   ];
 
   // Recruiter Navigation Helper Methods
@@ -41,4 +54,5 @@ class RecruiterRoutes {
   static void goToSettings() => Get.toNamed(setting);
   static void goToPrivacyPolicy() => Get.toNamed(privacyPolicy);
   static void goToTermsOfServices() => Get.toNamed(termsOfServices);
+  static void goToJobDetails() => Get.toNamed(jobDetails);
 }
