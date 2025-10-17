@@ -1,6 +1,9 @@
+import 'package:embeyi/core/component/card/job_card.dart';
 import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/component/text/common_text.dart';
+import 'package:embeyi/core/config/route/job_seeker_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -312,14 +315,29 @@ class CompanyJobsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
-      child: ListView.separated(
+      child: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: jobs.length,
-        separatorBuilder: (context, index) => 12.height,
+        itemCount: 8,
         itemBuilder: (context, index) {
-          final job = jobs[index];
-          return CompanyJobCard(job: job);
+          return Padding(
+            padding: EdgeInsets.only(bottom: 16.h),
+            child: JobCard(
+              companyName: 'UX-Pilot',
+              location: 'California, United State.',
+              jobTitle: 'Sr. UI/UX Designer',
+              salaryRange: '\$7k - \$15k/month',
+              timePosted: '01 Dec 25',
+              isFullTime: true,
+              companyLogo: AppImages.jobPost,
+              onTap: () {
+                JobSeekerRoutes.goToJobDetails();
+              },
+              onFavoriteTap: () {
+                // Handle favorite tap
+              },
+            ),
+          );
         },
       ),
     );

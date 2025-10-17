@@ -26,4 +26,5 @@ class AppColors {
   static const Color error = Color(0xFFD9534F);
   static const Color warning = Color(0xFFFFC107);
   static const Color primary = Color(0xFF123499);
+  static const Color grey = Color(0xFF979797);
 }
