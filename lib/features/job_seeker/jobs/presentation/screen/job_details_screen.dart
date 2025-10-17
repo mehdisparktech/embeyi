@@ -1,6 +1,8 @@
 import 'package:embeyi/core/component/appbar/common_appbar.dart';
 import 'package:embeyi/core/component/button/common_button.dart';
 import 'package:embeyi/core/component/image/common_image.dart';
+import 'package:embeyi/core/component/pop_up/job_apply_popup.dart';
+import 'package:embeyi/core/component/pop_up/success_dialog.dart';
 import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/config/route/job_seeker_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
@@ -202,6 +204,28 @@ class JobDetailsScreen extends StatelessWidget {
                 buttonRadius: 8,
                 onTap: () {
                   // Handle apply action
+                  showDialog(
+                    context: context,
+                    builder: (context) => JobApplyPopup(
+                      jobTitle: 'Sr. UI/UX Designer',
+                      companyName: 'Design-Hill',
+                      companyLogo: AppImages.jobDetails,
+                      location: 'California, Connecticut',
+                      deadline: '31 Dec 25',
+                      isFullTime: true,
+                      isRemote: false,
+                      companyDescription:
+                          'We Are Google Partner And A Corp Certified Agency Focused On One Thing: Delivering Results.',
+                      onApply: () {
+                        SuccessDialog.showApplicationSuccess(
+                          message:
+                              'Your application has been Successful. We’ll keep you updated.',
+                          buttonText: 'Done',
+                          onBackToHome: () => Get.back(),
+                        );
+                      },
+                    ),
+                  );
                 },
               ),
             ),

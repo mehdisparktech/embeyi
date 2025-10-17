@@ -1,6 +1,8 @@
 import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/component/text/common_text.dart';
+import 'package:embeyi/core/config/route/job_seeker_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,24 +67,52 @@ class HomeHeader extends StatelessWidget {
             ],
           ),
         ),
-        IconButton(
-          onPressed: onMessageTap,
-          icon: Icon(
-            Icons.chat_bubble_outline,
-            size: 24.sp,
-            color: AppColors.primaryColor,
-          ),
+        _buildActionIcon(
+          AppIcons.chat,
+          hasNotification: false,
+          onTap: () {
+            JobSeekerRoutes.goToChat();
+          },
         ),
         8.width,
-        IconButton(
-          onPressed: onNotificationTap,
-          icon: Icon(
-            Icons.notifications_outlined,
-            size: 24.sp,
-            color: AppColors.primaryColor,
-          ),
+        _buildActionIcon(
+          AppIcons.notification,
+          hasNotification: true,
+          onTap: () {
+            JobSeekerRoutes.goToNotifications();
+          },
         ),
       ],
+    );
+  }
+
+  Widget _buildActionIcon(
+    String imageSrc, {
+    required bool hasNotification,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          CommonImage(imageSrc: imageSrc, size: 24.sp),
+          if (hasNotification)
+            Positioned(
+              top: 0,
+              right: 0,
+              child: Container(
+                width: 10.w,
+                height: 10.h,
+                decoration: BoxDecoration(
+                  color: AppColors.secondaryPrimary,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white, width: 2),
+                ),
+              ),
+            ),
+        ],
+      ),
     );
   }
 }

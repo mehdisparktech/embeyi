@@ -24,7 +24,7 @@ class WorkExperienceScreen extends StatelessWidget {
         title: CommonText(
           text: 'Work Experience',
           fontWeight: FontWeight.w600,
-          fontSize: 18.sp,
+          fontSize: 20.sp,
           color: AppColors.black,
         ),
       ),
@@ -124,6 +124,7 @@ class WorkExperienceScreen extends StatelessWidget {
                   },
                 ),
               ),
+              SizedBox(height: 20.h),
             ],
           ),
         ),

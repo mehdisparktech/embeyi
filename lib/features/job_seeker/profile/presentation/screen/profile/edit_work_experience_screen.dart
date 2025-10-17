@@ -25,7 +25,7 @@ class EditWorkExperienceScreen extends StatelessWidget {
         title: CommonText(
           text: 'Edit Work Experience',
           fontWeight: FontWeight.w600,
-          fontSize: 18.sp,
+          fontSize: 20.sp,
           color: AppColors.black,
         ),
       ),

@@ -24,7 +24,7 @@ class MyProfileScreen extends StatelessWidget {
         title: CommonText(
           text: 'My Profile',
           fontWeight: FontWeight.w600,
-          fontSize: 18.sp,
+          fontSize: 20.sp,
           color: AppColors.black,
         ),
       ),

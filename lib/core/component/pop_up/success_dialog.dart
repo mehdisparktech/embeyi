@@ -30,15 +30,11 @@ class SuccessDialog {
                 height: 80.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  gradient: const LinearGradient(
+                  gradient: LinearGradient(
                     begin: Alignment(-0.9, 0),
                     end: Alignment(1.0, 0),
-                    colors: [
-                      Color(0xFF083E4B), // #083E4B
-                      Color(0xFF074E5E), // #074E5E
-                      Color(0xFF0288A6), // #0288A6
-                    ],
-                    stops: [0.0, 0.4, 1.0],
+                    colors: [AppColors.primaryColor, AppColors.gradientColor2],
+                    stops: [0.0, 1.0],
                   ),
                 ),
                 child: Icon(
@@ -48,15 +44,23 @@ class SuccessDialog {
                 ),
               ),
               SizedBox(height: 24.h),
+              CommonText(
+                text: 'Congratulations!',
+                fontSize: 24.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColors.primary,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 16.h),
 
               // Success message
               CommonText(
                 text: message,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w600,
-                color: AppColors.black,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w400,
+                color: AppColors.secondaryText,
                 textAlign: TextAlign.center,
-                maxLines: 3,
+                maxLines: 2,
               ),
               SizedBox(height: 32.h),
 
@@ -73,10 +77,14 @@ class SuccessDialog {
   }
 
   /// Shows a success dialog specifically for application submission
-  static void showApplicationSuccess({VoidCallback? onBackToHome}) {
+  static void showApplicationSuccess({
+    required String message,
+    required String buttonText,
+    VoidCallback? onBackToHome,
+  }) {
     show(
-      message: 'Your application has been submitted',
-      buttonText: "Back to Home",
+      message: message,
+      buttonText: buttonText,
       onTap: onBackToHome ?? () => Get.back(),
     );
   }

@@ -25,7 +25,7 @@ class PersonalInfoScreen extends StatelessWidget {
         title: CommonText(
           text: 'Personal Info',
           fontWeight: FontWeight.w600,
-          fontSize: 18.sp,
+          fontSize: 20.sp,
           color: AppColors.black,
         ),
       ),

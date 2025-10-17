@@ -6,7 +6,15 @@ import '../text/common_text.dart';
 import '../text_field/common_text_field.dart';
 
 class FilterBottomSheet extends StatefulWidget {
-  const FilterBottomSheet({super.key});
+  final VoidCallback? onApply;
+  final VoidCallback? onClose;
+  final bool isDateRange;
+  const FilterBottomSheet({
+    super.key,
+    this.onApply,
+    this.onClose,
+    this.isDateRange = false,
+  });
 
   @override
   State<FilterBottomSheet> createState() => _FilterBottomSheetState();
@@ -20,6 +28,12 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   final TextEditingController maxSalaryController = TextEditingController(
     text: '\$8000',
   );
+  final TextEditingController startDateController = TextEditingController(
+    text: '01 jan 2025',
+  );
+  final TextEditingController endDateController = TextEditingController(
+    text: '31 dec 2025',
+  );
 
   // State variables
   String? selectedCategory = 'Sr. UI/UX Designer';
@@ -31,6 +45,8 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   void dispose() {
     minSalaryController.dispose();
     maxSalaryController.dispose();
+    startDateController.dispose();
+    endDateController.dispose();
     super.dispose();
   }
 
@@ -79,6 +95,11 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
 
                   SizedBox(height: 20.h),
 
+                  // Date Range Section
+                  if (widget.isDateRange) _buildDateRangeSection(),
+
+                  SizedBox(height: 20.h),
+
                   // Distance Section
                   _buildDistanceSection(),
 
@@ -120,7 +141,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             color: AppColors.black,
           ),
           GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () => widget.onClose?.call(),
             child: Icon(Icons.close, size: 24.sp, color: AppColors.black),
           ),
         ],
@@ -156,7 +177,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 color: AppColors.black,
                 size: 24.sp,
               ),
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               style: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
@@ -203,6 +224,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           children: [
             Expanded(
               child: _buildChip(
+                borderRadius: 4,
                 label: 'Full Time',
                 isSelected: selectedEmployeeType == 'Full Time',
                 selectedColor: AppColors.secondaryPrimary,
@@ -216,6 +238,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             SizedBox(width: 8.w),
             Expanded(
               child: _buildChip(
+                borderRadius: 4,
                 label: 'Part Time',
                 isSelected: selectedEmployeeType == 'Part Time',
                 selectedColor: AppColors.secondaryPrimary,
@@ -229,6 +252,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             SizedBox(width: 8.w),
             Expanded(
               child: _buildChip(
+                borderRadius: 4,
                 label: 'Intern',
                 isSelected: selectedEmployeeType == 'Intern',
                 selectedColor: AppColors.secondaryPrimary,
@@ -262,6 +286,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           children: [
             Expanded(
               child: _buildChip(
+                borderRadius: 20,
                 label: 'Remote',
                 isSelected: selectedJobType == 'Remote',
                 selectedColor: AppColors.primaryColor,
@@ -275,6 +300,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             SizedBox(width: 8.w),
             Expanded(
               child: _buildChip(
+                borderRadius: 20,
                 label: 'Onsite',
                 isSelected: selectedJobType == 'Onsite',
                 selectedColor: AppColors.primaryColor,
@@ -288,6 +314,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             SizedBox(width: 8.w),
             Expanded(
               child: _buildChip(
+                borderRadius: 20,
                 label: 'Hybrid',
                 isSelected: selectedJobType == 'Hybrid',
                 selectedColor: AppColors.primaryColor,
@@ -310,6 +337,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     required bool isSelected,
     required Color selectedColor,
     required VoidCallback onTap,
+    required double borderRadius,
   }) {
     return GestureDetector(
       onTap: onTap,
@@ -317,7 +345,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
         padding: EdgeInsets.symmetric(vertical: 10.h),
         decoration: BoxDecoration(
           color: isSelected ? selectedColor : AppColors.white,
-          borderRadius: BorderRadius.circular(4.r),
+          borderRadius: BorderRadius.circular(borderRadius.r),
           border: Border.all(
             color: isSelected ? selectedColor : AppColors.borderColor,
             width: 1,
@@ -403,6 +431,99 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     );
   }
 
+  Widget _buildDateRangeSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CommonText(
+          text: 'Date Range',
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppColors.black,
+          textAlign: TextAlign.left,
+        ),
+        SizedBox(height: 8.h),
+        Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CommonText(
+                    text: 'Start Date',
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.secondaryText,
+                    textAlign: TextAlign.left,
+                  ),
+                  SizedBox(height: 6.h),
+                  CommonTextField(
+                    controller: startDateController,
+                    hintText: 'Start Date',
+                    keyboardType: TextInputType.text,
+                    paddingVertical: 12,
+                    paddingHorizontal: 12,
+                    borderRadius: 4,
+                    readOnly: true,
+                    onTap: () async {
+                      final date = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1950),
+                        lastDate: DateTime(4000),
+                      );
+                      if (date != null) {
+                        startDateController.text =
+                            '${date.day}/${date.month}/${date.year}';
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 12.w),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CommonText(
+                    text: 'End Date',
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.secondaryText,
+                    textAlign: TextAlign.left,
+                  ),
+                  SizedBox(height: 6.h),
+                  CommonTextField(
+                    controller: endDateController,
+                    hintText: 'End Date',
+                    keyboardType: TextInputType.number,
+                    paddingVertical: 12,
+                    paddingHorizontal: 12,
+                    borderRadius: 4,
+                    readOnly: true,
+                    onTap: () async {
+                      final date = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1950),
+                        lastDate: DateTime(4000),
+                      );
+                      if (date != null) {
+                        endDateController.text =
+                            '${date.day}/${date.month}/${date.year}';
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
   // Distance Slider Section
   Widget _buildDistanceSection() {
     return Column(
@@ -470,7 +591,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
       isGradient: true,
       onTap: () {
         // Handle apply filter logic
-        Navigator.pop(context);
+        widget.onApply?.call();
       },
     );
   }

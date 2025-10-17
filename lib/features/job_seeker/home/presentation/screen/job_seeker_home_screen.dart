@@ -1,4 +1,5 @@
 import 'package:embeyi/core/component/bottom_nav_bar/common_bottom_bar.dart';
+import 'package:embeyi/core/component/bottom_shit/filder_bottom_shit.dart';
 import 'package:embeyi/core/component/card/job_card.dart';
 import 'package:embeyi/core/config/route/job_seeker_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
@@ -54,7 +55,18 @@ class JobSeekerHomeScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 20.w),
                       child: HomeSearchBar(
                         onFilterTap: () {
-                          // Handle filter tap
+                          Get.bottomSheet(
+                            isScrollControlled: true,
+                            FilterBottomSheet(
+                              onApply: () {
+                                // Handle apply tap
+                              },
+                              onClose: () {
+                                // Handle close tap
+                                Navigator.pop(context);
+                              },
+                            ),
+                          );
                         },
                         onChanged: (value) {
                           // Handle search

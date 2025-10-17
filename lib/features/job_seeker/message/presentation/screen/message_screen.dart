@@ -1,3 +1,4 @@
+import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/component/image/common_image.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -37,26 +38,41 @@ class _MessageScreenState extends State<MessageScreen> {
         return Scaffold(
           /// App Bar Section starts here
           appBar: AppBar(
+            backgroundColor: AppColors.primary,
+            elevation: 0,
             leading: Padding(
               padding: EdgeInsets.only(left: 20.w),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   /// participant image here
                   CircleAvatar(
-                    radius: 30.sp,
+                    radius: 20.sp,
                     backgroundColor: Colors.transparent,
                     child: ClipOval(
-                      child: CommonImage(imageSrc: image, size: 60),
+                      child: CommonImage(imageSrc: image, size: 40),
                     ),
                   ),
                   12.width,
 
                   /// participant Name here
-                  CommonText(
-                    text: name,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 8.h),
+                      CommonText(
+                        text: name,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                        color: AppColors.white,
+                      ),
+                      CommonText(
+                        text: "Active Now",
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                        color: AppColors.success,
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -96,26 +112,38 @@ class _MessageScreenState extends State<MessageScreen> {
 
           /// bottom Navigation Bar Section starts here
           bottomNavigationBar: AnimatedPadding(
-            padding: MediaQuery.of(context).viewInsets,
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
             duration: const Duration(milliseconds: 100),
             curve: Curves.decelerate,
             child: Padding(
               padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 24.h),
 
               /// Send message text filed here
-              child: CommonTextField(
-                hintText: AppString.messageHere,
-                suffixIcon: GestureDetector(
-                  onTap: controller.addNewMessage,
-                  child: Padding(
-                    padding: EdgeInsets.all(16.sp),
-                    child: const Icon(Icons.send),
+              child: Container(
+                padding: EdgeInsets.all(16.sp),
+                decoration: ShapeDecoration(
+                  color: const Color(0xFFD9E7F1),
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(width: 1, color: const Color(0xFFEEF9F8)),
                   ),
                 ),
-                borderColor: Colors.white,
-                borderRadius: 8,
-                controller: controller.messageController,
-                onSubmitted: (p0) => controller.addNewMessage(),
+
+                child: CommonTextField(
+                  hintText: AppString.messageHere,
+                  suffixIcon: GestureDetector(
+                    onTap: controller.addNewMessage,
+                    child: Padding(
+                      padding: EdgeInsets.all(16.sp),
+                      child: const Icon(Icons.send),
+                    ),
+                  ),
+                  borderColor: Colors.white,
+                  borderRadius: 8,
+                  controller: controller.messageController,
+                  onSubmitted: (p0) => controller.addNewMessage(),
+                ),
               ),
             ),
           ),
