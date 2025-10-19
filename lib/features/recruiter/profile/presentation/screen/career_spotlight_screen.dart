@@ -17,7 +17,7 @@ class CareerSpotlightScreen extends StatelessWidget {
       appBar: CommonAppbar(
         title: 'Career Spotlight',
         showLeading: true,
-        centerTitle: false,
+
         backgroundColor: AppColors.white,
         textColor: AppColors.black,
         elevation: 0,
@@ -189,7 +189,7 @@ class CareerSpotlightScreen extends StatelessWidget {
         child: Column(
           children: [
             // Job Image/Banner
-            Container(
+            SizedBox(
               height: 120.h,
               width: double.infinity,
               child: CommonImage(

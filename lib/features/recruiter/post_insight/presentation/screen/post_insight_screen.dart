@@ -52,12 +52,12 @@ class PostInsightScreen extends StatelessWidget {
       title: Text(
         'Post Insights',
         style: TextStyle(
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w700,
+          fontSize: 20.sp,
+          fontWeight: FontWeight.w600,
           color: AppColors.black,
         ),
       ),
-      centerTitle: false,
+      centerTitle: true,
     );
   }
 
@@ -132,7 +132,7 @@ class PostInsightScreen extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         mainAxisSpacing: 12.h,
         crossAxisSpacing: 12.w,
-        childAspectRatio: 1.4,
+        childAspectRatio: 1.6,
         children: [
           InsightStatCard(
             label: 'Application',

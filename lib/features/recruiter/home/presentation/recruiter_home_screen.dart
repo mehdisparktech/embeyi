@@ -153,7 +153,7 @@ class RecruiterHomeScreen extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       mainAxisSpacing: 12.h,
       crossAxisSpacing: 12.w,
-      childAspectRatio: 1.4,
+      childAspectRatio: 1.6,
       children: [
         StatCard(
           count: '05',
@@ -198,13 +198,11 @@ class RecruiterHomeScreen extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Recent Job Post',
-              style: TextStyle(
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w700,
-                color: AppColors.black,
-              ),
+            CommonText(
+              text: 'Recent Job Post',
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w600,
+              color: AppColors.black,
             ),
             Row(
               children: [
@@ -212,13 +210,11 @@ class RecruiterHomeScreen extends StatelessWidget {
                   onTap: () {
                     RecruiterRoutes.goToAllJobPost();
                   },
-                  child: Text(
-                    'See All',
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.primaryColor,
-                    ),
+                  child: CommonText(
+                    text: 'See All',
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.primaryColor,
                   ),
                 ),
                 4.width,

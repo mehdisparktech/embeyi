@@ -17,14 +17,15 @@ class InsightStatCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(16.r),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12.r),
-        boxShadow: [
+      decoration: ShapeDecoration(
+        color: Colors.white /* White-BG */,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        shadows: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
+            color: Color(0x14000000),
+            blurRadius: 4,
+            offset: Offset(0, 2),
+            spreadRadius: 0,
           ),
         ],
       ),

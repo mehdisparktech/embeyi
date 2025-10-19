@@ -1,4 +1,5 @@
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/features/job_seeker/resume/presentation/screen/view_resume_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/component/text/common_text.dart';
@@ -110,84 +111,96 @@ class ResumeScreen extends StatelessWidget {
   }
 
   Widget _buildResumeCard(BuildContext context, String title, String subtitle) {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(color: Colors.grey.shade300, width: 1),
-      ),
-      child: Row(
-        children: [
-          /// Document Icon
-          Container(
-            padding: EdgeInsets.all(12.w),
-            decoration: BoxDecoration(
-              color: Colors.orange.shade100,
-              borderRadius: BorderRadius.circular(8.r),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ViewResumeScreen()),
+        );
+      },
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(color: Colors.grey.shade300, width: 1),
+        ),
+        child: Row(
+          children: [
+            /// Document Icon
+            Container(
+              padding: EdgeInsets.all(12.w),
+              decoration: BoxDecoration(
+                color: Colors.orange.shade100,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Icon(Icons.description, color: Colors.orange, size: 28.sp),
             ),
-            child: Icon(Icons.description, color: Colors.orange, size: 28.sp),
-          ),
-          16.width,
+            16.width,
 
-          /// Title and Subtitle
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CommonText(
-                  text: title,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black,
-                ),
-                4.height,
-                CommonText(
-                  text: subtitle,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.grey.shade600,
-                  maxLines: 2,
-                ),
-              ],
-            ),
-          ),
-          8.width,
-
-          /// Edit Icon
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const EditResumeScreen(),
-                ),
-              );
-            },
-            borderRadius: BorderRadius.circular(20.r),
-            child: Padding(
-              padding: EdgeInsets.all(8.w),
-              child: Icon(
-                Icons.edit_outlined,
-                color: Colors.grey.shade700,
-                size: 20.sp,
+            /// Title and Subtitle
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CommonText(
+                    text: title,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                  4.height,
+                  CommonText(
+                    text: subtitle,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey.shade600,
+                    maxLines: 2,
+                  ),
+                ],
               ),
             ),
-          ),
-          4.width,
+            8.width,
 
-          /// Delete Icon
-          InkWell(
-            onTap: () {
-              // Handle delete
-            },
-            borderRadius: BorderRadius.circular(20.r),
-            child: Padding(
-              padding: EdgeInsets.all(8.w),
-              child: Icon(Icons.delete_outline, color: Colors.red, size: 20.sp),
+            /// Edit Icon
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const EditResumeScreen(),
+                  ),
+                );
+              },
+              borderRadius: BorderRadius.circular(20.r),
+              child: Padding(
+                padding: EdgeInsets.all(8.w),
+                child: Icon(
+                  Icons.edit_outlined,
+                  color: Colors.grey.shade700,
+                  size: 20.sp,
+                ),
+              ),
             ),
-          ),
-        ],
+            4.width,
+
+            /// Delete Icon
+            InkWell(
+              onTap: () {
+                // Handle delete
+              },
+              borderRadius: BorderRadius.circular(20.r),
+              child: Padding(
+                padding: EdgeInsets.all(8.w),
+                child: Icon(
+                  Icons.delete_outline,
+                  color: Colors.red,
+                  size: 20.sp,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

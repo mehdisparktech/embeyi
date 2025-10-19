@@ -25,15 +25,16 @@ class RecentApplicantCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: EdgeInsets.only(bottom: 12.h),
-        padding: EdgeInsets.all(12.r),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.all(10),
+        decoration: ShapeDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(12.r),
-          boxShadow: [
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          shadows: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.06),
-              blurRadius: 8,
-              offset: const Offset(0, 2),
+              color: Color(0x19000000),
+              blurRadius: 4,
+              offset: Offset(0, 2),
+              spreadRadius: 0,
             ),
           ],
         ),

@@ -42,10 +42,19 @@ class EditResumeScreen extends StatelessWidget {
                 /// Edit Resume Button
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 20.h),
-                  decoration: BoxDecoration(
-                    color: AppColors.primary.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8.r),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 28,
+                    vertical: 21,
+                  ),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFE6E6F2),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 1,
+                        color: const Color(0xFF123499) /* Primary-Color */,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                   child: Column(
                     children: [

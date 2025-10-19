@@ -42,6 +42,7 @@ class JobPostScreen extends StatelessWidget {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
+
       leading: IconButton(
         icon: Icon(Icons.arrow_back, color: AppColors.black, size: 24.sp),
         onPressed: () => Get.back(),
@@ -49,12 +50,12 @@ class JobPostScreen extends StatelessWidget {
       title: Text(
         'All Job Posts',
         style: TextStyle(
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w700,
+          fontSize: 20.sp,
+          fontWeight: FontWeight.w600,
           color: AppColors.black,
         ),
       ),
-      centerTitle: false,
+      centerTitle: true,
     );
   }
 

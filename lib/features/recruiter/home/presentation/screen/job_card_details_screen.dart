@@ -49,12 +49,12 @@ class JobCardDetailsScreen extends StatelessWidget {
       title: Text(
         'Sr. UI/UX Designer',
         style: TextStyle(
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w700,
+          fontSize: 20.sp,
+          fontWeight: FontWeight.w600,
           color: AppColors.black,
         ),
       ),
-      centerTitle: false,
+      centerTitle: true,
     );
   }
 
