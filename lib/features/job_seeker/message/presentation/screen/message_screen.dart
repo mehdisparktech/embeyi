@@ -8,7 +8,6 @@ import '../../../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../controller/message_controller.dart';
-import '../../../../../core/utils/constants/app_string.dart';
 import '../widgets/chat_bubble_message.dart';
 
 class MessageScreen extends StatefulWidget {
@@ -36,48 +35,59 @@ class _MessageScreenState extends State<MessageScreen> {
     return GetBuilder<MessageController>(
       builder: (controller) {
         return Scaffold(
+          backgroundColor: AppColors.white,
+
           /// App Bar Section starts here
           appBar: AppBar(
             backgroundColor: AppColors.primary,
             elevation: 0,
-            leading: Padding(
-              padding: EdgeInsets.only(left: 20.w),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  /// participant image here
-                  CircleAvatar(
-                    radius: 20.sp,
-                    backgroundColor: Colors.transparent,
-                    child: ClipOval(
-                      child: CommonImage(imageSrc: image, size: 40),
-                    ),
-                  ),
-                  12.width,
-
-                  /// participant Name here
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 8.h),
-                      CommonText(
-                        text: name,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16,
-                        color: AppColors.white,
-                      ),
-                      CommonText(
-                        text: "Active Now",
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                        color: AppColors.success,
-                      ),
-                    ],
-                  ),
-                ],
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: AppColors.white,
+                size: 20.sp,
               ),
+              onPressed: () => Get.back(),
             ),
-            leadingWidth: Get.width,
+            title: Row(
+              children: [
+                /// participant image here
+                CircleAvatar(
+                  radius: 18.sp,
+                  backgroundColor: Colors.transparent,
+                  child: ClipOval(
+                    child: CommonImage(imageSrc: image, size: 36),
+                  ),
+                ),
+                12.width,
+
+                /// participant Name and Status here
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CommonText(
+                      text: name,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      color: AppColors.white,
+                    ),
+                    CommonText(
+                      text: "ACTIVE NOW",
+                      fontWeight: FontWeight.w400,
+                      fontSize: 10,
+                      color: AppColors.white,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.videocam, color: AppColors.white, size: 24.sp),
+                onPressed: () {},
+              ),
+            ],
           ),
 
           /// Body Section starts here
@@ -85,29 +95,36 @@ class _MessageScreenState extends State<MessageScreen> {
               /// Loading bar here
               ? const Center(child: CircularProgressIndicator())
               /// Show data  here
-              : ListView.builder(
-                  reverse: true,
-                  controller: controller.scrollController,
-                  itemCount: controller.isMoreLoading
-                      ? controller.messages.length + 1
-                      : controller.messages.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    /// Message item here
-                    if (index < controller.messages.length) {
-                      ChatMessageModel message = controller.messages[index];
-                      return ChatBubbleMessage(
-                        index: index,
-                        image: message.image,
-                        time: message.time,
-                        text: message.text,
-                        isMe: message.isMe,
-                        onTap: () {},
-                      );
-                    } else {
-                      /// More data loading bar
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                  },
+              : Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.w,
+                    vertical: 12.h,
+                  ),
+                  child: ListView.builder(
+                    reverse: true,
+                    controller: controller.scrollController,
+                    itemCount: controller.isMoreLoading
+                        ? controller.messages.length + 1
+                        : controller.messages.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      /// Message item here
+                      if (index < controller.messages.length) {
+                        ChatMessageModel message = controller.messages[index];
+                        return ChatBubbleMessage(
+                          index: index,
+                          image: message.image,
+                          time: message.time,
+                          text: message.text,
+                          isMe: message.isMe,
+                          name: name,
+                          onTap: () {},
+                        );
+                      } else {
+                        /// More data loading bar
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    },
+                  ),
                 ),
 
           /// bottom Navigation Bar Section starts here
@@ -117,33 +134,69 @@ class _MessageScreenState extends State<MessageScreen> {
             ),
             duration: const Duration(milliseconds: 100),
             curve: Curves.decelerate,
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 24.h),
-
-              /// Send message text filed here
-              child: Container(
-                padding: EdgeInsets.all(16.sp),
-                decoration: ShapeDecoration(
-                  color: const Color(0xFFD9E7F1),
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 1, color: const Color(0xFFEEF9F8)),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+              decoration: BoxDecoration(
+                color: const Color(0xFFE8EEF2),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 4,
+                    offset: const Offset(0, -2),
                   ),
-                ),
-
-                child: CommonTextField(
-                  hintText: AppString.messageHere,
-                  suffixIcon: GestureDetector(
-                    onTap: controller.addNewMessage,
-                    child: Padding(
-                      padding: EdgeInsets.all(16.sp),
-                      child: const Icon(Icons.send),
+                ],
+              ),
+              child: Row(
+                children: [
+                  /// Attachment Icon
+                  GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.attach_file,
+                      color: AppColors.grey,
+                      size: 24.sp,
                     ),
                   ),
-                  borderColor: Colors.white,
-                  borderRadius: 8,
-                  controller: controller.messageController,
-                  onSubmitted: (p0) => controller.addNewMessage(),
-                ),
+                  12.width,
+
+                  /// Text Field
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: CommonTextField(
+                        hintText: "Write your message",
+                        borderColor: Colors.transparent,
+                        fillColor: AppColors.white,
+                        borderRadius: 20,
+                        paddingHorizontal: 16,
+                        paddingVertical: 10,
+                        controller: controller.messageController,
+                        onSubmitted: (p0) => controller.addNewMessage(),
+                      ),
+                    ),
+                  ),
+                  12.width,
+
+                  /// Send Button
+                  GestureDetector(
+                    onTap: controller.addNewMessage,
+                    child: Container(
+                      padding: EdgeInsets.all(10.sp),
+                      decoration: BoxDecoration(
+                        color: AppColors.primary,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.send,
+                        color: AppColors.white,
+                        size: 20.sp,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
