@@ -26,11 +26,30 @@ Widget chatListItem({required ChatModel item}) {
         Row(
           children: [
             /// participant image here
-            CircleAvatar(
-              radius: 35.sp,
-              child: ClipOval(
-                child: CommonImage(imageSrc: item.participant.image, size: 70),
-              ),
+            Stack(
+              children: [
+                CircleAvatar(
+                  radius: 35.sp,
+                  child: ClipOval(
+                    child: CommonImage(
+                      imageSrc: item.participant.image,
+                      size: 70,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 6,
+                  right: 2,
+                  child: Container(
+                    width: 10,
+                    height: 10,
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFF0FE16D),
+                      shape: OvalBorder(),
+                    ),
+                  ),
+                ),
+              ],
             ),
             12.width,
             Expanded(

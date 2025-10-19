@@ -8,7 +8,12 @@ import '../widgets/history_widgets.dart';
 
 class AppliedDetails extends StatelessWidget {
   final bool isRejected;
-  const AppliedDetails({super.key, this.isRejected = false});
+  final String status;
+  const AppliedDetails({
+    super.key,
+    this.isRejected = false,
+    required this.status,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +31,12 @@ class AppliedDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Application Header Card
-              const ApplicationDetailsHeaderCard(
+              ApplicationDetailsHeaderCard(
                 hiringStatus: 'We are Hiring',
                 jobTitle: 'Sr. UI/UX Designer',
                 companyName: 'Design-Hill',
                 location: 'California, United State.',
-                status: 'Applied',
+                status: status,
               ),
 
               24.height,
@@ -56,7 +61,7 @@ class AppliedDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Application Timeline Section
-                    const DetailsSectionHeader(title: 'Application Timeline'),
+                    DetailsSectionHeader(title: 'Application Timeline'),
 
                     20.height,
 

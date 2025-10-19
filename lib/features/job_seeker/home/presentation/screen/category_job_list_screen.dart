@@ -1,20 +1,23 @@
+import 'package:embeyi/core/component/bottom_shit/filder_bottom_shit.dart';
 import 'package:embeyi/core/component/card/job_card.dart';
 import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/config/route/job_seeker_routes.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
-import 'package:embeyi/features/job_seeker/home/presentation/widgets/auto_apply.dart';
+import 'package:embeyi/features/job_seeker/home/presentation/widgets/home_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-class AllRecommendedJobScreen extends StatelessWidget {
-  const AllRecommendedJobScreen({super.key});
+class CategoryJobListScreen extends StatelessWidget {
+  final String category;
+  const CategoryJobListScreen({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: CommonText(
-          text: 'Recommended Jobs',
+          text: category,
           fontSize: 20.sp,
           fontWeight: FontWeight.w600,
         ),
@@ -23,7 +26,29 @@ class AllRecommendedJobScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              AutoApply(),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: HomeSearchBar(
+                  onFilterTap: () {
+                    Get.bottomSheet(
+                      isScrollControlled: true,
+                      FilterBottomSheet(
+                        onApply: () {
+                          // Handle apply tap
+                        },
+                        onClose: () {
+                          // Handle close tap
+                          Navigator.pop(context);
+                        },
+                        isDateRange: true,
+                      ),
+                    );
+                  },
+                  onChanged: (value) {
+                    // Handle search
+                  },
+                ),
+              ),
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),

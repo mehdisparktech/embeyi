@@ -2,6 +2,7 @@ import 'package:embeyi/features/job_seeker/history/presentation/screen/history_s
 import 'package:embeyi/features/job_seeker/history/presentation/screen/applied_details.dart';
 import 'package:embeyi/features/job_seeker/home/presentation/screen/all_job_category_screen.dart';
 import 'package:embeyi/features/job_seeker/home/presentation/screen/all_recommended_job_screen.dart';
+import 'package:embeyi/features/job_seeker/home/presentation/screen/category_job_list_screen.dart';
 import 'package:embeyi/features/job_seeker/home/presentation/screen/job_seeker_home_screen.dart';
 import 'package:embeyi/features/job_seeker/jobs/presentation/screen/jobs_screen.dart';
 import 'package:embeyi/features/job_seeker/jobs/presentation/screen/job_details_screen.dart';
@@ -60,7 +61,7 @@ class JobSeekerRoutes {
   static const String addWorkExperience = "/add_work_experience_screen.dart";
   static const String allRecommendedJob = "/all_recommended_job_screen.dart";
   static const String allJobCategory = "/all_job_category_screen.dart";
-
+  static const String categoryJobList = "/category_job_list_screen.dart";
   // Job Seeker Routes List
   static List<GetPage> routes = [
     GetPage(name: home, page: () => JobSeekerHomeScreen()),
@@ -91,7 +92,13 @@ class JobSeekerRoutes {
     GetPage(name: history, page: () => HistoryScreen()),
     GetPage(
       name: appliedDetails,
-      page: () => AppliedDetails(isRejected: Get.arguments ?? false),
+      page: () {
+        final arguments = Get.arguments as Map<String, dynamic>?;
+        return AppliedDetails(
+          isRejected: arguments?['isRejected'] ?? false,
+          status: arguments?['status'] ?? 'Applied',
+        );
+      },
     ),
     GetPage(name: personalInfo, page: () => const PersonalInfoScreen()),
     GetPage(name: education, page: () => const EducationScreen()),
@@ -114,6 +121,10 @@ class JobSeekerRoutes {
       page: () => const AllRecommendedJobScreen(),
     ),
     GetPage(name: allJobCategory, page: () => const AllJobCategoryScreen()),
+    GetPage(
+      name: categoryJobList,
+      page: () => CategoryJobListScreen(category: Get.arguments),
+    ),
   ];
 
   // Job Seeker Navigation Helper Methods
@@ -142,4 +153,6 @@ class JobSeekerRoutes {
   static void goToAddWorkExperience() => Get.toNamed(addWorkExperience);
   static void goToAllRecommendedJob() => Get.toNamed(allRecommendedJob);
   static void goToAllJobCategory() => Get.toNamed(allJobCategory);
+  static void goToCategoryJobList(String category) =>
+      Get.toNamed(categoryJobList, arguments: category);
 }

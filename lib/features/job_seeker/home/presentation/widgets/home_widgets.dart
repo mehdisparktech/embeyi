@@ -233,6 +233,8 @@ class JobCategoryCard extends StatelessWidget {
   final VoidCallback? onTap;
   final Color? iconColor;
   final Color? backgroundColor;
+  final int jobCount;
+  final bool isJobCountVisible;
 
   const JobCategoryCard({
     super.key,
@@ -241,6 +243,8 @@ class JobCategoryCard extends StatelessWidget {
     this.onTap,
     this.iconColor,
     this.backgroundColor,
+    this.jobCount = 0,
+    this.isJobCountVisible = true,
   });
 
   @override
@@ -275,6 +279,15 @@ class JobCategoryCard extends StatelessWidget {
               maxLines: 1,
               textAlign: TextAlign.center,
             ),
+            if (isJobCountVisible)
+              CommonText(
+                text: '$jobCount Jobs',
+                fontSize: 8,
+                fontWeight: FontWeight.w500,
+                color: AppColors.secondaryText,
+                maxLines: 1,
+                textAlign: TextAlign.center,
+              ),
           ],
         ),
       ),

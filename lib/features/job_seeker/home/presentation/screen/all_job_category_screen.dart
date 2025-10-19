@@ -1,3 +1,4 @@
+import 'package:embeyi/core/config/route/job_seeker_routes.dart';
 import 'package:embeyi/features/job_seeker/home/presentation/widgets/home_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +33,16 @@ class AllJobCategoryScreen extends StatelessWidget {
                 : 'Accounting',
             onTap: () {
               // Handle category tap
+              JobSeekerRoutes.goToCategoryJobList(
+                index % 2 == 0
+                    ? 'Education'
+                    : index % 3 == 0
+                    ? 'Marketing'
+                    : 'Accounting',
+              );
             },
+            jobCount: index * 10 + 5,
+            isJobCountVisible: true,
           );
         },
       ),

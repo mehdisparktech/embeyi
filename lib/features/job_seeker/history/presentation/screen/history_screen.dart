@@ -19,7 +19,7 @@ class HistoryScreen extends StatelessWidget {
       backgroundColor: AppColors.background,
       appBar: CommonAppbar(
         title: 'Jobs History',
-        centerTitle: false,
+        centerTitle: true,
         showBackButton: true,
       ),
       body: Column(
@@ -135,7 +135,10 @@ class HistoryScreen extends StatelessWidget {
             onTap: () {
               Get.toNamed(
                 JobSeekerRoutes.appliedDetails,
-                arguments: application['status'] == 'Rejected',
+                arguments: {
+                  'isRejected': application['status'] == 'Rejected',
+                  'status': application['status'] ?? 'Applied',
+                },
               );
             },
           );
@@ -150,7 +153,10 @@ class HistoryScreen extends StatelessWidget {
           onTap: () {
             Get.toNamed(
               JobSeekerRoutes.appliedDetails,
-              arguments: application['status'] == 'Rejected',
+              arguments: {
+                'isRejected': application['status'] == 'Rejected',
+                'status': application['status'] ?? 'Applied',
+              },
             );
           },
         );

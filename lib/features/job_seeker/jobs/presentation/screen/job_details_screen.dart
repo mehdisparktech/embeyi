@@ -122,16 +122,9 @@ class JobDetailsScreen extends StatelessWidget {
                       ),
                     ),
 
-                    12.height,
-
-                    const DescriptionText(
-                      text:
-                          'We Are Google Partner And A Corp Certified Agency Focused On One Thing: Delivering Results.',
-                    ),
-
                     16.height,
                     CommonText(
-                      text: 'About Job',
+                      text: 'Job Description',
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       color: AppColors.primary,

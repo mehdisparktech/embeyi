@@ -5,6 +5,7 @@ import 'package:embeyi/core/config/route/job_seeker_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
+import 'package:embeyi/features/job_seeker/home/presentation/widgets/auto_apply.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -126,6 +127,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
                             onTap: () {
                               // Handle category tap
                             },
+                            isJobCountVisible: false,
                           ),
                           JobCategoryCard(
                             icon: Icons.restaurant_outlined,
@@ -133,6 +135,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
                             onTap: () {
                               // Handle category tap
                             },
+                            isJobCountVisible: false,
                           ),
                           JobCategoryCard(
                             icon: Icons.bar_chart_outlined,
@@ -140,6 +143,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
                             onTap: () {
                               // Handle category tap
                             },
+                            isJobCountVisible: false,
                           ),
                           JobCategoryCard(
                             icon: Icons.account_balance_outlined,
@@ -147,6 +151,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
                             onTap: () {
                               // Handle category tap
                             },
+                            isJobCountVisible: false,
                           ),
                         ],
                       ),
@@ -170,6 +175,8 @@ class JobSeekerHomeScreen extends StatelessWidget {
                   ),
 
                   SliverToBoxAdapter(child: 16.height),
+
+                  SliverToBoxAdapter(child: AutoApply()),
 
                   // Recommended Job List
                   SliverPadding(
