@@ -5,9 +5,9 @@ import '../../../../../core/component/other_widgets/common_loader.dart';
 import '../../../../../core/component/other_widgets/no_data.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../controller/notifications_controller.dart';
-import '../../../../../core/config/api/api_end_point.dart';
 import '../../data/model/notification_model.dart';
 import '../widgets/notification_item.dart';
+import '../../../../../core/utils/constants/app_colors.dart';
 
 class RecruiterNotificationScreen extends StatelessWidget {
   const RecruiterNotificationScreen({super.key});
@@ -15,13 +15,25 @@ class RecruiterNotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
+
       /// App Bar Section starts here
       appBar: AppBar(
+        backgroundColor: AppColors.white,
+        elevation: 0,
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.black,
+          ),
+          onPressed: () => Get.back(),
+        ),
         title: CommonText(
-          text: ApiEndPoint.notifications,
+          text: 'Notification',
           fontWeight: FontWeight.w600,
-          fontSize: 24.sp,
+          fontSize: 20,
+          color: AppColors.black,
         ),
       ),
 
@@ -38,8 +50,8 @@ class RecruiterNotificationScreen extends StatelessWidget {
               : ListView.builder(
                   controller: controller.scrollController,
                   padding: EdgeInsets.symmetric(
-                    horizontal: 20.sp,
-                    vertical: 10.sp,
+                    horizontal: 20.w,
+                    vertical: 16.h,
                   ),
                   itemCount: controller.isLoadingMore
                       ? controller.notifications.length + 1
@@ -47,8 +59,11 @@ class RecruiterNotificationScreen extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
                     ///  Notification More Data Loading Bar
-                    if (index > controller.notifications.length) {
-                      return CommonLoader(size: 40, strokeWidth: 2);
+                    if (index >= controller.notifications.length) {
+                      return const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                        child: CommonLoader(size: 40, strokeWidth: 2),
+                      );
                     }
                     NotificationModel item = controller.notifications[index];
 
