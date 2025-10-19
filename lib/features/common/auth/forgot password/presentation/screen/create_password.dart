@@ -40,7 +40,7 @@ class CreatePassword extends StatelessWidget {
                     color: AppColors.white,
                   ),
                   Container(
-                    height: MediaQuery.of(context).size.height - 230.h,
+                    height: MediaQuery.of(context).size.height,
                     padding: EdgeInsets.all(20.w),
                     decoration: BoxDecoration(
                       color: AppColors.white,
@@ -54,8 +54,6 @@ class CreatePassword extends StatelessWidget {
                         key: formKey,
                         child: Column(
                           children: [
-                            64.height,
-
                             /// Reset password image here
                             const Center(
                               child: Padding(

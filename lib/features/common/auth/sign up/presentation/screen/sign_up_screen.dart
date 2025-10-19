@@ -26,20 +26,20 @@ class SignUpScreen extends StatelessWidget {
       appBar: CommonAppbar(backgroundColor: AppColors.primaryColor),
 
       /// Body Section Starts Here
-      body: GetBuilder<SignUpController>(
-        builder: (controller) {
-          return Column(
-            children: [
-              const CommonText(
-                text: AppString.registration,
-                fontSize: 32,
-                bottom: 20,
-                color: AppColors.white,
-              ),
+      body: SingleChildScrollView(
+        child: GetBuilder<SignUpController>(
+          builder: (controller) {
+            return Column(
+              children: [
+                const CommonText(
+                  text: AppString.registration,
+                  fontSize: 32,
+                  bottom: 20,
+                  color: AppColors.white,
+                ),
 
-              SingleChildScrollView(
-                child: Container(
-                  height: MediaQuery.of(context).size.height - 195.h,
+                Container(
+                  height: Get.size.height,
                   padding: EdgeInsets.all(20.w),
                   decoration: BoxDecoration(
                     color: AppColors.white,
@@ -73,15 +73,54 @@ class SignUpScreen extends StatelessWidget {
 
                         ///  Sign In Instruction here
                         const AlreadyAccountRichText(),
-                        30.height,
+                        40.height,
+                        CommonImage(imageSrc: AppImages.or),
+                        20.height,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _socialLogin(AppImages.google, () {}),
+                            16.width,
+                            _socialLogin(AppImages.apple, () {}),
+                            16.width,
+                            _socialLogin(AppImages.linkedin, () {}),
+                          ],
+                        ),
                       ],
                     ),
                   ),
                 ),
-              ),
-            ],
-          );
-        },
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _socialLogin(String imageSrc, Function() onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              width: 0.76,
+              color: Colors.black.withValues(alpha: 0.13),
+            ),
+            borderRadius: BorderRadius.circular(8.32),
+          ),
+          shadows: [
+            BoxShadow(
+              color: Color(0x1E000000),
+              blurRadius: 37.81,
+              offset: Offset(15.12, 15.12),
+              spreadRadius: 0,
+            ),
+          ],
+        ),
+        child: CommonImage(imageSrc: imageSrc),
       ),
     );
   }

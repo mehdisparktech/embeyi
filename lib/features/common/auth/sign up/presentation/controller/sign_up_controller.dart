@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:embeyi/core/component/pop_up/success_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -76,6 +77,7 @@ class SignUpController extends GetxController {
 
   signUpUser() async {
     Get.toNamed(AppRoutes.verifyUser);
+
     return;
     isLoading = true;
     update();
@@ -120,7 +122,13 @@ class SignUpController extends GetxController {
   }
 
   Future<void> verifyOtpRepo() async {
-    Get.toNamed(AppRoutes.signIn);
+    SuccessDialog.show(
+      message: 'Your account has been created. Start using the app now.',
+      buttonText: 'Proceed to Login',
+      onTap: () {
+        Get.offAllNamed(AppRoutes.signIn);
+      },
+    );
     return;
 
     isLoadingVerify = true;

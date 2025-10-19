@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:embeyi/core/component/pop_up/success_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
@@ -127,7 +128,14 @@ class ForgetPasswordController extends GetxController {
   /// Create New Password Api Call
 
   Future<void> resetPasswordRepo() async {
-    Get.offAllNamed(AppRoutes.signIn);
+    //Get.offAllNamed(AppRoutes.signIn);
+    SuccessDialog.show(
+      message: 'Your password has been updated. Start using the app now.',
+      buttonText: 'Proceed to Login',
+      onTap: () {
+        Get.offAllNamed(AppRoutes.signIn);
+      },
+    );
     return;
     isLoadingReset = true;
     update();

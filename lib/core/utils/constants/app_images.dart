@@ -26,4 +26,6 @@ class AppImages {
   static const String ad = "$baseurl/ad.png";
   static const String imageBackground = "$baseurl/image_bg.jpg";
   static const String resumeImage = "$baseurl/resume.png";
+  static const String apple = "$baseurl/apple.png";
+  static const String or = "$baseurl/or.png";
 }
