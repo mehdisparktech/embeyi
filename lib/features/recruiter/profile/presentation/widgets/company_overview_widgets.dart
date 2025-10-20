@@ -21,7 +21,7 @@ class CompanyHeroHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220.h,
+      height: 180.h,
       margin: EdgeInsets.symmetric(horizontal: 16.w),
       width: double.infinity,
       decoration: BoxDecoration(color: AppColors.blueLight),

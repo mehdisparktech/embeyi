@@ -1,5 +1,4 @@
 import 'package:embeyi/core/utils/constants/app_colors.dart';
-import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/component/image/common_image.dart';
 import '../../../../../core/component/text/common_text.dart';

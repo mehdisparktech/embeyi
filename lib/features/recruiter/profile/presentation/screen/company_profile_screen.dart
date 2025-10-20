@@ -1,8 +1,8 @@
 import 'package:embeyi/core/component/appbar/common_appbar.dart';
 import 'package:embeyi/core/component/button/common_button.dart';
-import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
+import 'package:embeyi/features/recruiter/profile/presentation/screen/edit_company_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/company_profile_controller.dart';
@@ -81,7 +81,7 @@ class CompanyProfileScreen extends StatelessWidget {
               child: CommonButton(
                 titleText: 'Edit Profile',
                 onTap: () {
-                  Get.toNamed(RecruiterRoutes.editProfile);
+                  Get.to(() => const EditCompanyProfileScreen());
                 },
               ),
             ),
