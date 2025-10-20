@@ -15,35 +15,39 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-        child: Column(
-          children: [
-            180.height,
-            const Center(child: CommonImage(imageSrc: AppImages.onboarding)),
-            120.height,
-            CommonText(
-              text: AppString.onboardingHeadingText,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w700,
-            ),
-            20.height,
-            CommonText(
-              text: AppString.onboardingSubText,
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              textAlign: TextAlign.center,
-              maxLines: 2,
-            ),
-            Spacer(),
-            CommonButton(
-              titleText: 'Get Started',
-              onTap: () {
-                Get.toNamed(AppRoutes.selectedRole);
-              },
-            ),
-            20.height,
-          ],
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+          child: Column(
+            children: [
+              140.height,
+              const Center(child: CommonImage(imageSrc: AppImages.onboarding)),
+              60.height,
+              CommonText(
+                text: AppString.onboardingHeadingText,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w700,
+              ),
+              4.height,
+              CommonText(
+                text: AppString.onboardingSubText,
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w400,
+                textAlign: TextAlign.center,
+                left: 70,
+                right: 70,
+                maxLines: 2,
+              ),
+              Spacer(),
+              CommonButton(
+                titleText: 'Get Started',
+                onTap: () {
+                  Get.toNamed(AppRoutes.selectedRole);
+                },
+              ),
+              20.height,
+            ],
+          ),
         ),
       ),
     );

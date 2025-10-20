@@ -82,4 +82,6 @@ class AppIcons {
   static const String video = "$baseurl/video.svg";
   static const String website = "$baseurl/website.svg";
   static const String workEdit = "$baseurl/work_edit.svg";
+  static const String jobSeeker = "$baseurl/job_seeker.svg";
+  static const String recruiter = "$baseurl/recruiter.svg";
 }

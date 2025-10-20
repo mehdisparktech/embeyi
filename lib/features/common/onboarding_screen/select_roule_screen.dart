@@ -39,7 +39,7 @@ class SelectRouleScreen extends StatelessWidget {
                   bottom: 8,
                 ),
                 CommonText(
-                  text: "Are You a Job Seeker or a Recruiter?",
+                  text: "Get started by choosing your role.",
                   color: AppColors.primaryText,
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
@@ -48,7 +48,7 @@ class SelectRouleScreen extends StatelessWidget {
                 selectRoleCard(
                   title: "Job Seeker",
                   subtitle: 'Finding a job here never been easier than before',
-                  imageSrc: AppImages.noImage,
+                  imageSrc: AppImages.jobseekers,
                   onTap: () async {
                     await LocalStorage.setUserRole(UserRole.jobSeeker);
                     Get.toNamed(AppRoutes.signUp);
@@ -59,7 +59,7 @@ class SelectRouleScreen extends StatelessWidget {
                 selectRoleCard(
                   title: "Recruiter",
                   subtitle: 'Let’s recruit your great candidate faster here ',
-                  imageSrc: AppImages.noImage,
+                  imageSrc: AppImages.recruiter,
                   onTap: () async {
                     await LocalStorage.setUserRole(UserRole.employer);
                     Get.toNamed(AppRoutes.signUp);
