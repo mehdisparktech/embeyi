@@ -15,4 +15,71 @@ class AppIcons {
   static const String companyLogo = "$baseurl/company_logo.svg";
   static const String chat = "$baseurl/chat.svg";
   static const String notification = "$baseurl/notification.svg";
+
+  // New Icons
+  static const String marketing = "$baseurl/marketing.svg";
+  static const String accounting = "$baseurl/accounting.svg";
+  static const String attach = "$baseurl/attach.svg";
+  static const String attachment = "$baseurl/attachment.svg";
+  static const String calander = "$baseurl/calander.svg";
+  static const String calender = "$baseurl/calender.svg";
+  static const String call = "$baseurl/call.svg";
+  static const String certification = "$baseurl/certification.svg";
+  static const String check = "$baseurl/check.svg";
+  static const String clock = "$baseurl/clock.svg";
+  static const String deleteAccount = "$baseurl/delete_account.svg";
+  static const String delete = "$baseurl/delete.svg";
+  static const String design = "$baseurl/design.svg";
+  static const String editResume = "$baseurl/edit_resume.svg";
+  static const String edit = "$baseurl/edit.svg";
+  static const String edit2 = "$baseurl/edit2.svg";
+  static const String edit3 = "$baseurl/edit3.svg";
+  static const String education = "$baseurl/education.svg";
+  static const String education2 = "$baseurl/education2.svg";
+  static const String embeyiDesign = "$baseurl/Embeyi101 Design.png";
+  static const String embeyi = "$baseurl/Embeyi101.png";
+  static const String emptyNotification = "$baseurl/empty_notification.svg";
+  static const String forgotPassword = "$baseurl/forgot_password.svg";
+  static const String frameFromEmbeyi31 =
+      "$baseurl/Frame from embeyi101 (31).svg";
+  static const String frameFromEmbeyi47 =
+      "$baseurl/Frame from embeyi101 (47).svg";
+  static const String frameFromEmbeyi49 =
+      "$baseurl/Frame from embeyi101 (49).svg";
+  static const String free = "$baseurl/free.svg";
+  static const String history3 = "$baseurl/history3.svg";
+  static const String jobHistory = "$baseurl/job_history.svg";
+  static const String location = "$baseurl/location.svg";
+  static const String logout = "$baseurl/logout.svg";
+  static const String love = "$baseurl/love.svg";
+  static const String mail = "$baseurl/mail.svg";
+  static const String myResume = "$baseurl/my_resume.svg";
+  static const String mySubscription = "$baseurl/my_subscription.svg";
+  static const String mySunscription = "$baseurl/my_sunscription.svg";
+  static const String otp = "$baseurl/otp.svg";
+  static const String pdf = "$baseurl/pdf.svg";
+  static const String personal = "$baseurl/personal.svg";
+  static const String premium = "$baseurl/premium.svg";
+  static const String privacy = "$baseurl/privacy.svg";
+  static const String pro = "$baseurl/pro.svg";
+  static const String profileSetting = "$baseurl/profile_setting.svg";
+  static const String profile = "$baseurl/profile.svg";
+  static const String project = "$baseurl/project.svg";
+  static const String resetPassword = "$baseurl/reset_password.svg";
+  static const String restaurant = "$baseurl/restaurant.svg";
+  static const String resume = "$baseurl/resume.svg";
+  static const String review = "$baseurl/review.svg";
+  static const String setting = "$baseurl/setting.svg";
+  static const String short = "$baseurl/short.svg";
+  static const String skills = "$baseurl/skills.svg";
+  static const String spotlight = "$baseurl/spotlight.svg";
+  static const String star = "$baseurl/star.svg";
+  static const String subscriptionPack = "$baseurl/subscription_pack.svg";
+  static const String support = "$baseurl/support.svg";
+  static const String terms = "$baseurl/terms.svg";
+  static const String upload = "$baseurl/upload.svg";
+  static const String upload2 = "$baseurl/upload2.svg";
+  static const String video = "$baseurl/video.svg";
+  static const String website = "$baseurl/website.svg";
+  static const String workEdit = "$baseurl/work_edit.svg";
 }

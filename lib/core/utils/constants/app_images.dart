@@ -28,4 +28,5 @@ class AppImages {
   static const String resumeImage = "$baseurl/resume.png";
   static const String apple = "$baseurl/apple.png";
   static const String or = "$baseurl/or.png";
+  static const String companyLogo = "$baseurl/company_logo.png";
 }
