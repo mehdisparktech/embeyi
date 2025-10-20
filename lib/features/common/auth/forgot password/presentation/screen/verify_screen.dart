@@ -1,6 +1,6 @@
 import 'package:embeyi/core/component/appbar/common_appbar.dart';
 import 'package:embeyi/core/component/image/common_image.dart';
-import 'package:embeyi/core/utils/constants/app_images.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,7 +44,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
             builder: (controller) => Column(
               children: [
                 const CommonText(
-                  text: AppString.forgotPassword,
+                  text: AppString.otpVerification,
                   fontSize: 30,
                   bottom: 20,
                   color: AppColors.white,
@@ -67,7 +67,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                           40.height,
                           Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: CommonImage(imageSrc: AppImages.onboarding),
+                            child: CommonImage(imageSrc: AppIcons.otp),
                           ),
 
                           /// instruction how to get OTP
@@ -108,7 +108,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                                 borderWidth: 0.5.w,
                                 selectedColor: AppColors.primaryColor,
                                 activeColor: AppColors.primaryColor,
-                                inactiveColor: AppColors.black,
+                                inactiveColor: AppColors.secondaryText,
                               ),
                               length: 6,
                               keyboardType: TextInputType.number,

@@ -1,4 +1,5 @@
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/component/image/common_image.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -18,9 +19,9 @@ class MessageScreen extends StatefulWidget {
 }
 
 class _MessageScreenState extends State<MessageScreen> {
-  String chatId = Get.parameters["chatId"] ?? "";
-  String name = Get.parameters["name"] ?? "";
-  String image = Get.parameters["image"] ?? "";
+  String chatId = Get.arguments['chatId'] ?? "";
+  String name = Get.arguments['name'] ?? "";
+  String image = Get.arguments['image'] ?? "";
 
   @override
   void initState() {

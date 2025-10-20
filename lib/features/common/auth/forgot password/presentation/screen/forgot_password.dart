@@ -1,7 +1,7 @@
 import 'package:embeyi/core/component/appbar/common_appbar.dart';
 import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
-import 'package:embeyi/core/utils/constants/app_images.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,7 +54,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                       40.height,
                       Padding(
                         padding: const EdgeInsets.all(20.0),
-                        child: CommonImage(imageSrc: AppImages.onboarding),
+                        child: CommonImage(imageSrc: AppIcons.forgotPassword),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),

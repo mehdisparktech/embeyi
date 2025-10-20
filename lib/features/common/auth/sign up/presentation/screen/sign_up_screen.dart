@@ -61,7 +61,30 @@ class SignUpScreen extends StatelessWidget {
                         /// All Text Filed here
                         SignUpAllField(controller: controller),
 
-                        16.height,
+                        8.height,
+                        Row(
+                          children: [
+                            Checkbox(value: true, onChanged: (value) {}),
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: "I Agree to the",
+                                    style: TextStyle(color: AppColors.black),
+                                  ),
+                                  TextSpan(
+                                    text: " Terms & Privacy Policy ",
+                                    style: TextStyle(
+                                      color: AppColors.primaryColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        8.height,
 
                         /// Submit Button Here
                         CommonButton(
@@ -76,6 +99,7 @@ class SignUpScreen extends StatelessWidget {
                         40.height,
                         CommonImage(imageSrc: AppImages.or),
                         20.height,
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

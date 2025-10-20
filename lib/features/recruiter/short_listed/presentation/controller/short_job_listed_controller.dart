@@ -1,9 +1,11 @@
+import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:get/get.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 
 class ShortJobListedController extends GetxController {
   // Observable list for shortlisted candidates
-  final RxList<Map<String, dynamic>> shortlistedCandidates = <Map<String, dynamic>>[].obs;
+  final RxList<Map<String, dynamic>> shortlistedCandidates =
+      <Map<String, dynamic>>[].obs;
 
   @override
   void onInit() {
@@ -61,5 +63,9 @@ class ShortJobListedController extends GetxController {
   void viewCandidateProfile(String candidateName) {
     // Handle candidate profile view
     Get.snackbar('Candidate Profile', 'Opening $candidateName profile...');
+    Get.toNamed(
+      RecruiterRoutes.resume,
+      arguments: {'isShortlist': false, 'isInterview': true, 'isReject': true},
+    );
   }
 }

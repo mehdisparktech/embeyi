@@ -1,4 +1,6 @@
 import 'package:embeyi/core/component/appbar/common_appbar.dart';
+import 'package:embeyi/core/component/button/common_button.dart';
+import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
@@ -61,10 +63,10 @@ class CompanyProfileScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Overview Section
-            const CompanySectionTitle(title: 'Overview'),
-            12.height,
-            CompanyOverviewContent(description: controller.overviewDescription),
-            24.height,
+            // const CompanySectionTitle(title: 'Overview'),
+            // 12.height,
+            // CompanyOverviewContent(description: controller.overviewDescription),
+            // 24.height,
 
             // Gallery Section
             const CompanySectionTitle(title: 'Gallery'),
@@ -72,6 +74,16 @@ class CompanyProfileScreen extends StatelessWidget {
             CompanyGalleryGrid(
               images: controller.galleryImages,
               crossAxisCount: 4,
+            ),
+            24.height,
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: CommonButton(
+                titleText: 'Edit Profile',
+                onTap: () {
+                  Get.toNamed(RecruiterRoutes.editProfile);
+                },
+              ),
             ),
           ],
         );

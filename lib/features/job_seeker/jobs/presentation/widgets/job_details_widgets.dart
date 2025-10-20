@@ -1,6 +1,7 @@
 import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -152,11 +153,7 @@ class JobTitleSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.location_on_outlined,
-              size: 16.sp,
-              color: AppColors.primaryText,
-            ),
+            CommonImage(imageSrc: AppIcons.location, size: 16.sp),
             4.width,
             CommonText(
               text: location,

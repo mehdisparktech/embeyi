@@ -1,3 +1,4 @@
+import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,15 +33,13 @@ class ShortJobListedScreen extends StatelessWidget {
         icon: Icon(Icons.arrow_back, color: AppColors.black, size: 24.sp),
         onPressed: () => Get.back(),
       ),
-      title: Text(
-        'Short Listed',
-        style: TextStyle(
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w700,
-          color: AppColors.black,
-        ),
+      title: CommonText(
+        text: 'Short Listed',
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w600,
+        color: AppColors.black,
       ),
-      centerTitle: false,
+      centerTitle: true,
     );
   }
 

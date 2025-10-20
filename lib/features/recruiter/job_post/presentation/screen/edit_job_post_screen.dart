@@ -1,4 +1,5 @@
-import 'dart:io';
+import 'package:embeyi/core/component/image/common_image.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -159,7 +160,7 @@ class RecruiterEditJobPostScreen extends StatelessWidget {
                       SizedBox(height: 16.h),
 
                       // Company Description
-                      _buildLabel('Company Description'),
+                      _buildLabel('Job Description'),
                       SizedBox(height: 8.h),
                       CommonTextField(
                         controller: controller.companyDescriptionController,
@@ -172,62 +173,61 @@ class RecruiterEditJobPostScreen extends StatelessWidget {
 
                       SizedBox(height: 16.h),
 
-                      // Key Responsibilities
-                      _buildLabel('Key Responsibilities'),
-                      SizedBox(height: 8.h),
-                      CommonTextField(
-                        controller: controller.keyResponsibilitiesController,
-                        hintText: 'Enter key responsibilities',
-                        maxLines: 5,
-                        textInputAction: TextInputAction.newline,
-                        fillColor: AppColors.white,
-                        borderColor: AppColors.borderColor,
-                      ),
+                      // // Key Responsibilities
+                      // _buildLabel('Key Responsibilities'),
+                      // SizedBox(height: 8.h),
+                      // CommonTextField(
+                      //   controller: controller.keyResponsibilitiesController,
+                      //   hintText: 'Enter key responsibilities',
+                      //   maxLines: 5,
+                      //   textInputAction: TextInputAction.newline,
+                      //   fillColor: AppColors.white,
+                      //   borderColor: AppColors.borderColor,
+                      // ),
 
-                      SizedBox(height: 16.h),
+                      // SizedBox(height: 16.h),
 
-                      // Requirements
-                      _buildLabel('Requirements'),
-                      SizedBox(height: 8.h),
-                      CommonTextField(
-                        controller: controller.requirementsController,
-                        hintText: 'Enter requirements',
-                        maxLines: 5,
-                        textInputAction: TextInputAction.newline,
-                        fillColor: AppColors.white,
-                        borderColor: AppColors.borderColor,
-                      ),
+                      // // Requirements
+                      // _buildLabel('Requirements'),
+                      // SizedBox(height: 8.h),
+                      // CommonTextField(
+                      //   controller: controller.requirementsController,
+                      //   hintText: 'Enter requirements',
+                      //   maxLines: 5,
+                      //   textInputAction: TextInputAction.newline,
+                      //   fillColor: AppColors.white,
+                      //   borderColor: AppColors.borderColor,
+                      // ),
 
-                      SizedBox(height: 16.h),
+                      // SizedBox(height: 16.h),
 
-                      // Working Hours
-                      _buildLabel('Working Hours'),
-                      SizedBox(height: 8.h),
-                      CommonTextField(
-                        controller: controller.workingHoursController,
-                        hintText: 'Enter working hours',
-                        fillColor: AppColors.white,
-                        borderColor: AppColors.borderColor,
-                      ),
+                      // // Working Hours
+                      // _buildLabel('Working Hours'),
+                      // SizedBox(height: 8.h),
+                      // CommonTextField(
+                      //   controller: controller.workingHoursController,
+                      //   hintText: 'Enter working hours',
+                      //   fillColor: AppColors.white,
+                      //   borderColor: AppColors.borderColor,
+                      // ),
 
-                      SizedBox(height: 16.h),
+                      // SizedBox(height: 16.h),
 
-                      // How To Apply
-                      _buildLabel('How To Apply'),
-                      SizedBox(height: 8.h),
-                      CommonTextField(
-                        controller: controller.howToApplyController,
-                        hintText: 'Enter application instructions',
-                        maxLines: 3,
-                        textInputAction: TextInputAction.newline,
-                        fillColor: AppColors.white,
-                        borderColor: AppColors.borderColor,
-                      ),
-
+                      // // How To Apply
+                      // _buildLabel('How To Apply'),
+                      // SizedBox(height: 8.h),
+                      // CommonTextField(
+                      //   controller: controller.howToApplyController,
+                      //   hintText: 'Enter application instructions',
+                      //   maxLines: 3,
+                      //   textInputAction: TextInputAction.newline,
+                      //   fillColor: AppColors.white,
+                      //   borderColor: AppColors.borderColor,
+                      // ),
                       SizedBox(height: 16.h),
 
                       // Application Deadline
-                      _buildLabel('Application Deadline'),
+                      _buildLabel('Deadline'),
                       SizedBox(height: 8.h),
                       CommonTextField(
                         controller: controller.applicationDeadlineController,
@@ -246,7 +246,7 @@ class RecruiterEditJobPostScreen extends StatelessWidget {
                       SizedBox(height: 16.h),
 
                       // S&S Required
-                      _buildLabel('S&S Required'),
+                      _buildLabel('Skill Required'),
                       SizedBox(height: 8.h),
                       Obx(
                         () => _buildDropdown(
@@ -310,43 +310,37 @@ class RecruiterEditJobPostScreen extends StatelessWidget {
   }
 
   Widget _buildProfileImageSection(RecruiterEditJobPostController controller) {
-    return Center(
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: controller.pickProfileImage,
-            child: Obx(
-              () => Container(
-                width: 80.w,
-                height: 80.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.primaryColor.withOpacity(0.1),
-                  border: Border.all(color: AppColors.borderColor, width: 1),
-                ),
-                child: controller.profileImagePath.value != null
-                    ? ClipOval(
-                        child: Image.file(
-                          File(controller.profileImagePath.value!),
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    : Icon(
-                        Icons.person,
+    return Container(
+      padding: EdgeInsets.all(30.w),
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 1, color: const Color(0xFF123499)),
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      child: Center(
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: controller.pickProfileImage,
+              child: Obx(
+                () => controller.profileImagePath.value != null
+                    ? CommonImage(
+                        imageSrc: controller.profileImagePath.value!,
                         size: 40.sp,
-                        color: AppColors.primaryColor,
-                      ),
+                      )
+                    : CommonImage(imageSrc: AppIcons.upload2, size: 40.sp),
               ),
             ),
-          ),
-          SizedBox(height: 8.h),
-          CommonText(
-            text: 'Upload/Cover Image',
-            fontSize: 13,
-            fontWeight: FontWeight.w400,
-            color: AppColors.primaryColor,
-          ),
-        ],
+            SizedBox(height: 8.h),
+            CommonText(
+              text: 'Upload/Cover Image',
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+              color: AppColors.primaryColor,
+            ),
+          ],
+        ),
       ),
     );
   }

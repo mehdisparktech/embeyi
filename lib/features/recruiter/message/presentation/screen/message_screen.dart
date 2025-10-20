@@ -1,4 +1,5 @@
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/component/image/common_image.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -83,9 +84,13 @@ class _MessageScreenState extends State<MessageScreen> {
               ],
             ),
             actions: [
-              IconButton(
-                icon: Icon(Icons.videocam, color: AppColors.white, size: 24.sp),
-                onPressed: () {},
+              Padding(
+                padding: EdgeInsets.only(right: 10.w),
+                child: CommonImage(
+                  imageSrc: AppIcons.video,
+                  width: 24.w,
+                  height: 24.h,
+                ),
               ),
             ],
           ),
@@ -128,75 +133,77 @@ class _MessageScreenState extends State<MessageScreen> {
                 ),
 
           /// bottom Navigation Bar Section starts here
-          bottomNavigationBar: AnimatedPadding(
-            padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom,
-            ),
-            duration: const Duration(milliseconds: 100),
-            curve: Curves.decelerate,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-              decoration: BoxDecoration(
-                color: const Color(0xFFE8EEF2),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    blurRadius: 4,
-                    offset: const Offset(0, -2),
-                  ),
-                ],
+          bottomNavigationBar: SafeArea(
+            child: AnimatedPadding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
               ),
-              child: Row(
-                children: [
-                  /// Attachment Icon
-                  GestureDetector(
-                    onTap: () {},
-                    child: Icon(
-                      Icons.attach_file,
-                      color: AppColors.grey,
-                      size: 24.sp,
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.decelerate,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFE8EEF2),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 4,
+                      offset: const Offset(0, -2),
                     ),
-                  ),
-                  12.width,
-
-                  /// Text Field
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
-                      child: CommonTextField(
-                        hintText: "Write your message",
-                        borderColor: Colors.transparent,
-                        fillColor: AppColors.white,
-                        borderRadius: 20,
-                        paddingHorizontal: 16,
-                        paddingVertical: 10,
-                        controller: controller.messageController,
-                        onSubmitted: (p0) => controller.addNewMessage(),
-                      ),
-                    ),
-                  ),
-                  12.width,
-
-                  /// Send Button
-                  GestureDetector(
-                    onTap: controller.addNewMessage,
-                    child: Container(
-                      padding: EdgeInsets.all(10.sp),
-                      decoration: BoxDecoration(
-                        color: AppColors.primary,
-                        shape: BoxShape.circle,
-                      ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    /// Attachment Icon
+                    GestureDetector(
+                      onTap: () {},
                       child: Icon(
-                        Icons.send,
-                        color: AppColors.white,
-                        size: 20.sp,
+                        Icons.attach_file,
+                        color: AppColors.grey,
+                        size: 24.sp,
                       ),
                     ),
-                  ),
-                ],
+                    12.width,
+
+                    /// Text Field
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(20.r),
+                        ),
+                        child: CommonTextField(
+                          hintText: "Write your message",
+                          borderColor: Colors.transparent,
+                          fillColor: AppColors.white,
+                          borderRadius: 20,
+                          paddingHorizontal: 16,
+                          paddingVertical: 10,
+                          controller: controller.messageController,
+                          onSubmitted: (p0) => controller.addNewMessage(),
+                        ),
+                      ),
+                    ),
+                    12.width,
+
+                    /// Send Button
+                    GestureDetector(
+                      onTap: controller.addNewMessage,
+                      child: Container(
+                        padding: EdgeInsets.all(10.sp),
+                        decoration: BoxDecoration(
+                          color: AppColors.primary,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.send,
+                          color: AppColors.white,
+                          size: 20.sp,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -1,4 +1,6 @@
 import 'package:embeyi/core/component/image/common_image.dart';
+import 'package:embeyi/core/component/text/common_text.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,7 +16,7 @@ class JobDetailHeaderCard extends StatelessWidget {
   final String thumbnailImage;
   final VoidCallback onViewPost;
   final VoidCallback onRePost;
-  final VoidCallback onClosePost;
+  final VoidCallback onDeletePost;
   final VoidCallback onSave;
   final bool isSaved;
 
@@ -28,7 +30,7 @@ class JobDetailHeaderCard extends StatelessWidget {
     required this.thumbnailImage,
     required this.onViewPost,
     required this.onRePost,
-    required this.onClosePost,
+    required this.onDeletePost,
     required this.onSave,
     this.isSaved = false,
   });
@@ -85,11 +87,7 @@ class JobDetailHeaderCard extends StatelessWidget {
                     // Location
                     Row(
                       children: [
-                        Icon(
-                          Icons.location_on,
-                          size: 14.sp,
-                          color: AppColors.secondaryButton,
-                        ),
+                        CommonImage(imageSrc: AppIcons.location, size: 14.sp),
                         4.width,
                         Expanded(
                           child: Text(
@@ -195,19 +193,13 @@ class JobDetailHeaderCard extends StatelessWidget {
               ),
               const Spacer(),
               // Deadline
-              Icon(
-                Icons.calendar_today,
-                size: 12.sp,
-                color: AppColors.secondaryPrimary,
-              ),
+              CommonImage(imageSrc: AppIcons.calender, size: 16.sp),
               4.width,
-              Text(
-                deadline,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.secondaryPrimary,
-                ),
+              CommonText(
+                text: deadline,
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.secondaryPrimary,
               ),
             ],
           ),
@@ -218,7 +210,7 @@ class JobDetailHeaderCard extends StatelessWidget {
               Expanded(
                 child: _buildActionButton(
                   label: 'View Post',
-                  icon: Icons.remove_red_eye_outlined,
+                  icon: AppIcons.edit2,
                   color: AppColors.success,
                   onTap: onViewPost,
                 ),
@@ -227,7 +219,7 @@ class JobDetailHeaderCard extends StatelessWidget {
               Expanded(
                 child: _buildActionButton(
                   label: 'Re-Post',
-                  icon: Icons.refresh,
+                  icon: AppIcons.edit2,
                   color: AppColors.secondaryPrimary,
                   onTap: onRePost,
                 ),
@@ -235,10 +227,10 @@ class JobDetailHeaderCard extends StatelessWidget {
               8.width,
               Expanded(
                 child: _buildActionButton(
-                  label: 'Close Post',
-                  icon: Icons.close,
+                  label: 'Delete Post',
+                  icon: AppIcons.delete,
                   color: AppColors.error,
-                  onTap: onClosePost,
+                  onTap: onDeletePost,
                 ),
               ),
             ],
@@ -250,7 +242,7 @@ class JobDetailHeaderCard extends StatelessWidget {
 
   Widget _buildActionButton({
     required String label,
-    required IconData icon,
+    required String icon,
     required Color color,
     required VoidCallback onTap,
   }) {
@@ -266,15 +258,13 @@ class JobDetailHeaderCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 16.sp, color: color),
+            CommonImage(imageSrc: icon, size: 18.sp),
             4.width,
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w400,
-                color: color,
-              ),
+            CommonText(
+              text: label,
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w400,
+              color: color,
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:embeyi/features/recruiter/job_post/presentation/screen/edit_job_post_screen.dart';
+import 'package:embeyi/features/recruiter/message/presentation/screen/message_screen.dart';
 import 'package:embeyi/features/recruiter/resume/presentation/screen/resume_screen.dart';
 import 'package:embeyi/features/recruiter/home/presentation/screen/active_job_post_screen.dart';
 import 'package:embeyi/features/recruiter/home/presentation/screen/all_job_post_screen.dart';
@@ -64,6 +65,7 @@ class RecruiterRoutes {
   static const String shortJobListed = "/short_job_listed_screen.dart";
   static const String interviewJob = "/interview_job_screen.dart";
   static const String resume = "/resume_screen.dart";
+  static const String message = "/message_screen.dart";
   // Recruiter Routes List
   static List<GetPage> routes = [
     GetPage(name: home, page: () => RecruiterHomeScreen()),
@@ -106,7 +108,15 @@ class RecruiterRoutes {
     ),
     GetPage(name: shortJobListed, page: () => const ShortJobListedScreen()),
     GetPage(name: interviewJob, page: () => const InterviewJobScreen()),
-    GetPage(name: resume, page: () => const ResumeScreen()),
+    GetPage(
+      name: resume,
+      page: () => ResumeScreen(
+        isShortlist: Get.arguments['isShortlist'] ?? true,
+        isInterview: Get.arguments['isInterview'] ?? true,
+        isReject: Get.arguments['isReject'] ?? true,
+      ),
+    ),
+    GetPage(name: message, page: () => MessageScreen()),
     GetPage(name: editProfile, page: () => const RecruiterEditProfileScreen()),
     GetPage(name: editJobPost, page: () => const RecruiterEditJobPostScreen()),
   ];

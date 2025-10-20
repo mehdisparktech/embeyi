@@ -1,5 +1,7 @@
 import 'package:embeyi/core/component/image/common_image.dart';
+import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -82,11 +84,7 @@ class RecruiterJobCard extends StatelessWidget {
                       // Location
                       Row(
                         children: [
-                          Icon(
-                            Icons.location_on,
-                            size: 14.sp,
-                            color: AppColors.black,
-                          ),
+                          CommonImage(imageSrc: AppIcons.location, size: 14.sp),
                           4.width,
                           Expanded(
                             child: Text(
@@ -171,19 +169,13 @@ class RecruiterJobCard extends StatelessWidget {
                 // Deadline
                 Row(
                   children: [
-                    Icon(
-                      Icons.calendar_today,
-                      size: 12.sp,
-                      color: AppColors.secondaryPrimary,
-                    ),
+                    CommonImage(imageSrc: AppIcons.calender, size: 16.sp),
                     4.width,
-                    Text(
-                      deadline,
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.secondaryPrimary,
-                      ),
+                    CommonText(
+                      text: deadline,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.secondaryPrimary,
                     ),
                   ],
                 ),

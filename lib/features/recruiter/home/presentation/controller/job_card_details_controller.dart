@@ -127,6 +127,9 @@ class JobCardDetailsController extends GetxController {
   void viewCandidateProfile(String candidateName) {
     // Handle candidate profile view
     Get.snackbar('Candidate Profile', 'Opening $candidateName profile...');
-    Get.toNamed(RecruiterRoutes.resume);
+    Get.toNamed(
+      RecruiterRoutes.resume,
+      arguments: {'isShortlist': true, 'isInterview': true, 'isReject': true},
+    );
   }
 }

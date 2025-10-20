@@ -112,11 +112,11 @@ class SignInScreen extends StatelessWidget {
                           isLoading: controller.isLoading,
                           onTap: controller.signInUser,
                         ),
-                        30.height,
+                        60.height,
 
                         /// Account Creating Instruction here
                         const DoNotHaveAccount(),
-                        60.height,
+                        20.height,
                         CommonImage(imageSrc: AppImages.or),
                         40.height,
                         Row(

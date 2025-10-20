@@ -1,3 +1,5 @@
+import 'package:embeyi/core/component/button/common_button.dart';
+import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
@@ -26,7 +28,7 @@ class JobCardDetailsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildJobDetailHeader(controller),
+              _buildJobDetailHeader(controller, context),
               16.height,
               _buildFilterChips(controller),
               16.height,
@@ -58,7 +60,10 @@ class JobCardDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildJobDetailHeader(JobCardDetailsController controller) {
+  Widget _buildJobDetailHeader(
+    JobCardDetailsController controller,
+    BuildContext context,
+  ) {
     return Obx(
       () => JobDetailHeaderCard(
         jobTitle: controller.jobTitle.value,
@@ -73,7 +78,59 @@ class JobCardDetailsScreen extends StatelessWidget {
           RecruiterRoutes.goToViewJobPost();
         },
         onRePost: controller.rePost,
-        onClosePost: controller.closePost,
+        onDeletePost: () {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              backgroundColor: AppColors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.r),
+              ),
+              contentPadding: EdgeInsets.all(16.r),
+              content: CommonText(
+                text: 'Are you sure you want to Delete Job Post?',
+                maxLines: 2,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w400,
+                color: AppColors.black,
+              ),
+              actions: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: CommonButton(
+                        titleText: 'No',
+                        onTap: () {
+                          Get.back();
+                        },
+                        buttonColor: AppColors.transparent,
+                        borderColor: AppColors.black,
+                        titleColor: AppColors.black,
+                        titleSize: 16.sp,
+                        titleWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(width: 16.w),
+                    Expanded(
+                      child: CommonButton(
+                        titleText: 'Yes',
+                        onTap: () {
+                          Get.back();
+                        },
+                        buttonColor: AppColors.red,
+                        borderColor: AppColors.red,
+                        titleColor: AppColors.white,
+                        isGradient: false,
+                        titleSize: 16.sp,
+                        titleWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

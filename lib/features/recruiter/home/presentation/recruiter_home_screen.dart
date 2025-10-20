@@ -78,11 +78,7 @@ class RecruiterHomeScreen extends StatelessWidget {
                 2.height,
                 Row(
                   children: [
-                    Icon(
-                      Icons.location_on,
-                      size: 12.sp,
-                      color: AppColors.primaryText,
-                    ),
+                    CommonImage(imageSrc: AppIcons.location, size: 12.sp),
                     4.width,
                     CommonText(
                       text: '2118 Thornridge Cir. Syracuse',

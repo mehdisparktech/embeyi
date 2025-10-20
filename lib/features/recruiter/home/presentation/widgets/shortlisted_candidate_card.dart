@@ -1,3 +1,6 @@
+import 'package:embeyi/core/component/image/common_image.dart';
+import 'package:embeyi/core/component/text/common_text.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
@@ -41,86 +44,86 @@ class ShortlistedCandidateCard extends StatelessWidget {
             ),
           ],
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
           children: [
-            // Profile Image
-            Container(
-              width: 56.w,
-              height: 56.h,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(profileImage),
-                  fit: BoxFit.cover,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Profile Image
+                Container(
+                  width: 56.w,
+                  height: 56.h,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: AssetImage(profileImage),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            12.width,
-            // Candidate Details
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Name
-                  Text(
-                    name,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.black,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                12.width,
+                // Candidate Details
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Name
+                      Text(
+                        name,
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.black,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      4.height,
+                      // Job Title
+                      Text(
+                        jobTitle,
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.black,
+                        ),
+                      ),
+                      2.height,
+                      // Experience
+                      Text(
+                        experience,
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.secondaryText,
+                        ),
+                      ),
+
+                      // Description
+                    ],
                   ),
-                  4.height,
-                  // Job Title
-                  Text(
-                    jobTitle,
-                    style: TextStyle(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.black,
-                    ),
-                  ),
-                  2.height,
-                  // Experience
-                  Text(
-                    experience,
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.secondaryText,
-                    ),
-                  ),
-                  6.height,
-                  // Description
-                  Text(
-                    description,
-                    style: TextStyle(
-                      fontSize: 11.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.secondaryText,
-                      height: 1.4,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
-            ),
-            8.width,
-            // Delete Button
-            GestureDetector(
-              onTap: onDelete,
-              child: Container(
-                padding: EdgeInsets.all(8.r),
-                child: Icon(
-                  Icons.delete_outline,
-                  color: AppColors.error,
-                  size: 24.sp,
                 ),
-              ),
+                8.width,
+                // Delete Button
+                GestureDetector(
+                  onTap: onDelete,
+                  child: CommonImage(
+                    imageSrc: AppIcons.delete,
+                    width: 24.w,
+                    height: 24.h,
+                  ),
+                ),
+              ],
+            ),
+            8.height,
+            CommonText(
+              text: description,
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w400,
+              color: AppColors.secondaryText,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.justify,
             ),
           ],
         ),
