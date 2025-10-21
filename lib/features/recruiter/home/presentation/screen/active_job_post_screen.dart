@@ -49,7 +49,7 @@ class ActiveJobPostScreen extends StatelessWidget {
           color: AppColors.black,
         ),
       ),
-      centerTitle: false,
+      centerTitle: true,
     );
   }
 

@@ -85,4 +85,5 @@ class AppIcons {
   static const String jobSeeker = "$baseurl/job_seeker.svg";
   static const String recruiter = "$baseurl/recruiter.svg";
   static const String download = "$baseurl/download.svg";
+  static const String eye = "$baseurl/eye.svg";
 }

@@ -1,3 +1,5 @@
+import 'package:embeyi/core/component/pop_up/interview_schedule_popup.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 
@@ -6,10 +8,12 @@ class InterviewJobController extends GetxController {
   final RxInt selectedTabIndex = 0.obs;
   final RxInt selectedDateIndex = 3.obs; // Tuesday (23) is selected by default
   final RxString selectedMonth = 'September 2025'.obs;
-  
-  final RxList<Map<String, dynamic>> upcomingInterviews = <Map<String, dynamic>>[].obs;
-  final RxList<Map<String, dynamic>> completedInterviews = <Map<String, dynamic>>[].obs;
-  
+
+  final RxList<Map<String, dynamic>> upcomingInterviews =
+      <Map<String, dynamic>>[].obs;
+  final RxList<Map<String, dynamic>> completedInterviews =
+      <Map<String, dynamic>>[].obs;
+
   // Date list for the week
   final List<Map<String, dynamic>> dates = [
     {'day': 'Sat', 'date': '20'},
@@ -86,14 +90,22 @@ class InterviewJobController extends GetxController {
   }
 
   List<Map<String, dynamic>> get currentInterviews {
-    return selectedTabIndex.value == 0 ? upcomingInterviews : completedInterviews;
+    return selectedTabIndex.value == 0
+        ? upcomingInterviews
+        : completedInterviews;
   }
 
   void editInterview(String candidateName) {
-    Get.snackbar('Edit Interview', 'Editing interview for $candidateName...');
+    showDialog(
+      context: Get.context!,
+      builder: (context) => InterviewSchedulePopup(),
+    );
   }
 
   void viewCandidateProfile(String candidateName) {
-    Get.snackbar('Candidate Profile', 'Opening $candidateName profile...');
+    // showDialog(
+    //   context: Get.context!,
+    //   builder: (context) => InterviewSchedulePopup(),
+    // );
   }
 }

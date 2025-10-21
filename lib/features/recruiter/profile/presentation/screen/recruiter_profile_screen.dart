@@ -196,9 +196,9 @@ void _showLogoutDialog() {
       ),
       content: CommonText(
         text: 'Are you sure you want to log out?',
-        fontSize: 14,
+        fontSize: 16,
         fontWeight: FontWeight.w400,
-        color: AppColors.secondaryText,
+        color: AppColors.black,
       ),
       actions: [
         TextButton(

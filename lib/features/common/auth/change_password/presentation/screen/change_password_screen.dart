@@ -44,7 +44,7 @@ class ChangePasswordScreen extends StatelessWidget {
                     hintText: AppString.currentPassword,
                     validator: OtherHelper.passwordValidator,
                     isPassword: true,
-                    prefixIcon: Icon(Icons.lock, size: 20.sp),
+                    //prefixIcon: Icon(Icons.lock, size: 20.sp),
                   ),
 
                   /// New Password section
@@ -58,7 +58,7 @@ class ChangePasswordScreen extends StatelessWidget {
                     hintText: AppString.newPassword,
                     validator: OtherHelper.passwordValidator,
                     isPassword: true,
-                    prefixIcon: Icon(Icons.lock, size: 20.sp),
+                    //prefixIcon: Icon(Icons.lock, size: 20.sp),
                   ),
 
                   /// confirm Password section
@@ -75,7 +75,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       controller.newPasswordController,
                     ),
                     isPassword: true,
-                    prefixIcon: Icon(Icons.lock, size: 20.sp),
+                    //prefixIcon: Icon(Icons.lock, size: 20.sp),
                   ),
                   20.height,
 

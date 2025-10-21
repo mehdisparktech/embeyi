@@ -50,7 +50,7 @@ class AllJobPostScreen extends StatelessWidget {
           color: AppColors.black,
         ),
       ),
-      centerTitle: false,
+      centerTitle: true,
     );
   }
 

@@ -21,7 +21,7 @@ class AppliedDetails extends StatelessWidget {
       backgroundColor: AppColors.background,
       appBar: CommonAppbar(
         title: 'Application Details',
-        centerTitle: false,
+        centerTitle: true,
         showBackButton: true,
       ),
       body: SingleChildScrollView(

@@ -50,7 +50,7 @@ class PendingJobRequestScreen extends StatelessWidget {
           ),
         ),
       ),
-      centerTitle: false,
+      centerTitle: true,
     );
   }
 

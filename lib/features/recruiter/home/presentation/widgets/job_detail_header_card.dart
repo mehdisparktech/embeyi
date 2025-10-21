@@ -210,7 +210,7 @@ class JobDetailHeaderCard extends StatelessWidget {
               Expanded(
                 child: _buildActionButton(
                   label: 'View Post',
-                  icon: AppIcons.edit2,
+                  icon: AppIcons.eye,
                   color: AppColors.success,
                   onTap: onViewPost,
                 ),

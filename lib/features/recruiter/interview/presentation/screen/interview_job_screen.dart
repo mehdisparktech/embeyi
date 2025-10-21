@@ -60,7 +60,7 @@ class InterviewJobScreen extends StatelessWidget {
           color: AppColors.black,
         ),
       ),
-      centerTitle: false,
+      centerTitle: true,
     );
   }
 
