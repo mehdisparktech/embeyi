@@ -3,6 +3,7 @@ import 'package:embeyi/core/component/bottom_shit/filder_bottom_shit.dart';
 import 'package:embeyi/core/component/card/job_card.dart';
 import 'package:embeyi/core/config/route/job_seeker_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:embeyi/features/job_seeker/home/presentation/widgets/auto_apply.dart';
@@ -122,7 +123,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
                         childAspectRatio: 1,
                         children: [
                           JobCategoryCard(
-                            icon: Icons.school_outlined,
+                            imageSrc: AppIcons.education,
                             title: 'Education',
                             onTap: () {
                               // Handle category tap
@@ -130,7 +131,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
                             isJobCountVisible: false,
                           ),
                           JobCategoryCard(
-                            icon: Icons.restaurant_outlined,
+                            imageSrc: AppIcons.restaurant,
                             title: 'Restaurant',
                             onTap: () {
                               // Handle category tap
@@ -138,7 +139,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
                             isJobCountVisible: false,
                           ),
                           JobCategoryCard(
-                            icon: Icons.bar_chart_outlined,
+                            imageSrc: AppIcons.marketing,
                             title: 'Marketing',
                             onTap: () {
                               // Handle category tap
@@ -146,7 +147,7 @@ class JobSeekerHomeScreen extends StatelessWidget {
                             isJobCountVisible: false,
                           ),
                           JobCategoryCard(
-                            icon: Icons.account_balance_outlined,
+                            imageSrc: AppIcons.accounting,
                             title: 'Accounting',
                             onTap: () {
                               // Handle category tap

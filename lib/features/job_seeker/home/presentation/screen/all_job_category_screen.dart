@@ -1,4 +1,5 @@
 import 'package:embeyi/core/config/route/job_seeker_routes.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/features/job_seeker/home/presentation/widgets/home_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,16 +22,16 @@ class AllJobCategoryScreen extends StatelessWidget {
         itemCount: 8,
         itemBuilder: (context, index) {
           return JobCategoryCard(
-            icon: index % 2 == 0
-                ? Icons.school_outlined
+            imageSrc: index % 2 == 0
+                ? AppIcons.education
                 : index % 3 == 0
-                ? Icons.bar_chart_outlined
-                : Icons.account_balance_outlined,
+                ? AppIcons.marketing
+                : AppIcons.restaurant,
             title: index % 2 == 0
                 ? 'Education'
                 : index % 3 == 0
                 ? 'Marketing'
-                : 'Accounting',
+                : 'Restaurant',
             onTap: () {
               // Handle category tap
               JobSeekerRoutes.goToCategoryJobList(
@@ -38,7 +39,7 @@ class AllJobCategoryScreen extends StatelessWidget {
                     ? 'Education'
                     : index % 3 == 0
                     ? 'Marketing'
-                    : 'Accounting',
+                    : 'Restaurant',
               );
             },
             jobCount: index * 10 + 5,
