@@ -1,4 +1,5 @@
-import 'dart:io';
+import 'package:embeyi/core/component/image/common_image.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/features/recruiter/job_post/presentation/controller/create_job_post_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -312,43 +313,37 @@ class RecruiterCreateJobPostScreen extends StatelessWidget {
   Widget _buildProfileImageSection(
     RecruiterCreateJobPostController controller,
   ) {
-    return Center(
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: controller.pickProfileImage,
-            child: Obx(
-              () => Container(
-                width: 80.w,
-                height: 80.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.primaryColor.withOpacity(0.1),
-                  border: Border.all(color: AppColors.borderColor, width: 1),
-                ),
-                child: controller.profileImagePath.value != null
-                    ? ClipOval(
-                        child: Image.file(
-                          File(controller.profileImagePath.value!),
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    : Icon(
-                        Icons.person,
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 1, color: const Color(0xFF123499)),
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      child: Center(
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: controller.pickProfileImage,
+              child: Obx(
+                () => controller.profileImagePath.value != null
+                    ? CommonImage(
+                        imageSrc: controller.profileImagePath.value!,
                         size: 40.sp,
-                        color: AppColors.primaryColor,
-                      ),
+                      )
+                    : CommonImage(imageSrc: AppIcons.upload2, size: 40.sp),
               ),
             ),
-          ),
-          SizedBox(height: 8.h),
-          CommonText(
-            text: 'Upload/Cover Image',
-            fontSize: 13,
-            fontWeight: FontWeight.w400,
-            color: AppColors.primaryColor,
-          ),
-        ],
+            SizedBox(height: 8.h),
+            CommonText(
+              text: 'Upload/Cover Image',
+              fontSize: 13,
+              fontWeight: FontWeight.w400,
+              color: AppColors.primaryColor,
+            ),
+          ],
+        ),
       ),
     );
   }
