@@ -1,4 +1,6 @@
+import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/component/text/common_text.dart';
@@ -130,10 +132,10 @@ class EducationScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: onEdit,
-                child: Icon(
-                  Icons.edit,
-                  size: 20.sp,
-                  color: AppColors.primaryColor,
+                child: CommonImage(
+                  imageSrc: AppIcons.edit,
+                  width: 20,
+                  height: 20,
                 ),
               ),
             ],

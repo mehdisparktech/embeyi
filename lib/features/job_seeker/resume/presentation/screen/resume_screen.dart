@@ -1,4 +1,7 @@
+import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
+import 'package:embeyi/features/job_seeker/resume/presentation/screen/add_resume_screen.dart';
 import 'package:embeyi/features/job_seeker/resume/presentation/screen/view_resume_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -76,7 +79,7 @@ class ResumeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const EditResumeScreen(),
+                        builder: (context) => const AddResumeScreen(),
                       ),
                     );
                   },
@@ -119,17 +122,24 @@ class ResumeScreen extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.all(16.w),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+        decoration: ShapeDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(color: Colors.grey.shade300, width: 1),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          shadows: [
+            BoxShadow(
+              color: Color(0x19000000),
+              blurRadius: 4,
+              offset: Offset(0, 2),
+              spreadRadius: 0,
+            ),
+          ],
         ),
         child: Row(
           children: [
             /// Document Icon
             Container(
-              padding: EdgeInsets.all(12.w),
+              padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
                 color: Colors.orange.shade100,
                 borderRadius: BorderRadius.circular(8.r),
@@ -145,17 +155,18 @@ class ResumeScreen extends StatelessWidget {
                 children: [
                   CommonText(
                     text: title,
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: Colors.black,
                   ),
                   4.height,
                   CommonText(
                     text: subtitle,
-                    fontSize: 12,
+                    fontSize: 10,
                     fontWeight: FontWeight.w400,
                     color: Colors.grey.shade600,
                     maxLines: 2,
+                    textAlign: TextAlign.left,
                   ),
                 ],
               ),
@@ -175,10 +186,10 @@ class ResumeScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(20.r),
               child: Padding(
                 padding: EdgeInsets.all(8.w),
-                child: Icon(
-                  Icons.edit_outlined,
-                  color: Colors.grey.shade700,
-                  size: 20.sp,
+                child: CommonImage(
+                  imageSrc: AppIcons.edit,
+                  width: 18,
+                  height: 18,
                 ),
               ),
             ),
@@ -192,10 +203,10 @@ class ResumeScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(20.r),
               child: Padding(
                 padding: EdgeInsets.all(8.w),
-                child: Icon(
-                  Icons.delete_outline,
-                  color: Colors.red,
-                  size: 20.sp,
+                child: CommonImage(
+                  imageSrc: AppIcons.delete,
+                  width: 18,
+                  height: 18,
                 ),
               ),
             ),

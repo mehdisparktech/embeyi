@@ -13,6 +13,7 @@ class PersonalInfoScreen extends StatefulWidget {
 }
 
 class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
+  final TextEditingController resumeNameController = TextEditingController();
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -22,9 +23,17 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
   final TextEditingController nationalityController = TextEditingController();
   final TextEditingController dobController = TextEditingController();
   final TextEditingController genderController = TextEditingController();
-
+  final TextEditingController socialMediaController = TextEditingController();
+  final TextEditingController githubController = TextEditingController();
+  final TextEditingController workAuthorizationController =
+      TextEditingController();
+  final TextEditingController clearancesController = TextEditingController();
+  final TextEditingController openToWorkStatusController =
+      TextEditingController();
+  final TextEditingController summaryController = TextEditingController();
   @override
   void dispose() {
+    resumeNameController.dispose();
     fullNameController.dispose();
     emailController.dispose();
     phoneController.dispose();
@@ -34,6 +43,12 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
     nationalityController.dispose();
     dobController.dispose();
     genderController.dispose();
+    socialMediaController.dispose();
+    githubController.dispose();
+    workAuthorizationController.dispose();
+    clearancesController.dispose();
+    openToWorkStatusController.dispose();
+    summaryController.dispose();
     super.dispose();
   }
 
@@ -69,6 +84,14 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      _buildLabel('Resume Name'),
+                      8.height,
+                      CommonTextField(
+                        controller: resumeNameController,
+                        hintText: 'Enter your resume name',
+                        keyboardType: TextInputType.name,
+                      ),
+                      16.height,
                       _buildLabel('Full Name'),
                       8.height,
                       CommonTextField(
@@ -87,7 +110,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                       ),
                       16.height,
 
-                      _buildLabel('Phone Number'),
+                      _buildLabel('Mobile Number'),
                       8.height,
                       CommonTextField(
                         controller: phoneController,
@@ -104,64 +127,70 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                         maxLines: 3,
                       ),
                       16.height,
-
-                      _buildLabel('LinkedIn Profile'),
+                      _buildLabel('Social Media Link'),
                       8.height,
                       CommonTextField(
-                        controller: linkedinController,
-                        hintText: 'Enter your LinkedIn URL',
+                        controller: socialMediaController,
+                        hintText: 'Enter your social media link',
+                        keyboardType: TextInputType.url,
+                      ),
+                      16.height,
+                      _buildLabel('Github Link'),
+                      8.height,
+                      CommonTextField(
+                        controller: githubController,
+                        hintText: 'Enter your Github URL',
                         keyboardType: TextInputType.url,
                       ),
                       16.height,
 
-                      _buildLabel('Portfolio URL'),
+                      _buildLabel('Work Authorization'),
                       8.height,
                       CommonTextField(
-                        controller: portfolioController,
-                        hintText: 'Enter your portfolio URL',
-                        keyboardType: TextInputType.url,
+                        controller: workAuthorizationController,
+                        hintText: 'Enter your work authorization',
                       ),
                       16.height,
 
-                      _buildLabel('Nationality'),
+                      _buildLabel('Clearances'),
                       8.height,
                       CommonTextField(
-                        controller: nationalityController,
-                        hintText: 'Enter your nationality',
+                        controller: clearancesController,
+                        hintText: 'Enter your clearances',
                       ),
                       16.height,
 
-                      _buildLabel('Date of Birth'),
-                      8.height,
-                      CommonTextField(
-                        controller: dobController,
-                        hintText: 'Select date',
-                        readOnly: true,
-                        suffixIcon: Icon(
-                          Icons.calendar_today,
-                          size: 20.sp,
-                          color: AppColors.primary,
-                        ),
-                        onTap: () async {
-                          final date = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(1950),
-                            lastDate: DateTime.now(),
-                          );
-                          if (date != null) {
-                            dobController.text =
-                                '${date.day}/${date.month}/${date.year}';
-                          }
-                        },
-                      ),
+                      // _buildLabel('Date of Birth'),
+                      // 8.height,
+                      // CommonTextField(
+                      //   controller: dobController,
+                      //   hintText: 'Select date',
+                      //   readOnly: true,
+                      //   suffixIcon: Icon(
+                      //     Icons.calendar_today,
+                      //     size: 20.sp,
+                      //     color: AppColors.primary,
+                      //   ),
+                      //   onTap: () async {
+                      //     final date = await showDatePicker(
+                      //       context: context,
+                      //       initialDate: DateTime.now(),
+                      //       firstDate: DateTime(1950),
+                      //       lastDate: DateTime.now(),
+                      //     );
+                      //     if (date != null) {
+                      //       dobController.text =
+                      //           '${date.day}/${date.month}/${date.year}';
+                      //     }
+                      //   },
+                      // ),
                       16.height,
 
-                      _buildLabel('Gender'),
+                      _buildLabel('Open to Work'),
                       8.height,
                       CommonTextField(
-                        controller: genderController,
-                        hintText: 'Select gender',
+                        controller: openToWorkStatusController,
+                        hintText: 'Select open to work',
                         readOnly: true,
                         suffixIcon: Icon(
                           Icons.arrow_drop_down,
@@ -169,10 +198,18 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                           color: AppColors.primary,
                         ),
                         onTap: () {
-                          _showGenderBottomSheet(context);
+                          _showOpenToWorkBottomSheet(context);
                         },
                       ),
-                      24.height,
+                      16.height,
+                      _buildLabel('Summary'),
+                      8.height,
+                      CommonTextField(
+                        controller: summaryController,
+                        hintText: 'Enter your summary',
+                        maxLines: 4,
+                      ),
+                      16.height,
                     ],
                   ),
                 ),
@@ -186,7 +223,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle save
+                    // Handle update
                     Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
@@ -198,7 +235,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                     ),
                   ),
                   child: const CommonText(
-                    text: 'Save',
+                    text: 'Update',
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: Colors.white,
@@ -216,12 +253,12 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
     return CommonText(
       text: text,
       fontSize: 14,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w400,
       color: Colors.black,
     );
   }
 
-  void _showGenderBottomSheet(BuildContext context) {
+  void _showOpenToWorkBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
@@ -234,23 +271,23 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                title: const CommonText(text: 'Male', fontSize: 16),
+                title: const CommonText(text: 'Remote', fontSize: 16),
                 onTap: () {
-                  genderController.text = 'Male';
+                  openToWorkStatusController.text = 'Remote';
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: const CommonText(text: 'Female', fontSize: 16),
+                title: const CommonText(text: 'Onsite', fontSize: 16),
                 onTap: () {
-                  genderController.text = 'Female';
+                  openToWorkStatusController.text = 'Onsite';
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: const CommonText(text: 'Other', fontSize: 16),
+                title: const CommonText(text: 'Hybrid', fontSize: 16),
                 onTap: () {
-                  genderController.text = 'Other';
+                  openToWorkStatusController.text = 'Hybrid';
                   Navigator.pop(context);
                 },
               ),

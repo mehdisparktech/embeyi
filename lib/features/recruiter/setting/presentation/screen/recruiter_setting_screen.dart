@@ -1,4 +1,5 @@
 import 'package:embeyi/core/config/route/app_routes.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/features/recruiter/setting/presentation/controller/setting_controller.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/config/route/job_seeker_routes.dart';
@@ -36,35 +37,35 @@ class RecruiterSettingScreen extends StatelessWidget {
                 /// Change password Item here
                 SettingItem(
                   title: AppString.changePassword,
-                  iconDate: Icons.lock_outline,
+                  imageSrc: AppIcons.edit,
                   onTap: () => AppRoutes.goToChangePassword(),
                 ),
 
                 /// Privacy Policy Item here
                 SettingItem(
                   title: AppString.privacyPolicy,
-                  iconDate: Icons.network_wifi_1_bar,
+                  imageSrc: AppIcons.privacy,
                   onTap: () => JobSeekerRoutes.goToPrivacyPolicy(),
                 ),
 
                 /// Terms of Service Item here
                 SettingItem(
                   title: AppString.termsOfServices,
-                  iconDate: Icons.gavel,
+                  imageSrc: AppIcons.terms,
                   onTap: () => JobSeekerRoutes.goToTermsOfServices(),
                 ),
 
                 /// Privacy Policy Item here
                 SettingItem(
                   title: AppString.helpAndSupport,
-                  iconDate: Icons.help_outline,
+                  imageSrc: AppIcons.support,
                   onTap: () => JobSeekerRoutes.goToHelpAndSupport(),
                 ),
 
                 /// Delete Account Item here
                 SettingItem(
                   title: AppString.deleteAccount,
-                  iconDate: Icons.delete_outline_rounded,
+                  imageSrc: AppIcons.deleteAccount,
                   onTap: () => deletePopUp(
                     controller: controller.passwordController,
                     onTap: controller.deleteAccountRepo,

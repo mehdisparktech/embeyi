@@ -47,7 +47,10 @@ class RecruiterChatListScreen extends StatelessWidget {
                 /// User Search bar here
                 CommonTextField(
                   prefixIcon: const Icon(Icons.search),
-                  hintText: AppString.searchDoctor,
+                  hintText: AppString.search,
+                  borderRadius: 10,
+                  paddingHorizontal: 16,
+                  paddingVertical: 10,
                 ),
 
                 /// Show all Chat List here

@@ -10,8 +10,8 @@ import 'project_screen.dart';
 import 'education_screen.dart';
 import 'certification_screen.dart';
 
-class EditResumeScreen extends StatelessWidget {
-  const EditResumeScreen({super.key});
+class AddResumeScreen extends StatelessWidget {
+  const AddResumeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class EditResumeScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: const CommonText(
-          text: 'Edit Resume',
+          text: 'Create New Resume',
           fontWeight: FontWeight.w600,
           fontSize: 20,
           color: Colors.black,
@@ -65,7 +65,7 @@ class EditResumeScreen extends StatelessWidget {
                       ),
                       8.height,
                       const CommonText(
-                        text: 'Edit Resume',
+                        text: 'Add Resume',
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: AppColors.primary,

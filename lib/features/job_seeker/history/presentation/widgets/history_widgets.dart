@@ -1,6 +1,8 @@
 import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
+import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -93,11 +95,7 @@ class ApplicationHistoryCard extends StatelessWidget {
         6.height,
         Row(
           children: [
-            Icon(
-              Icons.location_on_outlined,
-              size: 14.sp,
-              color: AppColors.secondaryText,
-            ),
+            CommonImage(imageSrc: AppIcons.location, size: 14.sp),
             4.width,
             Expanded(
               child: CommonText(
@@ -125,7 +123,7 @@ class StatusBadge extends StatelessWidget {
   Color _getStatusColor() {
     switch (status.toLowerCase()) {
       case 'applied':
-        return AppColors.secondaryButton;
+        return AppColors.primary;
       case 'interview':
         return AppColors.success;
       case 'rejected':
@@ -265,7 +263,7 @@ class ApplicationDetailsHeaderCard extends StatelessWidget {
 
   Widget _buildCompanyLogo() {
     return Container(
-      width: 60.w,
+      width: 80.w,
       height: 60.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
@@ -274,16 +272,7 @@ class ApplicationDetailsHeaderCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: companyLogo != null
           ? CommonImage(imageSrc: companyLogo!, fill: BoxFit.cover)
-          : Center(
-              child: CommonText(
-                text: 'We are\nHiring',
-                fontSize: 10,
-                fontWeight: FontWeight.w600,
-                color: AppColors.red,
-                textAlign: TextAlign.center,
-                maxLines: 2,
-              ),
-            ),
+          : CommonImage(imageSrc: AppImages.jobPost, fill: BoxFit.cover),
     );
   }
 
@@ -310,18 +299,14 @@ class ApplicationDetailsHeaderCard extends StatelessWidget {
         6.height,
         Row(
           children: [
-            Icon(
-              Icons.location_on_outlined,
-              size: 14.sp,
-              color: AppColors.secondaryText,
-            ),
+            CommonImage(imageSrc: AppIcons.location, size: 14.sp),
             4.width,
             Expanded(
               child: CommonText(
                 text: location,
                 fontSize: 12,
                 fontWeight: FontWeight.w400,
-                color: AppColors.secondaryText,
+                color: AppColors.primaryText,
                 textAlign: TextAlign.start,
                 maxLines: 1,
               ),
@@ -597,18 +582,14 @@ class InterviewJobCard extends StatelessWidget {
         6.height,
         Row(
           children: [
-            Icon(
-              Icons.location_on_outlined,
-              size: 14.sp,
-              color: AppColors.secondaryText,
-            ),
+            CommonImage(imageSrc: AppIcons.location, size: 14.sp),
             4.width,
             Expanded(
               child: CommonText(
                 text: location,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColors.secondaryText,
+                color: AppColors.primaryText,
                 textAlign: TextAlign.start,
                 maxLines: 1,
               ),

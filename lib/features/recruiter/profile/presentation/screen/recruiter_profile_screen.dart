@@ -1,5 +1,6 @@
 import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:embeyi/features/recruiter/profile/presentation/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +95,7 @@ class RecruiterProfileScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final item = profileItems[index];
                         return Item(
-                          icon: item.icon,
+                          imageSrc: item.imageSrc,
                           title: item.title,
                           onTap: item.onTap,
                         );
@@ -119,14 +120,14 @@ class RecruiterProfileScreen extends StatelessWidget {
 // Profile Item Data
 final List<ProfileItemData> profileItems = [
   ProfileItemData(
-    icon: Icons.person_outline,
+    imageSrc: AppIcons.profile,
     title: 'Company Profile',
     onTap: () {
       RecruiterRoutes.goToCompanyProfile();
     },
   ),
   ProfileItemData(
-    icon: Icons.subscriptions,
+    imageSrc: AppIcons.subscriptionPack,
     title: 'Subscription Pack',
     onTap: () {
       RecruiterRoutes.goToSubscriptionPack();
@@ -134,49 +135,49 @@ final List<ProfileItemData> profileItems = [
   ),
 
   ProfileItemData(
-    icon: Icons.credit_card,
+    imageSrc: AppIcons.mySubscription,
     title: 'My Subscription',
     onTap: () {
       RecruiterRoutes.goToMySubscription();
     },
   ),
   ProfileItemData(
-    icon: Icons.favorite_border,
+    imageSrc: AppIcons.love,
     title: 'Career Spotlight',
     onTap: () {
       RecruiterRoutes.goToCareerSpotlight();
     },
   ),
   ProfileItemData(
-    icon: Icons.subscriptions,
+    imageSrc: AppIcons.subscriptionPack,
     title: 'Job history',
     onTap: () {
       RecruiterRoutes.goToJobHistory();
     },
   ),
   ProfileItemData(
-    icon: Icons.payment,
+    imageSrc: AppIcons.history3,
     title: 'Payment History',
     onTap: () {
       RecruiterRoutes.goToPaymentHistory();
     },
   ),
   ProfileItemData(
-    icon: Icons.star_border,
+    imageSrc: AppIcons.review,
     title: 'Platform Review',
     onTap: () {
       RecruiterRoutes.goToPlatformReview();
     },
   ),
   ProfileItemData(
-    icon: Icons.settings,
+    imageSrc: AppIcons.setting,
     title: 'Settings',
     onTap: () {
       RecruiterRoutes.goToSettings();
     },
   ),
   ProfileItemData(
-    icon: Icons.logout_outlined,
+    imageSrc: AppIcons.logout,
     title: 'Log Out',
     onTap: () {
       _showLogoutDialog();
@@ -229,12 +230,12 @@ void _showLogoutDialog() {
 
 // Profile Item Model
 class ProfileItemData {
-  final IconData icon;
+  final String imageSrc;
   final String title;
   final VoidCallback onTap;
 
   ProfileItemData({
-    required this.icon,
+    required this.imageSrc,
     required this.title,
     required this.onTap,
   });

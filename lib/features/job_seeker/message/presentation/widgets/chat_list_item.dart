@@ -1,3 +1,4 @@
+import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/component/image/common_image.dart';
@@ -72,6 +73,7 @@ Widget chatListItem({required ChatModel item}) {
                           text: item.latestMessage.message,
                           fontWeight: FontWeight.w400,
                           fontSize: 12,
+                          color: AppColors.secondaryText,
                         ),
                       ],
                     ),
@@ -81,6 +83,7 @@ Widget chatListItem({required ChatModel item}) {
                     text: "2 Min Ago",
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
+                    color: AppColors.secondaryText,
                   ),
                 ],
               ),

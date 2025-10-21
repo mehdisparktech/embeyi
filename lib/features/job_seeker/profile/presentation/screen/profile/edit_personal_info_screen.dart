@@ -97,8 +97,8 @@ class _EditPersonalInfoScreenState extends State<EditPersonalInfoScreen> {
 
   Widget _buildProfileSection() {
     return ProfileSection(
-      name: 'Shakir Ahmed',
-      designation: 'UI/UX Designer',
+      name: '',
+      designation: '',
       imagePath: 'assets/images/profile.png',
       showEditIcon: true,
       onEditTap: () {

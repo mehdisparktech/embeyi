@@ -26,6 +26,7 @@ class AppIcons {
   static const String call = "$baseurl/call.svg";
   static const String certification = "$baseurl/certification.svg";
   static const String check = "$baseurl/check.svg";
+  static const String check2 = "$baseurl/check2.svg";
   static const String clock = "$baseurl/clock.svg";
   static const String deleteAccount = "$baseurl/delete_account.svg";
   static const String delete = "$baseurl/delete.svg";

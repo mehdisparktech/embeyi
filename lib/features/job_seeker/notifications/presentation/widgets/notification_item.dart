@@ -106,10 +106,10 @@ class NotificationItem extends StatelessWidget {
                     padding: EdgeInsets.only(top: 4.h),
                     child: CommonText(
                       text: 'Apply Now!',
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
                       textAlign: TextAlign.start,
-                      color: const Color(0xFF123499),
+                      color: AppColors.success,
                       maxLines: 1,
                     ),
                   ),

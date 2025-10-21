@@ -1,4 +1,5 @@
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:embeyi/features/job_seeker/resume/presentation/screen/resume_screen.dart';
 import 'package:embeyi/features/job_seeker/setting/presentation/screen/job_seeker_setting_screen.dart';
@@ -80,7 +81,11 @@ class JobSeekerProfileScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
 
                       children: [
-                        Icon(Icons.star, color: AppColors.secondaryPrimary),
+                        CommonImage(
+                          imageSrc: AppIcons.premium,
+                          width: 20,
+                          height: 20,
+                        ),
                         8.width,
                         CommonText(
                           text: 'Premium Plan',
@@ -101,7 +106,7 @@ class JobSeekerProfileScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final item = profileItems[index];
                         return Item(
-                          icon: item.icon,
+                          imageSrc: item.imageSrc,
                           title: item.title,
                           onTap: item.onTap,
                         );
@@ -126,63 +131,63 @@ class JobSeekerProfileScreen extends StatelessWidget {
 // Profile Item Data
 final List<ProfileItemData> profileItems = [
   ProfileItemData(
-    icon: Icons.person_outline,
+    imageSrc: AppIcons.profile,
     title: 'My Profile',
     onTap: () {
       Get.to(() => const MyProfileScreen());
     },
   ),
   ProfileItemData(
-    icon: Icons.description_outlined,
+    imageSrc: AppIcons.resume,
     title: 'Resume',
     onTap: () {
       Get.to(() => const ResumeScreen());
     },
   ),
   ProfileItemData(
-    icon: Icons.favorite_border,
+    imageSrc: AppIcons.love,
     title: 'Favorite List',
     onTap: () {
       Get.to(() => const FavoriteListScreen());
     },
   ),
   ProfileItemData(
-    icon: Icons.subscriptions,
+    imageSrc: AppIcons.subscriptionPack,
     title: 'Subscription Pack',
     onTap: () {
       Get.to(() => const SubscriptionPackScreen());
     },
   ),
   ProfileItemData(
-    icon: Icons.credit_card,
+    imageSrc: AppIcons.mySubscription,
     title: 'My Subscription',
     onTap: () {
       Get.to(() => const MySubscriptionScreen());
     },
   ),
   ProfileItemData(
-    icon: Icons.payment,
+    imageSrc: AppIcons.history3,
     title: 'Payment History',
     onTap: () {
       Get.to(() => const PaymentHistoryScreen());
     },
   ),
   ProfileItemData(
-    icon: Icons.star_border,
+    imageSrc: AppIcons.review,
     title: 'Platform Review',
     onTap: () {
       Get.to(() => const PlatformReviewScreen());
     },
   ),
   ProfileItemData(
-    icon: Icons.settings,
+    imageSrc: AppIcons.setting,
     title: 'Settings',
     onTap: () {
       Get.to(() => const JobSeekerSettingScreen());
     },
   ),
   ProfileItemData(
-    icon: Icons.logout,
+    imageSrc: AppIcons.logout,
     title: 'Log Out',
     onTap: () {
       _showLogoutDialog();
@@ -235,12 +240,12 @@ void _showLogoutDialog() {
 
 // Profile Item Model
 class ProfileItemData {
-  final IconData icon;
+  final String imageSrc;
   final String title;
   final VoidCallback onTap;
 
   ProfileItemData({
-    required this.icon,
+    required this.imageSrc,
     required this.title,
     required this.onTap,
   });

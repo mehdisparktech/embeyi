@@ -1,3 +1,4 @@
+import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/constants/app_colors.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -6,12 +7,12 @@ class SettingItem extends StatelessWidget {
   const SettingItem({
     super.key,
     required this.title,
-    required this.iconDate,
+    required this.imageSrc,
     required this.onTap,
   });
 
   final String title;
-  final IconData iconDate;
+  final String imageSrc;
   final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class SettingItem extends StatelessWidget {
         child: Row(
           children: [
             /// show icon here
-            Icon(iconDate, color: AppColors.black, size: 24),
+            CommonImage(imageSrc: imageSrc, width: 24, height: 24),
 
             /// show Title here
             CommonText(

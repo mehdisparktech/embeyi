@@ -7,7 +7,7 @@ import '../text/common_text.dart';
 class Item extends StatelessWidget {
   const Item({
     super.key,
-    this.icon,
+    this.imageSrc,
     required this.title,
     this.image = "",
     this.disableDivider = false,
@@ -18,7 +18,7 @@ class Item extends StatelessWidget {
     this.disableIcon = false,
   });
 
-  final IconData? icon;
+  final String? imageSrc;
   final String title;
   final String image;
   final bool disableDivider;
@@ -53,8 +53,8 @@ class Item extends StatelessWidget {
           children: [
             Row(
               children: [
-                icon != null
-                    ? Icon(icon, color: color)
+                imageSrc != null
+                    ? CommonImage(imageSrc: imageSrc!, width: 20, height: 20)
                     : CommonImage(imageSrc: image),
                 CommonText(
                   text: title,

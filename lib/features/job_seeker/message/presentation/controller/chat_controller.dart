@@ -52,7 +52,7 @@ class ChatController extends GetxController {
           "_id": "user_1",
           "fullName": "Sarah Johnson",
           "image":
-              "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+              "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
         },
         "latestMessage": {
           "_id": "msg_1",

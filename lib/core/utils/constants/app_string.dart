@@ -48,7 +48,7 @@ class AppString {
   static const String otpVerify = "OTP Verify";
   static const String otpVerification = "OTP Verification";
   static const String inbox = "Inbox";
-  static const String searchDoctor = "search a doctor";
+  static const String search = "Search";
   static const String activeNow = "Active Now";
   static const String messageHere = "message here";
   static const String notifications = "Notifications";

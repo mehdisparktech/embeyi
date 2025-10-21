@@ -1,4 +1,7 @@
+import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
+import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -33,7 +36,7 @@ class MyProfileScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             children: [
-              32.height,
+              16.height,
 
               /// Profile Header Section
               _buildProfileHeader(),
@@ -42,7 +45,8 @@ class MyProfileScreen extends StatelessWidget {
 
               /// Menu Items
               _buildMenuItem(
-                icon: Icons.person_outline,
+                color: AppColors.secondaryPrimary.withOpacity(0.1),
+                imageSrc: AppIcons.personal,
                 title: 'Personal Info',
                 subtitle: 'Complete',
                 onTap: () {
@@ -52,7 +56,8 @@ class MyProfileScreen extends StatelessWidget {
               16.height,
 
               _buildMenuItem(
-                icon: Icons.school_outlined,
+                color: AppColors.primary.withOpacity(0.1),
+                imageSrc: AppIcons.education2,
                 title: 'Education',
                 subtitle: 'Complete',
                 onTap: () {
@@ -61,7 +66,8 @@ class MyProfileScreen extends StatelessWidget {
               ),
               16.height,
               _buildMenuItem(
-                icon: Icons.work_outline,
+                color: AppColors.success.withOpacity(0.1),
+                imageSrc: AppIcons.workEdit,
                 title: 'Work Experience',
                 subtitle: 'Complete',
                 onTap: () {
@@ -70,7 +76,8 @@ class MyProfileScreen extends StatelessWidget {
               ),
               16.height,
               _buildMenuItem(
-                icon: Icons.star_outline,
+                color: AppColors.buttomNavBarColor.withOpacity(0.1),
+                imageSrc: AppIcons.star,
                 title: 'Skills',
                 subtitle: 'Complete',
                 onTap: () {
@@ -90,8 +97,8 @@ class MyProfileScreen extends StatelessWidget {
       children: [
         /// Profile Image
         Container(
-          width: 80.w,
-          height: 80.h,
+          width: 100.w,
+          height: 100.h,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
@@ -100,13 +107,10 @@ class MyProfileScreen extends StatelessWidget {
             ),
           ),
           child: ClipOval(
-            child: Container(
-              color: AppColors.filledColor.withOpacity(0.3),
-              child: Icon(
-                Icons.person,
-                size: 40.sp,
-                color: AppColors.secondaryText,
-              ),
+            child: CommonImage(
+              imageSrc: AppImages.profile,
+              width: 100.w,
+              height: 100.h,
             ),
           ),
         ),
@@ -135,9 +139,10 @@ class MyProfileScreen extends StatelessWidget {
   }
 
   Widget _buildMenuItem({
-    required IconData icon,
+    required String imageSrc,
     required String title,
     required String subtitle,
+    required Color color,
     required VoidCallback onTap,
     bool isLast = false,
   }) {
@@ -169,13 +174,14 @@ class MyProfileScreen extends StatelessWidget {
               children: [
                 /// Icon Container
                 Container(
-                  width: 40.w,
-                  height: 40.h,
+                  padding: EdgeInsets.all(10.w),
+                  width: 48.w,
+                  height: 48.h,
                   decoration: BoxDecoration(
-                    color: AppColors.secondaryPrimary,
+                    color: color,
                     borderRadius: BorderRadius.circular(8.r),
                   ),
-                  child: Icon(icon, color: AppColors.white, size: 20.sp),
+                  child: CommonImage(imageSrc: imageSrc, width: 24, height: 24),
                 ),
 
                 16.width,

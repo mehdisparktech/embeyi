@@ -1,8 +1,10 @@
 // ... existing code ...
 import 'package:embeyi/core/component/button/common_button.dart';
+import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/config/route/job_seeker_routes.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -67,16 +69,16 @@ class WorkExperienceScreen extends StatelessWidget {
                                   fontSize: 16.sp,
                                   color: AppColors.black,
                                 ),
-                                IconButton(
-                                  icon: Icon(
-                                    Icons.edit,
-                                    color: AppColors.primary,
-                                    size: 18.sp,
-                                  ),
-                                  onPressed: () {
+                                GestureDetector(
+                                  onTap: () {
                                     // Navigate to edit screen
                                     JobSeekerRoutes.goToEditWorkExperience();
                                   },
+                                  child: CommonImage(
+                                    imageSrc: AppIcons.edit,
+                                    width: 20,
+                                    height: 20,
+                                  ),
                                 ),
                               ],
                             ),
@@ -84,7 +86,7 @@ class WorkExperienceScreen extends StatelessWidget {
                               text: 'Designs Hill',
                               fontWeight: FontWeight.w500,
                               fontSize: 14.sp,
-                              color: AppColors.textFiledColor,
+                              color: AppColors.primary,
                             ),
                             CommonText(
                               text: '2019 - Present',
