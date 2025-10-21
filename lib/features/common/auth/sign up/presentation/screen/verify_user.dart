@@ -103,7 +103,7 @@ class _VerifyUserState extends State<VerifyUser> {
                               activeColor: AppColors.primaryColor,
                               inactiveColor: AppColors.black,
                             ),
-                            length: 6,
+                            length: 4,
                             keyboardType: TextInputType.number,
                             autovalidateMode: AutovalidateMode.disabled,
                             enableActiveFill: true,

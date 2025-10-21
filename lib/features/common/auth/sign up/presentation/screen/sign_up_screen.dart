@@ -23,7 +23,10 @@ class SignUpScreen extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
 
       /// App Bar Section Starts Here
-      appBar: CommonAppbar(backgroundColor: AppColors.primaryColor),
+      appBar: CommonAppbar(
+        backgroundColor: AppColors.primaryColor,
+        leading: const BackButton(color: AppColors.white),
+      ),
 
       /// Body Section Starts Here
       body: SingleChildScrollView(

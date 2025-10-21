@@ -35,7 +35,10 @@ class _VerifyScreenState extends State<VerifyScreen> {
       backgroundColor: AppColors.primaryColor,
 
       /// App Bar Section
-      appBar: CommonAppbar(backgroundColor: AppColors.primaryColor),
+      appBar: CommonAppbar(
+        backgroundColor: AppColors.primaryColor,
+        leading: const BackButton(color: AppColors.white),
+      ),
 
       /// Body Section
       body: Column(
@@ -110,7 +113,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                                 activeColor: AppColors.primaryColor,
                                 inactiveColor: AppColors.secondaryText,
                               ),
-                              length: 6,
+                              length: 4,
                               keyboardType: TextInputType.number,
                               autovalidateMode: AutovalidateMode.disabled,
                               enableActiveFill: true,

@@ -1,3 +1,4 @@
+import 'package:embeyi/core/component/appbar/common_appbar.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,13 +19,9 @@ class ChangePasswordScreen extends StatelessWidget {
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: AppColors.surfaceBackground,
-      appBar: AppBar(
-        centerTitle: true,
-        title: const CommonText(
-          text: AppString.changePassword,
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-        ),
+      appBar: CommonAppbar(
+        backgroundColor: AppColors.surfaceBackground,
+        leading: const BackButton(color: AppColors.white),
       ),
       body: GetBuilder<ChangePasswordController>(
         builder: (controller) {

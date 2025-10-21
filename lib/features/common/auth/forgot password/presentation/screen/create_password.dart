@@ -24,7 +24,10 @@ class CreatePassword extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
 
       /// App Bar Section starts here
-      appBar: CommonAppbar(backgroundColor: AppColors.primaryColor),
+      appBar: CommonAppbar(
+        backgroundColor: AppColors.primaryColor,
+        leading: const BackButton(color: AppColors.white),
+      ),
 
       /// Body Section starts here
       body: GetBuilder<ForgetPasswordController>(

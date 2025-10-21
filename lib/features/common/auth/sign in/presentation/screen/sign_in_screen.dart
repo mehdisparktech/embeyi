@@ -26,7 +26,10 @@ class SignInScreen extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
 
       /// App Bar Sections Starts here
-      appBar: CommonAppbar(backgroundColor: AppColors.primaryColor),
+      appBar: CommonAppbar(
+        backgroundColor: AppColors.primaryColor,
+        leading: const BackButton(color: AppColors.white),
+      ),
 
       /// Body Sections Starts here
       body: SingleChildScrollView(
@@ -35,7 +38,7 @@ class SignInScreen extends StatelessWidget {
             return Column(
               children: [
                 const CommonText(
-                  text: AppString.registration,
+                  text: AppString.login,
                   fontSize: 32,
                   bottom: 20,
                   color: AppColors.white,
