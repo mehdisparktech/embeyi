@@ -16,8 +16,8 @@ class _CompanyOverviewScreenState extends State<CompanyOverviewScreen> {
   int selectedTabIndex = 0;
 
   // Sample data - Replace with actual data from API or navigation parameters
-  final String companyImage = AppImages.jobPost;
-  final String companyLogo = AppImages.logo;
+  final String companyImage = AppImages.imageBackground;
+  final String companyLogo = AppImages.companyLogo;
   final String companyName = 'Design-Hill';
   final String tagline =
       'Marketing That Performs. Get Red And Act By A Google Partner & B Corp Agency.';

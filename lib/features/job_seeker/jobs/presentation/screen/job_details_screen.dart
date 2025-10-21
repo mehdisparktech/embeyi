@@ -30,11 +30,27 @@ class JobDetailsScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CommonImage(
-                      imageSrc: AppImages.jobDetails,
-                      fill: BoxFit.cover,
+                    Container(
                       height: 220.h,
                       width: double.infinity,
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: CommonImage(
+                        imageSrc: AppImages.jobDetails,
+                        fill: BoxFit.cover,
+                        height: 220.h,
+                        width: double.infinity,
+                      ),
                     ),
 
                     // Hero Card - Green Hiring Banner
@@ -112,6 +128,7 @@ class JobDetailsScreen extends StatelessWidget {
 
                           CompanyInfoCard(
                             companyName: 'Design-Hill',
+                            companyLogo: AppImages.companyLogo,
                             onTap: () {
                               Get.toNamed(JobSeekerRoutes.companyOverview);
                             },

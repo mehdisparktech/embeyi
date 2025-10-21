@@ -21,45 +21,57 @@ class CompanyHeroHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 180.h,
-      margin: EdgeInsets.symmetric(horizontal: 20.w),
-      width: double.infinity,
-      decoration: BoxDecoration(color: AppColors.blueLight),
-      child: Stack(
-        children: [
-          // Background company image
-          Positioned.fill(
-            child: CommonImage(imageSrc: companyImage, fill: BoxFit.cover),
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        // Background company image
+        Container(
+          height: 180.h,
+          margin: EdgeInsets.symmetric(horizontal: 20.w),
+          width: double.infinity,
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            color: AppColors.blueLight,
+            borderRadius: BorderRadius.circular(8),
           ),
-          // Logo overlay at the bottom center
-          Positioned(
-            bottom: -30.h,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: Container(
-                width: 80.w,
-                height: 80.h,
-                decoration: ShapeDecoration(
-                  shape: OvalBorder(
-                    side: BorderSide(
-                      width: 2.50,
-                      color: const Color(0xFFEDEDED),
-                    ),
+          child: CommonImage(
+            imageSrc: companyImage,
+            fill: BoxFit.cover,
+            height: 180.h,
+            width: double.infinity,
+          ),
+        ),
+        //overlay logo with shadow and border radius
+        Positioned(
+          bottom: -40.h,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: Container(
+              width: 100.w,
+              height: 100.h,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(50.r),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 10,
+                    offset: Offset(0, 4),
                   ),
-                ),
-                child: CommonImage(
-                  imageSrc: companyLogo!,
-                  fill: BoxFit.cover,
-                  height: 80.h,
-                  width: 80.w,
-                ),
+                ],
+              ),
+              child: CommonImage(
+                imageSrc: companyLogo!,
+                fill: BoxFit.contain,
+                height: 100.h,
+                width: 100.w,
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -92,7 +104,7 @@ class CompanyNameSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: CommonText(
             text: tagline,
-            fontSize: 12.sp,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.primaryText,
             textAlign: TextAlign.center,

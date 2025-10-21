@@ -2,6 +2,7 @@ import 'package:embeyi/core/component/button/common_button.dart';
 import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/component/text_field/common_text_field.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../utils/constants/app_colors.dart';
@@ -147,7 +148,7 @@ class _JobApplyPopupState extends State<JobApplyPopup> {
             children: [
               // Company Logo
               Container(
-                width: 60.w,
+                width: 84.w,
                 height: 60.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6.r),
@@ -206,11 +207,7 @@ class _JobApplyPopupState extends State<JobApplyPopup> {
               Expanded(
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.location_on_outlined,
-                      size: 14.sp,
-                      color: AppColors.black,
-                    ),
+                    CommonImage(imageSrc: AppIcons.location, size: 14.sp),
                     4.width,
                     Expanded(
                       child: CommonText(
@@ -229,11 +226,7 @@ class _JobApplyPopupState extends State<JobApplyPopup> {
               // Deadline
               Row(
                 children: [
-                  Icon(
-                    Icons.calendar_today_outlined,
-                    size: 12.sp,
-                    color: AppColors.secondaryPrimary,
-                  ),
+                  CommonImage(imageSrc: AppIcons.calender, size: 16.sp),
                   4.width,
                   CommonText(
                     text: widget.deadline,
@@ -265,7 +258,7 @@ class _JobApplyPopupState extends State<JobApplyPopup> {
         4.width,
         CommonText(
           text: label,
-          fontSize: 11,
+          fontSize: 12,
           fontWeight: FontWeight.w400,
           color: AppColors.secondaryText,
         ),
@@ -332,8 +325,8 @@ class _JobApplyPopupState extends State<JobApplyPopup> {
   Widget _buildFieldLabel(String label) {
     return CommonText(
       text: label,
-      fontSize: 14,
-      fontWeight: FontWeight.w500,
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w400,
       color: AppColors.black,
       textAlign: TextAlign.start,
     );
@@ -365,11 +358,7 @@ class _JobApplyPopupState extends State<JobApplyPopup> {
                   color: Colors.red.shade50,
                   borderRadius: BorderRadius.circular(6.r),
                 ),
-                child: Icon(
-                  Icons.picture_as_pdf,
-                  color: Colors.red,
-                  size: 20.sp,
-                ),
+                child: CommonImage(imageSrc: AppIcons.pdf, size: 20.sp),
               ),
               12.width,
               Expanded(
@@ -383,20 +372,12 @@ class _JobApplyPopupState extends State<JobApplyPopup> {
               ),
               GestureDetector(
                 onTap: onRemove,
-                child: Icon(
-                  Icons.delete_outline,
-                  size: 20.sp,
-                  color: AppColors.black,
-                ),
+                child: CommonImage(imageSrc: AppIcons.delete, size: 20.sp),
               ),
             ] else if (showUploadIcon) ...[
               Expanded(
                 child: Center(
-                  child: Icon(
-                    Icons.cloud_upload_outlined,
-                    size: 24.sp,
-                    color: AppColors.grey,
-                  ),
+                  child: CommonImage(imageSrc: AppIcons.upload, size: 24.sp),
                 ),
               ),
             ] else ...[

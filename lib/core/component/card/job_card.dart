@@ -1,5 +1,6 @@
 import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
@@ -132,10 +133,10 @@ class JobCard extends StatelessWidget {
   Widget _buildFavoriteButton() {
     return GestureDetector(
       onTap: onFavoriteTap,
-      child: Icon(
-        isSaved ? Icons.favorite : Icons.favorite_border,
-        color: isSaved ? Colors.red : AppColors.black,
-        size: 20.sp,
+      child: CommonImage(
+        imageSrc: isSaved ? AppIcons.love : AppIcons.love,
+        size: 24.sp,
+        imageColor: isSaved ? AppColors.red : AppColors.black,
       ),
     );
   }
