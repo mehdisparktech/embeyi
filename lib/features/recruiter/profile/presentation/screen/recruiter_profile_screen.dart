@@ -1,4 +1,7 @@
+import 'package:embeyi/core/component/button/common_button.dart';
+import 'package:embeyi/core/config/route/app_routes.dart';
 import 'package:embeyi/core/config/route/recruiter_routes.dart';
+import 'package:embeyi/core/services/storage/storage_services.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:embeyi/core/utils/extensions/extension.dart';
@@ -159,7 +162,7 @@ final List<ProfileItemData> profileItems = [
     imageSrc: AppIcons.history3,
     title: 'Payment History',
     onTap: () {
-      RecruiterRoutes.goToPaymentHistory();
+      RecruiterProfileController.showPaymentHistoryPopUp();
     },
   ),
   ProfileItemData(
@@ -197,31 +200,39 @@ void _showLogoutDialog() {
       ),
       content: CommonText(
         text: 'Are you sure you want to log out?',
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: FontWeight.w400,
-        color: AppColors.black,
+        color: AppColors.primaryText,
+        maxLines: 2,
       ),
       actions: [
-        TextButton(
-          onPressed: () => Get.back(),
-          child: const CommonText(
-            text: 'Cancel',
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        TextButton(
-          onPressed: () {
-            // Implement logout logic here
-            Get.back();
-            // Navigate to login screen
-          },
-          child: CommonText(
-            text: 'Log Out',
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            color: AppColors.error,
-          ),
+        Row(
+          children: [
+            Expanded(
+              child: CommonButton(
+                titleText: 'No',
+                buttonColor: AppColors.borderColor,
+                titleColor: AppColors.black,
+                borderColor: AppColors.borderColor,
+                isGradient: false,
+                onTap: () => Get.back(),
+              ),
+            ),
+            SizedBox(width: 16.w),
+            Expanded(
+              child: CommonButton(
+                titleText: 'Yes',
+                buttonColor: AppColors.red,
+                borderColor: AppColors.red,
+                titleColor: AppColors.white,
+                isGradient: false,
+                onTap: () {
+                  LocalStorage.removeAllPrefData();
+                  Get.offAllNamed(AppRoutes.selectedRole);
+                },
+              ),
+            ),
+          ],
         ),
       ],
     ),

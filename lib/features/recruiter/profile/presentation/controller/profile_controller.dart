@@ -1,3 +1,5 @@
+import 'package:embeyi/core/component/pop_up/otp_pop_up.dart';
+import 'package:embeyi/core/component/pop_up/password_pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:embeyi/core/services/storage/storage_services.dart';
@@ -82,5 +84,59 @@ class RecruiterProfileController extends GetxController {
 
     isLoading = false;
     update();
+  }
+
+  static void showPaymentHistoryPopUp() {
+    _showPasswordPopUp();
+  }
+
+  static void _showPasswordPopUp() {
+    TextEditingController passwordController = TextEditingController();
+    showDialog(
+      context: Get.context!,
+      barrierDismissible: false,
+      builder: (context) => PasswordPopUp(
+        passwordController: passwordController,
+        onContinue: () {
+          // Handle password submission
+          String password = passwordController.text;
+          print('Password entered: $password');
+          Navigator.pop(context);
+          _showOtpPopUp();
+          // Navigate to next screen or perform action
+        },
+      ),
+    );
+  }
+
+  static void _showOtpPopUp() {
+    List<TextEditingController> otpControllers = [];
+    for (int i = 0; i < 4; i++) {
+      otpControllers.add(TextEditingController());
+    }
+    showDialog(
+      context: Get.context!,
+      barrierDismissible: false,
+      builder: (context) => OtpPopUp(
+        controllers: otpControllers,
+        onVerify: () {
+          // Handle OTP verification
+          String otp = otpControllers
+              .map((controller) => controller.text)
+              .join();
+          // ignore: avoid_print
+          print('OTP entered: $otp');
+          Navigator.pop(context);
+          RecruiterRoutes.goToPaymentHistory();
+        },
+        onResend: () {
+          // Handle resend OTP
+          for (var controller in otpControllers) {
+            controller.clear();
+          }
+          // Call API to resend OTP
+        },
+      ),
+    );
   }
 }
