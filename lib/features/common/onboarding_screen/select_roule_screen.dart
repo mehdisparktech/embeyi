@@ -1,3 +1,4 @@
+import 'package:embeyi/core/services/storage/storage_keys.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,28 @@ import 'package:embeyi/core/utils/enum/enum.dart';
 import '../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SelectRouleScreen extends StatelessWidget {
+class SelectRouleScreen extends StatefulWidget {
   const SelectRouleScreen({super.key});
+
+  @override
+  State<SelectRouleScreen> createState() => _SelectRouleScreenState();
+}
+
+class _SelectRouleScreenState extends State<SelectRouleScreen> {
+  UserRole? selectedRole;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCurrentRole();
+  }
+
+  Future<void> _loadCurrentRole() async {
+    await LocalStorage.getAllPrefData();
+    setState(() {
+      selectedRole = LocalStorage.userRole;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,21 +71,35 @@ class SelectRouleScreen extends StatelessWidget {
                   subtitle: 'Finding a job here never been easier than before',
                   imageSrc: AppImages.jobseekers,
                   onTap: () async {
-                    await LocalStorage.setUserRole(UserRole.jobSeeker);
+                    await LocalStorage.setString(
+                      LocalStorageKeys.userRole,
+                      UserRole.jobSeeker.name,
+                    );
+                    await LocalStorage.getAllPrefData();
+                    setState(() {
+                      selectedRole = UserRole.jobSeeker;
+                    });
                     Get.toNamed(AppRoutes.signUp);
                   },
-                  isSeleted: true,
+                  isSeleted: selectedRole == UserRole.jobSeeker,
                 ),
                 20.height,
                 selectRoleCard(
                   title: "Recruiter",
-                  subtitle: 'Let’s recruit your great candidate faster here ',
+                  subtitle: "Let's recruit your great candidate faster here",
                   imageSrc: AppImages.recruiter,
                   onTap: () async {
-                    await LocalStorage.setUserRole(UserRole.employer);
+                    await LocalStorage.setString(
+                      LocalStorageKeys.userRole,
+                      UserRole.employer.name,
+                    );
+                    await LocalStorage.getAllPrefData();
+                    setState(() {
+                      selectedRole = UserRole.employer;
+                    });
                     Get.toNamed(AppRoutes.signUp);
                   },
-                  isSeleted: false,
+                  isSeleted: selectedRole == UserRole.employer,
                 ),
               ],
             ),

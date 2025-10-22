@@ -1,5 +1,4 @@
 import 'package:embeyi/core/component/button/common_button.dart';
-import 'package:embeyi/core/config/route/app_routes.dart';
 import 'package:embeyi/core/config/route/recruiter_routes.dart';
 import 'package:embeyi/core/services/storage/storage_services.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
@@ -228,7 +227,6 @@ void _showLogoutDialog() {
                 isGradient: false,
                 onTap: () {
                   LocalStorage.removeAllPrefData();
-                  Get.offAllNamed(AppRoutes.selectedRole);
                 },
               ),
             ),

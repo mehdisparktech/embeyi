@@ -50,7 +50,7 @@ class LocalStorage {
     final localStorage = await _getStorage();
     await localStorage.clear();
     _resetLocalStorageData();
-    Get.offAllNamed(AppRoutes.signIn);
+    Get.offAllNamed(AppRoutes.selectedRole);
     await getAllPrefData();
   }
 
@@ -64,13 +64,51 @@ class LocalStorage {
     localStorage.setString(LocalStorageKeys.myName, "");
     localStorage.setString(LocalStorageKeys.myEmail, "");
     localStorage.setBool(LocalStorageKeys.isLogIn, false);
-    localStorage.setString(LocalStorageKeys.userRole, UserRole.jobSeeker.name);
+    localStorage.setString(LocalStorageKeys.userRole, "");
+
+    // Reset static variables
+    token = "";
+    refreshToken = "";
+    userId = "";
+    myImage = "";
+    myName = "";
+    myEmail = "";
+    isLogIn = false;
+    userRole = UserRole.jobSeeker;
   }
 
   // Save Data To SharedPreferences
   static Future<void> setString(String key, String value) async {
     final localStorage = await _getStorage();
     await localStorage.setString(key, value);
+
+    // Update static variables based on the key
+    switch (key) {
+      case LocalStorageKeys.token:
+        token = value;
+        break;
+      case LocalStorageKeys.refreshToken:
+        refreshToken = value;
+        break;
+      case LocalStorageKeys.userId:
+        userId = value;
+        break;
+      case LocalStorageKeys.myImage:
+        myImage = value;
+        break;
+      case LocalStorageKeys.myName:
+        myName = value;
+        break;
+      case LocalStorageKeys.myEmail:
+        myEmail = value;
+        break;
+      case LocalStorageKeys.userRole:
+        userRole = UserRole.values.firstWhere(
+          (element) => element.name == value,
+          orElse: () => UserRole.jobSeeker,
+        );
+        break;
+    }
   }
 
   static Future<void> setBool(String key, bool value) async {

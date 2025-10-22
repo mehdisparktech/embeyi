@@ -4,6 +4,10 @@ import '../../../core/config/route/app_routes.dart';
 import 'package:get/get.dart';
 import '../../../core/utils/constants/app_images.dart';
 import '../../../core/component/image/common_image.dart';
+import '../../../core/services/storage/storage_services.dart';
+import '../../../core/utils/enum/enum.dart';
+import '../../../core/config/route/job_seeker_routes.dart';
+import '../../../core/config/route/recruiter_routes.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,17 +19,37 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 3), () {
-      // if (LocalStorage.isLogIn) {
-      //   if (LocalStorage.myRole == 'consultant') {
-      //     Get.offAllNamed(AppRoutes.doctorHome);
-      //   } else {
-      //     Get.offAllNamed(AppRoutes.patientsHome);
-      //   }
-      // } else {
-      Get.offAllNamed(AppRoutes.onboarding);
-    });
+    _initializeApp();
     super.initState();
+  }
+
+  Future<void> _initializeApp() async {
+    // Load all stored data
+    await LocalStorage.getAllPrefData();
+
+    // Wait for splash screen duration
+    await Future.delayed(const Duration(seconds: 3));
+
+    // Navigate based on login status and role
+    if (LocalStorage.isLogIn) {
+      // User is logged in, navigate to appropriate home screen based on role
+      if (LocalStorage.userRole == UserRole.employer) {
+        // Navigate to recruiter home
+        Get.offAllNamed(RecruiterRoutes.home);
+      } else {
+        // Navigate to job seeker home
+        Get.offAllNamed(JobSeekerRoutes.home);
+      }
+    } else {
+      // User is not logged in, check if role is already selected
+      if (LocalStorage.userRole != UserRole.jobSeeker) {
+        // Role is selected, go to sign in
+        Get.offAllNamed(AppRoutes.signIn);
+      } else {
+        // No role selected, go to onboarding
+        Get.offAllNamed(AppRoutes.onboarding);
+      }
+    }
   }
 
   @override

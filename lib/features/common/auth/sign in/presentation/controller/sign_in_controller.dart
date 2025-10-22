@@ -27,8 +27,10 @@ class SignInController extends GetxController {
 
   Future<void> signInUser() async {
     if (LocalStorage.userRole == UserRole.jobSeeker) {
+      LocalStorage.isLogIn = true;
       Get.toNamed(JobSeekerRoutes.home);
     } else {
+      LocalStorage.isLogIn = true;
       Get.toNamed(RecruiterRoutes.home);
     }
     return;
