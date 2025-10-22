@@ -18,7 +18,6 @@ import 'my_profile_screen.dart';
 import 'favorite_list_screen.dart';
 import 'subscription_pack_screen.dart';
 import 'my_subscription_screen.dart';
-import 'payment_history_screen.dart';
 import 'platform_review_screen.dart';
 
 class JobSeekerProfileScreen extends StatelessWidget {
@@ -169,7 +168,7 @@ final List<ProfileItemData> profileItems = [
     imageSrc: AppIcons.history3,
     title: 'Payment History',
     onTap: () {
-      Get.to(() => const PaymentHistoryScreen());
+      ProfileController.showPaymentHistoryPopUp();
     },
   ),
   ProfileItemData(
