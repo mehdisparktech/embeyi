@@ -58,14 +58,10 @@ class AddResumeScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Icon(
-                        Icons.edit_document,
-                        color: AppColors.primary,
-                        size: 32.sp,
-                      ),
+                      Icon(Icons.add, color: AppColors.primary, size: 32.sp),
                       8.height,
                       const CommonText(
-                        text: 'Add Resume',
+                        text: 'Create New Resume',
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: AppColors.primary,

@@ -1,3 +1,6 @@
+import 'package:embeyi/core/component/image/common_image.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
+import 'package:embeyi/core/utils/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/component/button/common_button.dart';
@@ -76,6 +79,7 @@ class _JobSeekerHelpSupportScreenState
         SizedBox(height: 8.h),
         CommonTextField(
           controller: _nameController,
+          borderRadius: 8.r,
           hintText: 'Enter your Reason',
           textInputAction: TextInputAction.next,
           validator: (value) {
@@ -106,8 +110,9 @@ class _JobSeekerHelpSupportScreenState
           hintText:
               'If you are having trouble to sign in with Account then you can Email us in Account Issues or Choosing Other Issue Regarding',
           textInputAction: TextInputAction.newline,
-          maxLines: 5,
+          maxLines: 6,
           keyboardType: TextInputType.multiline,
+          borderRadius: 8.r,
         ),
       ],
     );
@@ -121,16 +126,25 @@ class _JobSeekerHelpSupportScreenState
       },
       borderRadius: BorderRadius.circular(4.r),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(4.r),
-          border: Border.all(color: AppColors.borderColor),
+        padding: const EdgeInsets.symmetric(horizontal: 109, vertical: 17),
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 2, color: const Color(0xFFD1D5D6)),
+            borderRadius: BorderRadius.circular(11),
+          ),
+          shadows: [
+            BoxShadow(
+              color: Color(0x1E000000),
+              blurRadius: 50,
+              offset: Offset(20, 20),
+              spreadRadius: 0,
+            ),
+          ],
         ),
         child: Row(
           children: [
-            Icon(Icons.attach_file, size: 20.sp, color: AppColors.primaryText),
-            SizedBox(width: 8.w),
+            CommonImage(imageSrc: AppIcons.attachment, width: 24, height: 24),
+            8.width,
             CommonText(
               text: 'Attach File',
               fontSize: 14,
