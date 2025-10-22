@@ -1,8 +1,10 @@
 import 'package:embeyi/core/component/appbar/common_appbar.dart';
 import 'package:embeyi/core/component/button/common_button.dart';
+import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:embeyi/core/component/text_field/common_text_field.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -166,7 +168,7 @@ class _AddCareerSpotlightScreenState extends State<AddCareerSpotlightScreen> {
                         SizedBox(height: 8.h),
                         _buildDropdown(
                           value: _selectedLocation,
-                          hint: 'Dhaka(Gulshan-1, Hatirjheel, Banani, Uttara)',
+                          hint: 'Dhaka',
                           items: _locations,
                           onChanged: (value) {
                             setState(() {
@@ -329,34 +331,23 @@ class _AddCareerSpotlightScreenState extends State<AddCareerSpotlightScreen> {
   Widget _buildUploadCoverImageSection() {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 32.h),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        border: Border.all(color: AppColors.borderColor),
-        borderRadius: BorderRadius.circular(4.r),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 1, color: const Color(0xFF123499)),
+          borderRadius: BorderRadius.circular(8),
+        ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            width: 48.w,
-            height: 48.h,
-            decoration: BoxDecoration(
-              color: AppColors.primaryColor,
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              Icons.cloud_upload_outlined,
-              color: AppColors.white,
-              size: 24.sp,
-            ),
-          ),
+          CommonImage(imageSrc: AppIcons.upload2, size: 48.sp),
           SizedBox(height: 12.h),
           CommonText(
             text: 'Upload Cover Image',
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: AppColors.primaryText,
+            color: AppColors.primary,
           ),
         ],
       ),

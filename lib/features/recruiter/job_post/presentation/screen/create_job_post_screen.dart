@@ -19,7 +19,7 @@ class RecruiterCreateJobPostScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CommonAppbar(
-        title: 'EDIT POST',
+        title: 'Create Job Post',
         showLeading: true,
         centerTitle: true,
         textColor: AppColors.black,
@@ -294,11 +294,11 @@ class RecruiterCreateJobPostScreen extends StatelessWidget {
                 ],
               ),
               child: CommonButton(
-                titleText: 'Submit',
-                titleSize: 16,
+                titleText: 'Publish',
+                titleSize: 16.sp,
                 titleWeight: FontWeight.w600,
                 buttonHeight: 50.h,
-                buttonRadius: 8,
+                buttonRadius: 8.r,
                 buttonColor: AppColors.primaryColor,
                 isGradient: false,
                 onTap: controller.submitJobPost,

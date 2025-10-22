@@ -1,3 +1,4 @@
+import 'package:embeyi/core/component/pop_up/job_post_details_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:embeyi/core/utils/helpers/other_helper.dart';
@@ -128,10 +129,9 @@ class RecruiterCreateJobPostController extends GetxController {
   void submitJobPost() {
     // Handle submit action
     // Add your API call or business logic here
-    Get.snackbar(
-      'Success',
-      'Job post updated successfully',
-      snackPosition: SnackPosition.BOTTOM,
+    showDialog(
+      context: Get.context!,
+      builder: (context) => const JobPostDetailsPopup(),
     );
   }
 
