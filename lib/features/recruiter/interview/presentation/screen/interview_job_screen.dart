@@ -178,8 +178,11 @@ class InterviewJobScreen extends StatelessWidget {
                   experience: interview['experience'],
                   scheduleTime: interview['scheduleTime'],
                   profileImage: interview['profileImage'],
-                  onTap: () =>
-                      controller.viewCandidateProfile(interview['name']),
+                  isCompleted: controller.selectedTabIndex.value == 1,
+                  onTap: () => controller.viewCandidateProfile(
+                    interview['name'],
+                    controller.selectedTabIndex.value == 1,
+                  ),
                   onEdit: () => controller.editInterview(interview['name']),
                 );
               },

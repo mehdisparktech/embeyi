@@ -1,3 +1,4 @@
+import 'package:embeyi/core/component/text/common_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
@@ -11,6 +12,7 @@ class InterviewCandidateCard extends StatelessWidget {
   final String profileImage;
   final VoidCallback onTap;
   final VoidCallback onEdit;
+  final bool isCompleted;
 
   const InterviewCandidateCard({
     super.key,
@@ -21,6 +23,7 @@ class InterviewCandidateCard extends StatelessWidget {
     required this.profileImage,
     required this.onTap,
     required this.onEdit,
+    this.isCompleted = false,
   });
 
   @override
@@ -95,43 +98,58 @@ class InterviewCandidateCard extends StatelessWidget {
                   ),
                   8.height,
                   // Schedule Button
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 12.w,
-                      vertical: 6.h,
-                    ),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: AppColors.primaryColor,
-                        width: 1,
+                  if (!isCompleted) ...[
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 12.w,
+                        vertical: 6.h,
                       ),
-                      borderRadius: BorderRadius.circular(6.r),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppColors.primaryColor,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(6.r),
+                      ),
+                      child: Text(
+                        scheduleTime,
+                        style: TextStyle(
+                          fontSize: 11.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.primaryColor,
+                        ),
+                      ),
                     ),
-                    child: Text(
-                      scheduleTime,
-                      style: TextStyle(
-                        fontSize: 11.sp,
-                        fontWeight: FontWeight.w600,
+                  ],
+                  if (isCompleted) ...[
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: CommonText(
+                        text: 'Status: On Hold',
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
                         color: AppColors.primaryColor,
                       ),
                     ),
-                  ),
+                  ],
                 ],
               ),
             ),
             8.width,
             // Edit Button
-            GestureDetector(
-              onTap: onEdit,
-              child: Container(
-                padding: EdgeInsets.all(8.r),
-                child: Icon(
-                  Icons.edit_outlined,
-                  color: AppColors.primaryColor,
-                  size: 24.sp,
+            if (!isCompleted) ...[
+              GestureDetector(
+                onTap: onEdit,
+                child: Container(
+                  padding: EdgeInsets.all(8.r),
+                  child: Icon(
+                    Icons.edit_outlined,
+                    color: AppColors.primaryColor,
+                    size: 24.sp,
+                  ),
                 ),
               ),
-            ),
+            ],
           ],
         ),
       ),

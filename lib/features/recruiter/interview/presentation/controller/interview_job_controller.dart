@@ -1,4 +1,6 @@
 import 'package:embeyi/core/component/pop_up/interview_schedule_popup.dart';
+import 'package:embeyi/features/recruiter/interview/presentation/screen/complete_interview_details_screen.dart';
+import 'package:embeyi/features/recruiter/interview/presentation/screen/upcoming_interview_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:embeyi/core/utils/constants/app_images.dart';
@@ -102,10 +104,11 @@ class InterviewJobController extends GetxController {
     );
   }
 
-  void viewCandidateProfile(String candidateName) {
-    // showDialog(
-    //   context: Get.context!,
-    //   builder: (context) => InterviewSchedulePopup(),
-    // );
+  void viewCandidateProfile(String candidateName, bool isCompleted) {
+    Get.to(
+      () => isCompleted
+          ? CompleteInterviewDetailsScreen()
+          : UpcomingInterviewDetailsScreen(),
+    );
   }
 }

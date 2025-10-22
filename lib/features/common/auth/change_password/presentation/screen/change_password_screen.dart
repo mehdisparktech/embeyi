@@ -21,7 +21,10 @@ class ChangePasswordScreen extends StatelessWidget {
       backgroundColor: AppColors.surfaceBackground,
       appBar: CommonAppbar(
         backgroundColor: AppColors.surfaceBackground,
-        leading: const BackButton(color: AppColors.white),
+        leading: const BackButton(color: AppColors.black),
+        textColor: AppColors.black,
+        title: AppString.changePassword,
+        centerTitle: true,
       ),
       body: GetBuilder<ChangePasswordController>(
         builder: (controller) {
