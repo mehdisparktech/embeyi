@@ -45,7 +45,7 @@ class CareerSpotlightScreen extends StatelessWidget {
                               label: 'Active Ads',
                               countColor: const Color(0xFF008F37),
                               backgroundColor: const Color(0xFFE8F5ED),
-                              labelColor: AppColors.black,
+                              labelColor: Color(0xFF008F37),
                             ),
                           ),
                           SizedBox(width: 12.w),
@@ -150,7 +150,7 @@ class CareerSpotlightScreen extends StatelessWidget {
         children: [
           CommonText(
             text: count,
-            fontSize: 32,
+            fontSize: 36,
             fontWeight: FontWeight.w700,
             color: countColor,
             textAlign: TextAlign.center,
@@ -158,7 +158,7 @@ class CareerSpotlightScreen extends StatelessWidget {
           SizedBox(height: 4.h),
           CommonText(
             text: label,
-            fontSize: 12,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
             color: labelColor,
             textAlign: TextAlign.center,
