@@ -76,7 +76,11 @@ class RecruiterProfileScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
 
                       children: [
-                        Icon(Icons.star, color: AppColors.secondaryPrimary),
+                        CommonImage(
+                          imageSrc: AppIcons.premium,
+                          width: 20.w,
+                          height: 20.h,
+                        ),
                         8.width,
                         CommonText(
                           text: 'Premium Plan',

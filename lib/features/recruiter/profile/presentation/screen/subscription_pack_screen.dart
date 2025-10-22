@@ -1,5 +1,7 @@
 import 'package:embeyi/core/component/button/common_button.dart';
+import 'package:embeyi/core/component/image/common_image.dart';
 import 'package:embeyi/core/utils/constants/app_colors.dart';
+import 'package:embeyi/core/utils/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -20,6 +22,7 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
       'name': 'Free Plan',
       'subtitle': 'Free Plan (Starter)',
       'price': '\$0',
+      'isFree': true,
       'features': [
         'Browse Job Listings',
         'Unlimited Auto-Apply (+50)',
@@ -30,8 +33,9 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
     },
     'premium': {
       'name': 'Premium Plan',
-      'subtitle': 'Premium Plan (Professional)',
+      'subtitle': 'monthly',
       'price': '\$19.99',
+      'isFree': false,
       'features': [
         'Browse Job Listings',
         'Unlimited Auto-Apply (+100)',
@@ -42,8 +46,9 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
     },
     'pro': {
       'name': 'Pro Plan',
-      'subtitle': 'Pro Plan (Expert)',
+      'subtitle': 'yearly',
       'price': '\$49.99',
+      'isFree': false,
       'features': [
         'Browse Job Listings',
         'Unlimited Auto-Apply (Unlimited)',
@@ -78,7 +83,7 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
                       // Package Tabs
                       _buildPackageTabs(),
 
-                      32.height,
+                      60.height,
 
                       // Plan Card
                       _buildPlanCard(planData),
@@ -171,6 +176,7 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
 
   Widget _buildPlanCard(Map<String, dynamic> planData) {
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         Container(
           decoration: ShapeDecoration(
@@ -186,7 +192,7 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
               // Price and Title
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(20.w),
+                padding: EdgeInsets.all(30.w),
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     side: BorderSide(width: 1, color: const Color(0xFF123499)),
@@ -206,16 +212,23 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
                   children: [
                     CommonText(
                       text: planData['price'],
-                      fontSize: 36,
+                      fontSize: 48,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                    CommonText(
+                      text: '/',
+                      fontSize: 40,
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
                     ),
                     8.width,
                     CommonText(
                       text: planData['subtitle'],
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
                       color: Colors.white70,
+                      top: 20,
                     ),
                   ],
                 ),
@@ -235,13 +248,12 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
-                            Icons.check_circle,
-                            color: AppColors.primary,
-                            size: 20.sp,
+                          CommonImage(
+                            imageSrc: AppIcons.check2,
+                            width: 20.w,
+                            height: 20.h,
                           ),
                           10.width,
-
                           CommonText(
                             text: planData['features'][index],
                             fontSize: 14,
@@ -254,24 +266,31 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
                   ),
                 ),
               ),
-              _buildEnableButton(),
+              _buildEnableButton(planData),
             ],
           ),
         ),
         Positioned(
-          top: -20.w,
-          right: 150.w,
+          top: -30.w,
+          right: 160.w,
           child: Container(
-            padding: EdgeInsets.all(8.w),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white,
-              border: Border.all(color: const Color(0xFF1E3A5F), width: 3),
+            width: 59,
+            height: 59,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 11.80,
+              vertical: 10.62,
             ),
-            child: Icon(
-              Icons.workspace_premium,
-              color: const Color(0xFF3B4DE3),
-              size: 24.sp,
+            decoration: ShapeDecoration(
+              color: Colors.white /* White-BG */,
+              shape: RoundedRectangleBorder(
+                side: BorderSide(width: 1.18, color: const Color(0xFFF48201)),
+                borderRadius: BorderRadius.circular(29.50),
+              ),
+            ),
+            child: CommonImage(
+              imageSrc: planData['isFree'] ? AppIcons.free : AppIcons.premium,
+              width: 24.w,
+              height: 24.h,
             ),
           ),
         ),
@@ -279,7 +298,7 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
     );
   }
 
-  Widget _buildEnableButton() {
+  Widget _buildEnableButton(Map<String, dynamic> planData) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(32),
@@ -291,11 +310,13 @@ class _SubscriptionPackScreenState extends State<SubscriptionPackScreen> {
         ),
       ),
       child: CommonButton(
-        titleText: "Enable",
+        titleText: planData['isFree'] ? "Enable" : "Buy Now",
         onTap: () {},
-        isGradient: false,
-        buttonColor: AppColors.transparent,
-        titleColor: AppColors.primary,
+        isGradient: planData['isFree'] ? true : false,
+        buttonColor: planData['isFree']
+            ? AppColors.transparent
+            : AppColors.primary,
+        titleColor: planData['isFree'] ? AppColors.primary : AppColors.white,
       ),
     );
   }
